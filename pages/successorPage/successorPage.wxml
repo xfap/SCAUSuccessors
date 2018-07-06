@@ -19,4 +19,8 @@
         <image src="../../images/yuyue.png"/>待领取的
         <text class="jump">〉</text>
     </view>
+    <view class="item" bindtap="address">
+        <image src="../../images/dizhi.png"/>我的地址
+        <text class="jump">〉</text>
+    </view>
 </view>
