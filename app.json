@@ -11,14 +11,22 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#FFFF99",
+    "navigationBarTitleText": "华农继承者",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true
   },
+<<<<<<< HEAD
   "tabBar": {
     "color": "#000",
     "selectedColor": "#FFFF00",
     "list": [
+=======
+  "tabBar":{
+    "color":"#000",
+    "selectedColor":"#FFCC33",
+    "list":[
+>>>>>>> 51c0124f1a1b0cf3f7d74caca84566727ea04da7
       {
         "pagePath": "pages/browsePage/browsePage",
         "text": "继承品"

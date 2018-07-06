@@ -1,13 +1,35 @@
 数据表      
-                       
-用户名 物品id 物品标题 物品简介 物品图片 物品标签 发布时间 被人确认需要 需要者接收完成
-所有者发送完成 所有者空闲时间0 所有者空闲时间1 已完成时间 
+successor   
+主键：用户id：user_id
+用户名:username  
+用户地址宿舍区号：area_name 
+用户地址宿舍宿舍号：dorm_name
+
+suc_stuff
+主键：物品id:suc_id
+物品标题:suc_title
+物品简介:suc_intro
+物品图片:suc_pic_url
+物品标签:suc_class
+发布时间:suc_publish_time
+
+suc_process
+主键：物品id:         suc_id
+被人确认需要:         need_flag
+所有者确认送出：    comfirm_give_flag
+所有者空闲时间0:   owner_spare_time_start
+所有者空闲时间1:   owner_spare_time_end
+需要者接收完成:    confirm_recv
+所有者发送完成:    confirm_give
+已完成时间:          complete_time
 
 
 
 
 
-登录 
+
+登录:
+
 
 之后进入浏览页面
 事件
@@ -15,9 +37,14 @@
 默认：
 browse
 返回最近20条发布的物品信息
+./?type="browse"
+用户点击下一页：
+./?type="browse_refresh"
+返回下一个20条发布的物品信息
 
 用户登录：l
 login
+
 询问后台，检查是否有消息。
                          
 后台返回消息的格式：①已发布物品被人确认需要： {ok:{物品id }}
@@ -26,7 +53,7 @@ login
                        accept:{物品id+时间段+}
                       }
 用户主动事件 点击：
-getInfo
+/?type="getInfo"&suc_id=
 点击一个物品，页面提供物品id，后台返回具体信息
 
 页面提供类别id
@@ -74,6 +101,8 @@ haveGiven
 物品id，1
 ====================================================================================================
 管理员主动事件 修改：
+
+12324?type=**
 
 {
 type:事件名,
