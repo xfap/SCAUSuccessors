@@ -7,7 +7,7 @@ CREATE TABLE successor(
  CREATE TABLE suc_stuff(
 	suc_id NUMBER(24) PRIMARY KEY,
   suc_title VARCHAR2(64) NOT NULL,
-  suc_intro VARCHAR2(32),
+  suc_intro VARCHAR2(1024),
   suc_pic_url VARCHAR2(32),
   suc_class VARCHAR2(32),
   suc_publish_time VARCHAR2(32)

@@ -6,12 +6,12 @@ successor
 用户地址宿舍宿舍号：dorm_name
 
 suc_stuff
-主键：物品id:suc_id
-物品标题:suc_title
-物品简介:suc_intro
-物品图片:suc_pic_url
-物品标签:suc_class
-发布时间:suc_publish_time
+主键：物品id:    suc_id
+物品标题:       suc_title
+物品简介:       suc_intro
+物品图片:       suc_pic_url
+物品标签:       suc_class
+发布时间:       suc_publish_time
 
 suc_process
 主键：物品id:         suc_id
@@ -40,7 +40,7 @@ browse
 ./?type="browse"
 用户点击下一页：
 ./?type="browse_refresh"
-返回下一个20条发布的物品信息
+返回接着下一个20条发布的物品信息
 
 用户登录：l
 login
