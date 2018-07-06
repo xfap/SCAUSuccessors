@@ -6,29 +6,6 @@
 我最终接收的形式是 127.0.0.1/successor/Listerner?type=""&arg1=""&arg2=""&...
 
 ================================================================
-successor   
-主键：用户id：           user_id
-用户名:                username  
-用户地址宿舍区号：    area_name 
-用户地址宿舍宿舍号：  dorm_name
-
-suc_stuff
-主键：物品id:    suc_id
-物品标题:       suc_title
-物品简介:       suc_intro
-物品图片:       suc_pic_url
-物品标签:       suc_class
-发布时间:       suc_publish_time
-
-suc_process
-主键：物品id:         suc_id
-被人确认需要:         need_flag
-所有者确认送出：    comfirm_give_flag
-所有者空闲时间0:   owner_spare_time_start
-所有者空闲时间1:   owner_spare_time_end
-需要者接收完成:    confirm_recv
-所有者发送完成:    confirm_give
-已完成时间:          complete_time
 
 
 ================================browse================================                
