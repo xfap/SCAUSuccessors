@@ -1,2 +1,5 @@
 <!--pages/releasePage/releasePage.wxml-->
-<text>pages/releasePage/releasePage.wxml</text>
+<view class='container'>
+  <view class='title'>已发布继承品</view>
+  
+</view>
