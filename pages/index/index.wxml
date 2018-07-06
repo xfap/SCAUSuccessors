@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <text style='color:red;font-size:80rpx'>天下第一频道</text>
+  <view>李昱颉报道</view>
+</view>
