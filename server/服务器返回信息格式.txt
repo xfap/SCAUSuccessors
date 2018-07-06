@@ -1,5 +1,6 @@
-主机名：127.0.0.1/successor/Listerner?type=""
+主机名url：127.0.0.1/successor/Listerner
 你们请求wx.request里的 data{
+                type="",
                 arg1:"",
                 arg2:""
                 }
@@ -12,6 +13,9 @@
 ********************
 TYPE:browse
 其他参数：null
+所以wx.request里的 data：{
+                type："browse",
+                }
 ********************
 返回的数据：
         {
@@ -36,6 +40,12 @@ TYPE:browse
 TYPE:browse_refresh
 其他参数：
             suc_class 类别
+            
+所以wx.request里的 data：{
+                type："browse",
+                suc_class："book"
+                }       
+                
 ******************************
 返回的数据：
         {
