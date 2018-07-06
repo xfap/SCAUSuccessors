@@ -1,12 +1,35 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
+  "pages": [
+    "pages/browsePage/browsePage",
+    "pages/logs/logs",
+    "pages/uploadPage/uploadPage",
+    "pages/releasePage/releasePage",
+    "pages/detailedPage/detailedPage",
+    "pages/reservedPage/reservedPage",
+    "pages/successorPage/successorPage"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "color":"#000",
+    "selectedColor":"#FFFF00",
+    "list":[
+      {
+        "pagePath":"pages/browsePage/browsePage",
+        "text":"继承品"
+      },
+      {
+        "pagePath": "pages/uploadPage/uploadPage",
+        "text":"发布继承品"
+      },
+      {
+        "pagePath": "pages/successorPage/successorPage",
+        "text":"继承者"
+      }
+    ]
   }
 }
