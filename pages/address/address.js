@@ -25,11 +25,23 @@ Page({
     })
     console.log('address:' + this.data.address)
     console.log('room:' + this.data.room)
-    wx.request({
+    /*wx.request({
       url: '',
       area_name: this.data.address,
       dorm_name: this.data.room
+    })*/
+    wx.showToast({
+      title: '成功',
+      icon : 'success',
+      duration: 2000,
+      mask: true
     })
+    setTimeout(function(){
+      wx.navigateBack({
+        changed: true
+      })
+    },2000)
+    
   },
 
   inAddress: function(e) {
