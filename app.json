@@ -10,13 +10,14 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#FFFF99",
+    "navigationBarTitleText": "华农继承者",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true
   },
   "tabBar":{
     "color":"#000",
-    "selectedColor":"#FFFF00",
+    "selectedColor":"#FFCC33",
     "list":[
       {
         "pagePath":"pages/browsePage/browsePage",

@@ -1,5 +1,36 @@
 <!--index.wxml-->
 <view class="container">
-  <text style='color:red;font-size:80rpx'>天下第一频道</text>
-  <view>李昱颉报道</view>
+  <view>
+    <view class='bTopBar'>
+      <input type='text' placeholder="输入你感兴趣的物品吧" class='iInput'> </input>
+      <button class='bSearch' plain='true'>搜一搜</button>
+    </view>
+  </view>
+  <view>
+    <!-- <template name="successorItemBox"> -->
+
+      <block wx:for="{{sItemBox}}" wx:key="index">
+        <view class='sItem'>
+          <navigator class='nItem'>
+            <view class='sPic'>
+              <image src="{{item.pirURL}}" class="iPic"></image>
+            </view>
+            <view class='vItemContainer'>
+              <text class='vItemName'>{{item.objectName}}</text>
+              <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
+              <text class='vItemBrief'>{{item.briefInfo}}</text>
+            </view>
+          </navigator>
+        </view>
+      </block>
+    <!-- </template> -->
+
+    <!-- <view class='bFoot'>
+      <view class='bFoot-cont'>
+        <button>上一页</button>
+        <button>下一页</button>
+        <button>下一页</button>
+      </view>
+    </view> -->
+  </view>
 </view>

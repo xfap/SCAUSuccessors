@@ -1,5 +1,5 @@
 /**index.wxss**/
-.userinfo {
+/* .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,4 +18,80 @@
 
 .usermotto {
   margin-top: 200px;
+} */
+
+.bTopBar{
+  display: flex;
+  flex-direction:  row;
+  justify-content: space-around;
+  align-items: center; 
+  height: 100rpx;
+  border: 1px red solid;
 }
+
+.iInput{
+  border: 1px solid #ffff99;
+  margin-left: 60rpx;
+}
+
+.bSearch{
+  margin: 5px;
+}
+
+.nItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid green;
+  margin: 20rpx;
+}
+
+.sPic{
+  margin: 30rpx;
+}
+
+.iPic{
+    height: 200rpx;
+    width: 200rpx;
+}
+
+.vItemContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* margin-left: 20rpx; */
+}
+
+.vItemName{
+  margin-top: 30rpx;
+  font-size: 1.3em;
+}
+
+.vItemContainer-two{
+  position: absolute;
+  right: 40rpx;
+}
+
+.tItemInfo{
+  color: #bbb;
+  font-size: 0.7em;
+  position: absolute;
+  top: 40rpx;
+  right: 40rpx;
+}
+
+.vItemBrief{
+  margin: 15rpx;
+  margin-left: 0px;
+  font-family: "微软雅黑";
+}
+
+.vItemTimeAndOwner{
+  margin-top: 15rpx;
+  color: #bbb;
+  font-size: 0.7em;
+  position: relative;
+  left: 60rpx;
+}
+
