@@ -11,8 +11,8 @@ CREATE TABLE successor(
 	);
  CREATE TABLE suc_stuff(
 	suc_id NUMBER(32) PRIMARY KEY,
-    USER_ID VARCHAR2(64),
-  suc_title VARCHAR2(64) NOT NULL,
+    USER_ID VARCHAR2(64) NOT NULL,
+  suc_title VARCHAR2(128),
   suc_intro VARCHAR2(1024),
   suc_pic_url VARCHAR2(32),
   suc_class VARCHAR2(32),
@@ -22,7 +22,7 @@ CREATE TABLE successor(
  
  CREATE TABLE suc_request(
      suc_id NUMBER(32) PRIMARY KEY,
-     user_id VARCHAR2(64),
+     user_id VARCHAR2(64) NOT NULL,
      need_flag NUMBER(1),
      comfirm_give_flag NUMBER(1),
      foreign key (user_id) references successor(user_id) on delete cascade,
@@ -38,3 +38,11 @@ CREATE TABLE successor(
      complete_time VARCHAR2(24),
      foreign key (suc_id) references suc_stuff(suc_id) on delete cascade
 );
+
+--设置自增长的触发器suc_id
+create sequence suc_id_seq increment by 1 start with 1;
+create or replace 
+    trigger trg_suc_stuff before insert on suc_stuff for each row 
+    begin 
+    select suc_id_seq.nextval into :new.suc_id from dual; 
+    end;

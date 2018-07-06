@@ -29,6 +29,9 @@ suc_process
 
 
 
+继承物品类别suc_class约定：
+book 书籍
+living_goods 生活用品
 
 
 
