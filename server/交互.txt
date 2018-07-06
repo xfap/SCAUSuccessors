@@ -13,10 +13,14 @@ suc_stuff
 物品标签:       suc_class
 发布时间:       suc_publish_time
 
-suc_process
-主键：物品id:         suc_id
-被人确认需要:         need_flag
+suc_request
+主键：物品id:        suc_id
+用户id：               user_id
+被人确认需要:      need_flag
 所有者确认送出：    comfirm_give_flag
+
+suc_process
+主键：物品id:    suc_id
 所有者空闲时间0:   owner_spare_time_start
 所有者空闲时间1:   owner_spare_time_end
 需要者接收完成:    confirm_recv
