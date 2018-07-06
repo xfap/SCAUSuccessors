@@ -1,0 +1,14 @@
+<!--pages/address/address.wxml-->
+<view class='list'>
+  <view class='item'>
+    <label>宿舍区：</label>
+    <input value="{{address == ''? '': address}}" name="name" placeholder='宿舍区，如：启林北区'></input>
+  </view>
+  <view class='item'>
+    <label>具体房号：</label>
+    <input value="{{room == ''? '': room}}" name="room" placeholder='宿舍房号，如14-612'></input>
+  </view>
+  <view class='item bt'>
+    <button class='btn' bindtap='modify'>{{(address == '' && room == '')? '添加' : '修改'}}</button>
+  </view>
+</view>
