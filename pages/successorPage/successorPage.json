@@ -1,1 +1,7 @@
-{}
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ffff99",
+  "navigationBarTitleText": "继承者信息",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}
