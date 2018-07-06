@@ -1,2 +1,22 @@
 <!--pages/successorPage/successorPage.wxml-->
-<text>pages/successorPage/successorPage.wxml</text>
+<view class='user-head'>
+  <view class='center'> 
+    <view class='user-img'>
+      <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class='user-text'>
+      <text class='text'>{{userInfo.nickName}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="list">
+    <view class="item" bindtap="published">
+        <image src="../../images/fabu.png"/>我发布的
+        <text class="jump">〉</text>
+    </view>
+    <view class="item" bindtap="appointment">
+        <image src="../../images/yuyue.png"/>待领取的
+        <text class="jump">〉</text>
+    </view>
+</view>
