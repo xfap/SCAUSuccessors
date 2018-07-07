@@ -1,48 +1,61 @@
+--ANSI±àÂë
 -- CREATE TABLE successor(
 	-- USER_ID VARCHAR2(24) PRIMARY KEY,
   -- username  VARCHAR2(64) NOT NULL,
   -- area_name VARCHAR2(32),
   -- dorm_name VARCHAR2(32)
 	-- );
-	
+--¼Ì³ĞÕß	
 --------------------------------successor---------------------------------------------
 	
-insert into successor values ('test_usrid_1', 'user1', 'åå±±åŒº','14æ ‹612');
-insert into successor values ('test_usrid_2', 'user2', 'æ³°å±±åŒº','8æ ‹410');
-insert into successor values ('test_usrid_3', 'user3', 'é»‘å±±åŒº','2æ ‹312');
-insert into successor values ('test_usrid_4', 'user4', 'å¯æ—åŒº','1æ ‹212');
+insert into successor values ('test_usrid_1', 'user1', '»ªÉ½Çø','14¶°612');
+insert into successor values ('test_usrid_2', 'user2', 'Ì©É½Çø','8¶°410');
+insert into successor values ('test_usrid_3', 'user3', 'ºÚÉ½Çø','2¶°312');
+insert into successor values ('test_usrid_4', 'user4', 'ÆôÁÖÇø','1¶°212');
 
+--¿ÉÒÔ³¢ÊÔ×ö³ö ¼Ì³ĞÎïµÄÉúÃüÖÜÆÚ
+--Ê±ĞòÍ¼¡¢×´Ì¬»úÍ¼µÈµÈ£¨Èí¼ş¹¤³ÌÓ¦ÓÃ£©
 --------------------------------successor---------------------------------------------
-
+--´¦ÓÚ·¢²¼×´Ì¬µÄÎïÆ· Í¼Æ¬url Ê¹ÓÃÎïÆ·id ºÍ Ê±¼ä ÁªºÏÃüÃû
 --------------------------------suc_stuff---------------------------------------------
 
-insert into suc_stuff values ('10001','test_usrid_1','å±±çµM0','å±±çµä¾¿æºæ’­æ”¾å™¨','m0.png','æ•°ç ','2018/07/07');
-insert into suc_stuff values ('10002','test_usrid_1','è‰¾å·´ç´¢DX150','è‰¾å·´ç´¢æ’­æ”¾å™¨','dx150.png','æ•°ç ','2018/07/08');
-insert into suc_stuff values ('10003','test_usrid_2','å››çº§è¯æ±‡ä¹¦','æ–°ä¸œæ–¹å››çº§å•è¯ä¹¦','siji.png','ä¹¦ç±','2018/07/09');
-insert into suc_stuff values ('10004','test_usrid_2','å…­çº§è¯æ±‡ä¹¦','æ–°ä¸œæ–¹å…­çº§å•è¯ä¹¦','liuji.png','ä¹¦ç±','2018/07/10');
-insert into suc_stuff values ('10005','test_usrid_2','æ— å°ç¬”ç›’','','bihe.png','æ–‡å…·','2018/07/11');
-insert into suc_stuff values ('10006','test_usrid_2','ä¸‰è±ç¬”èŠ¯','','bixin.png','æ–‡å…·','2018/07/11');
-insert into suc_stuff values ('10007','test_usrid_3','è“ç‰™é¼ æ ‡','','shubiao.png','æ•°ç ','2018/07/11');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','É½ÁéM0','É½Áé±ãĞ¯²¥·ÅÆ÷','./images/1-201807051010.png','ÊıÂë','2018/07/05/10:10');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','°¬°ÍË÷DX150','°¬°ÍË÷²¥·ÅÆ÷','./images/2-201807052025.png','ÊıÂë','2018/07/05/20:25');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','ËÄ¼¶´Ê»ãÊé','ĞÂ¶«·½ËÄ¼¶µ¥´ÊÊé','./images/3-201807062025.png','Êé¼®','2018/07/06/20:25');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','Áù¼¶´Ê»ãÊé','ĞÂ¶«·½Áù¼¶µ¥´ÊÊé','./images/4-201807072025.png','Êé¼®','2018/07/07/20:25');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','ÎŞÓ¡±ÊºĞ','','./images/5-201807082025.png','ÎÄ¾ß','2018/07/08/20:25');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','ÈıÁâ±ÊĞ¾','','./images/6-201807092025.png','ÎÄ¾ß','2018/07/09/20:25');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_3','À¶ÑÀÊó±ê','','./images/7-201807102025.png','ÊıÂë','2018/07/10/20:25');
 
 --------------------------------suc_stuff---------------------------------------------
+ -- CREATE TABLE suc_request(
+     -- suc_id NUMBER(32) PRIMARY KEY,
+     -- user_id VARCHAR2(64) NOT NULL,
+     -- comfirm_give_flag NUMBER(1),
+     -- request_time VARCHAR2(32),
+     -- foreign key (user_id) references successor(user_id) on delete cascade,
+     -- --ÓÃ»§ÃûÒ»°ã²»»á±»×¢Ïú£¬É¾³ı£¬³ı·Ç¹ÜÀíÔ±²Ù×÷
+     -- foreign key (suc_id) references suc_stuff(suc_id) on delete cascade
+-- );
+--´¦ÓÚÇëÇó×´Ì¬µÄÎïÆ·
+--------------------------------suc_request---------------------------------------------
+
+insert into suc_request values('1','test_usrid_3',-1,'2018/07/09/20:25');
+insert into suc_request values('2','test_usrid_3',0,'2018/07/10/20:25');
+insert into suc_request values('3','test_usrid_3',1,'2018/07/11/20:25');
+insert into suc_request values('4','test_usrid_4',1,'2018/07/8/20:25');
+insert into suc_request values('5','test_usrid_4',1,'2018/07/9/20:25');
+insert into suc_request values('6','test_usrid_4',1,'2018/07/9/20:25');
 
 --------------------------------suc_request---------------------------------------------
 
-insert into suc_request values('10001','test_usrid_3',-1)
-insert into suc_request values('10002','test_usrid_3',0)
-insert into suc_request values('10003','test_usrid_3',1)
-insert into suc_request values('10004','test_usrid_4',1)
-insert into suc_request values('10005','test_usrid_4',1)
-insert into suc_request values('10006','test_usrid_4',1)
-
---------------------------------suc_request---------------------------------------------
-
+--´¦ÓÚ¼Ì³Ğ¹ı³ÌµÄÎïÆ·
 --------------------------------suc_process---------------------------------------------
 
-insert into suc_process values('10003','2018/07/10/18:00','2018/07/10/22:00',0,0,null)
-insert into suc_process values('10004','2018/07/10/13:00','2018/07/10/18:00',1,0,null)
-insert into suc_process values('10005','2018/07/10/14:00','2018/07/10/20:00',0,1,null)
-insert into suc_process values('10006','2018/07/10/8:00','2018/07/10/13:00',1,1,2018/07/12/14:32)
+insert into suc_process values('3','2018/07/10/18:00','2018/07/10/22:00',0,0,null);
+insert into suc_process values('4','2018/07/10/13:00','2018/07/10/18:00',1,0,'2018/07/09/20:25');
+insert into suc_process values('5','2018/07/10/14:00','2018/07/10/20:00',0,1,'2018/07/11/10:13');
+insert into suc_process values('6','2018/07/10/8:00','2018/07/10/13:00',1,1,'2018/07/12/14:32');
 
 --------------------------------suc_process---------------------------------------------
 
@@ -57,14 +70,14 @@ insert into suc_process values('10006','2018/07/10/8:00','2018/07/10/13:00',1,1,
   -- suc_publish_time VARCHAR2(32),
   -- foreign key (user_id) references successor(user_id) on delete cascade
   -- );
-  values(USER_ID
-  suc_title
-  suc_intro
-  suc_pic_url
-  suc_class
-  suc_publish_time
---suc_idè®¾ç½®ä¸ºè‡ªå¢é•¿ï¼Œæ¯æ¬¡æ–°å¢ç»§æ‰¿ç‰©å“ï¼Œä¸éœ€è¦æ’å…¥suc_id,
---çœŸå®æƒ…å†µï¼špic_idæ˜¯ç­‰å¾…ç”¨æˆ·æŠŠä¹¦ç±å›¾ç‰‡ä¸Šä¼ åï¼ŒæœåŠ¡å™¨ä¿å­˜åˆ°æœ¬åœ°åï¼Œå¾—åˆ°çš„ã€‚
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','å¤©å¤©å‘ä¸Š ä¹¦ç±', 'å¥½ä¹¦å€¼å¾—æ‹¥æœ‰å¤§å”å¤§å©¶è°ƒåº¦é˜¿è¨å¾·æ‰“é˜¿è¨å¾·æ’’å¤šæŒ‰æ—¶çš„è¨è¾¾çš„é˜¿è¨å¾·æ’’æ‰“ç®—å•Š','./images/123213.jpg','ä¹¦ç±','20180706214950');
+  -- values(USER_ID
+  -- suc_title
+  -- suc_intro
+  -- suc_pic_url
+  -- suc_class
+  -- suc_publish_time
+-- --suc_idÉèÖÃÎª×ÔÔö³¤£¬Ã¿´ÎĞÂÔö¼Ì³ĞÎïÆ·£¬²»ĞèÒª²åÈësuc_id,
+-- --ÕæÊµÇé¿ö£ºpic_idÊÇµÈ´ıÓÃ»§°ÑÊé¼®Í¼Æ¬ÉÏ´«ºó£¬·şÎñÆ÷±£´æµ½±¾µØºó£¬µÃµ½µÄ¡£
+-- insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','ÌìÌìÏòÉÏ Êé¼®', 'ºÃÊéÖµµÃÓµÓĞ´óÊå´óÉôµ÷¶È°¢ÈøµÂ´ò°¢ÈøµÂÈö¶à°´Ê±µÄÈø´ïµÄ°¢ÈøµÂÈö´òËã°¡','./images/123213.jpg','Êé¼®','20180706214950');
 
   

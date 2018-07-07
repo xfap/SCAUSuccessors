@@ -1,14 +1,17 @@
+--ANSI±àÂë
 drop table suc_process;
 drop table suc_request;
 drop table suc_stuff;
 drop table successor;
-
+drop table suc_stuff_history;
+drop sequence suc_id_seq;
 CREATE TABLE successor(
 	USER_ID VARCHAR2(64) PRIMARY KEY,
   username  VARCHAR2(64) NOT NULL,
   area_name VARCHAR2(32),
   dorm_name VARCHAR2(32)
 	);
+--Èç¹ûÎïÆ·±»¼Ì³Ğ£¬¼Ó½øÀúÊ·£¬ÔÚÕâÀïÇå³ı£¬»òÕß£¬ÎïÆ·±»È¡Ïû¼Ì³Ğ£¬Ö±½ÓÉ¾³ı£¬²»±£ÁôĞÅÏ¢£¬»¹Òª¸ù¾İpic_urlÉ¾³ı·şÎñÆ÷Í¼Æ¬
  CREATE TABLE suc_stuff(
 	suc_id NUMBER(32) PRIMARY KEY,
     USER_ID VARCHAR2(64) NOT NULL,
@@ -19,26 +22,43 @@ CREATE TABLE successor(
   suc_publish_time VARCHAR2(32),
   foreign key (user_id) references successor(user_id) on delete cascade
   );
- 
+  --Íê³É¼Ì³Ğ
+  CREATE TABLE suc_stuff_history(
+	suc_id NUMBER(32) PRIMARY KEY,
+    USER_ID VARCHAR2(64),
+  suc_title VARCHAR2(128),
+  suc_intro VARCHAR2(1024),
+  suc_pic_url VARCHAR2(32),
+  suc_class VARCHAR2(32),
+  suc_publish_time VARCHAR2(32)
+  );
+  
  CREATE TABLE suc_request(
-     suc_id NUMBER(32) PRIMARY KEY,
-     user_id VARCHAR2(64) NOT NULL,
+     suc_id NUMBER(32),
+     user_id VARCHAR2(64),
      comfirm_give_flag NUMBER(1),
+     request_time VARCHAR2(32),
+     primary key(suc_id,user_id), --Ò»¼şÎïÆ·¿ÉÄÜ±»¶à¸öÈËÉêÇë
      foreign key (user_id) references successor(user_id) on delete cascade,
-     --ç”¨æˆ·åä¸€èˆ¬ä¸ä¼šè¢«æ³¨é”€ï¼Œåˆ é™¤ï¼Œé™¤éç®¡ç†å‘˜æ“ä½œ
+     --ÓÃ»§ÃûÒ»°ã²»»á±»×¢Ïú£¬É¾³ı£¬³ı·Ç¹ÜÀíÔ±²Ù×÷
      foreign key (suc_id) references suc_stuff(suc_id) on delete cascade
 );
+--ÅĞ¶ÏÊÇ·ñÌáĞÑÓÃ»§£¬ÇëÇó
+--ÌáĞÑ ÓµÓĞÕß£ºÈç¹û£¬ÓĞÈËÇëÇóËûµÄÎïÆ·£¬²¢ÇÒÇëÇóflagµÈÓÚ0 ÓµÓĞÕßÖ»ÄÜ»ØÓ¦Ò»¸öÇëÇó£¬È»ºó£¬×Ô¶¯¾Ü¾øÆäÓàÈË£¬ÉèÖÃflagÎª-1
+--ÌáĞÑ ÉêÇëÕß£ºÈç¹û¢ÙËûÇëÇóÁË£¬flag=-1£¬ÔòÍ¨ÖªÓÃ»§ËûµÄÕâ¸öÇëÇó±»¾Ü¾øÁË
+--                    ¢ÚËûÇëÇóÁË£¬flag=0£¬ÔòÍ¨ÖªËû£¬ËûµÄÇëÇó»¹Ã»±»ÏìÓ¦
+--                    ¢ÛËûÇëÇóÁË£¬flag=1,ÔòÍ¨ÖªËû£¬ËûµÄÇëÇó±»ÏìÓ¦ÁË£¬²¢ÇÒ·µ»Ø£¬Ê±¼äµÈĞÅÏ¢¡£
  CREATE TABLE suc_process(
-     suc_id NUMBER(32) PRIMARY KEY,
-     owner_spare_time_start VARCHAR2(24),
-     owner_spare_time_end VARCHAR2(24),
+     suc_id NUMBER(32) PRIMARY KEY, --ÓÃ»§Ö»ÄÜÓĞÒ»¸öÎïÆ·´¦ÓÚÕâ¸ö×´Ì¬
+     owner_spare_time_start VARCHAR2(32),
+     owner_spare_time_end VARCHAR2(32),
      confirm_recv NUMBER(1),
      confirm_give NUMBER(1),
-     complete_time VARCHAR2(24),
+     complete_time VARCHAR2(32),
      foreign key (suc_id) references suc_stuff(suc_id) on delete cascade
 );
 
---è®¾ç½®è‡ªå¢é•¿çš„è§¦å‘å™¨suc_id
+--ÉèÖÃ×ÔÔö³¤µÄ´¥·¢Æ÷suc_id
 create sequence suc_id_seq increment by 1 start with 1;
 create or replace 
     trigger trg_suc_stuff before insert on suc_stuff for each row 
