@@ -1,1 +1,74 @@
 /* pages/successorPage/successorPage.wxss */
+
+.user-head {
+  background-color: lightcyan;
+  height: 400rpx;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.user-head .center {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0rpx;
+}
+
+.user-img {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.user-img image {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  border: 10px solid #f4f5e5;
+}
+
+.user-text {
+  text-align: center;
+  width: 100%;
+}
+
+.user-text text {
+  font-family: 微软雅黑;
+  color: #333;
+  display: block;
+  font-size: 40rpx;
+  margin-top: 30rpx;
+}
+
+.list {
+  background: lightcyan;
+  margin-top: 50rpx;
+}
+
+.list .item {
+  padding: 20px 15px;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.list .item::last-child {
+  border: none;
+}
+
+.list .item image {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.list .item .jump {
+  position: absolute;
+  right: 20px;
+  color: #999;
+}

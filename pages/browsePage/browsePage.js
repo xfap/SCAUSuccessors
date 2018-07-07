@@ -7,7 +7,35 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    sItemBox:[
+      {
+        "owner":"LiangDaJian",
+        "uploadTime":"2018/7/6/16:51",
+        "objectName":"Book",
+        "pirURL":"./img/index.jpg",
+        "briefInfo":"这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒好看的！"
+      },
+      {
+        "owner": "LiangDaJian",
+        "uploadTime": "2018/7/6/16:51",
+        "objectName": "Book",
+        "pirURL": "./img/index2.jpg",
+        "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒好看的！"
+      }, {
+        "owner": "LiangDaJian",
+        "uploadTime": "2018/7/6/16:51",
+        "objectName": "Book",
+        "pirURL": "./img/index.jpg",
+        "briefInfo": "这本书炒鸡好看的！"
+      }, {
+        "owner": "LiangDaJian",
+        "uploadTime": "2018/7/6/16:51",
+        "objectName": "Book",
+        "pirURL": "./img/index.jpg",
+        "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡好看的！"
+      },
+    ]
   },
   //事件处理函数
   bindViewTap: function() {

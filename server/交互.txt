@@ -1,0 +1,119 @@
+数据表      
+successor   
+主键：用户id：user_id
+用户名:username  
+用户地址宿舍区号：area_name 
+用户地址宿舍宿舍号：dorm_name
+
+suc_stuff
+主键：物品id:    suc_id
+物品标题:       suc_title
+物品简介:       suc_intro
+物品图片:       suc_pic_url
+物品标签:       suc_class
+发布时间:       suc_publish_time
+
+suc_request
+主键：物品id:        suc_id
+用户id：               user_id
+被人确认需要:      need_flag
+所有者确认送出：    comfirm_give_flag
+
+suc_process
+主键：物品id:    suc_id
+所有者空闲时间0:   owner_spare_time_start
+所有者空闲时间1:   owner_spare_time_end
+需要者接收完成:    confirm_recv
+所有者发送完成:    confirm_give
+已完成时间:          complete_time
+
+
+
+继承物品类别suc_class约定：
+book 书籍
+living_goods 生活用品
+
+
+
+登录:
+
+
+之后进入浏览页面
+事件
+访问数据库，请求展示信息（）
+默认：
+browse
+返回最近20条发布的物品信息
+./?type="browse"
+用户点击下一页：
+./?type="browse_refresh"
+返回接着下一个20条发布的物品信息
+
+用户登录：l
+login
+
+询问后台，检查是否有消息。
+                         
+后台返回消息的格式：①已发布物品被人确认需要： {ok:{物品id }}
+                      ②确认需要物品被所有者确认给予：{accept:{物品id+时间段+}}
+                      {ok:{物品id },
+                       accept:{物品id+时间段+}
+                      }
+用户主动事件 点击：
+/?type="getInfo"&suc_id=
+点击一个物品，页面提供物品id，后台返回具体信息
+
+页面提供类别id
+getLabelInfo
+返回该类别最近20条发布的物品信息
+
+用户主动事件 搜索：
+search
+页面提供搜索的关键字，后台返回匹配的物品简要信息
+
+用户主动事件 发布：
+upload
+
+把 标题，标签，简介，图片 发送到后台
+后台返回确认信息
+
+用户主动事件 删除：
+delete
+页面提供物品id
+后台返回确认信息
+
+用户主动事件 修改：
+modify
+页面提供物品id，后台返回具体信息
+把修改后的 标题，标签，简介，图片 发送到后台
+后台返回确认信息
+
+用户主动事件 确认需要：
+need
+页面向后台发送 该需要者的微信号，物品id---后台记录---并且发送消息给物品所有者。
+
+用户被动事件 物品所有者接收 确认请求：
+
+把已被人确认需要的物品放入 确认需要 栏
+
+用户主动事件 确认给予：
+confirmNeed
+用户选择空闲时间段，发送给后台 物品id，时间段
+
+用户主动事件 已经拿到：
+haveGot
+物品id，1
+用户主动事件 已经送出：
+haveGiven
+物品id，1
+====================================================================================================
+管理员主动事件 修改：
+
+12324?type=**
+
+{
+type:事件名,
+...
+ok:{物品id },
+accept:{物品id+时间段+}
+}
