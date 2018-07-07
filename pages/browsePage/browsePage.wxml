@@ -2,8 +2,8 @@
 <view class="container">
   <view>
     <view class='bTopBar'>
-      <input type='text' placeholder="输入你感兴趣的物品吧" class='iInput'> </input>
-      <button class='bSearch' plain='true'>搜一搜</button>
+      <input type='text' placeholder="  输入你感兴趣的物品吧" class='iInput'> </input>
+      <button class='bSearch'>搜一搜</button>
     </view>
   </view>
   <view>
@@ -11,6 +11,9 @@
 
       <block wx:for="{{sItemBox}}" wx:key="index">
         <view class='sItem'>
+          <view class='vRibbonContainer'>
+                <image src='./img/orangeRibbon.png' class='ribbonSet'></image>
+          </view>
           <navigator class='nItem'>
             <view class='sPic'>
               <image src="{{item.pirURL}}" class="iPic"></image>

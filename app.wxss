@@ -5,5 +5,11 @@
   flex-direction: column;
   padding: 30rpx 0;
   box-sizing: border-box;
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
+  justify-content: center;
+  align-items: center;
+  background-color: #FFCC99;
 } 
+.sItem{
+  background-color: #FFCC99;
+}

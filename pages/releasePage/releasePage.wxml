@@ -1,5 +1,48 @@
 <!--pages/releasePage/releasePage.wxml-->
 <view class='container'>
   <view class='title'>已发布继承品</view>
-  
+  <view class='vTopSelector'>
+    <button class='btn' bindtap='onReleasedClick'>已被预约</button>
+    <button class='btn' bindtap='onUneleasedClieck'>未被预约</button>
+  </view>
+  <view class='vContainer-body' wx:for="{{sItemBox}}" wx:key="index">
+    <view class='background {{backgroundContent}}'></view>
+    <block>
+      <view class='sItem'>
+          <view class='vRibbonContainer'>
+                <image src='./img/orangeRibbon.png' class='ribbonSet {{releasedContent}}'></image>
+          </view>
+          <navigator class='nItem {{releasedContent}}'>
+            <view class='sPic'>
+              <image src="{{item.pirURL}}" class="iPic"></image>
+            </view>
+            <view class='vItemContainer'>
+              <text class='vItemName'>{{item.objectName}}</text>
+              <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
+              <text class='vItemBrief'>{{item.briefInfo}}</text>
+            </view>
+          </navigator>
+        </view>
+    </block>
+  </view>
+  <view class='vContainer-body' wx:for="{{uItemBox}}" wx:key="index">
+    <block class="show">
+      <view class='sItem'>
+          <navigator class='nItem {{unreleasedContent}}'>
+            <view class='sPic'>
+              <image src="{{item.pirURL}}" class="iPic"></image>
+            </view>
+            <view class='vItemContainer'>
+              <text class='vItemName'>{{item.objectName}}</text>
+              <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
+              <text class='vItemBrief'>{{item.briefInfo}}</text>
+              <view class='vItemContainer2'>
+                <button class='vItemBtn'>修改</button>
+                <button class='vItemBtn'>删除</button>
+              </view>
+            </view>
+          </navigator>
+        </view>
+    </block>
+  </view>
 </view>

@@ -1,2 +1,46 @@
-<!--pages/reservedPage/reservedPage.wxml-->
-<text>pages/reservedPage/reservedPage.wxml</text>
+<view class='container'>
+  <view class='title'>已预约继承品</view>
+  <view class='vTopSelector'>
+    <button class='btn' bindtap='onReleasedClick'>有回复</button>
+    <button class='btn' bindtap='onUneleasedClieck'>未回复</button>
+  </view>
+  <view class='vContainer-body' wx:for="{{sItemBox}}" wx:key="index">
+    <view class='background {{backgroundContent}}'></view>
+    <block>
+      <view class='sItem'>
+          <view class='vRibbonContainer'>
+                <image src='./img/orangeRibbon.png' class='ribbonSet {{releasedContent}}'></image>
+          </view>
+          <navigator class='nItem {{releasedContent}}'>
+            <view class='sPic'>
+              <image src="{{item.pirURL}}" class="iPic"></image>
+            </view>
+            <view class='vItemContainer'>
+              <text class='vItemName'>{{item.objectName}}</text>
+              <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
+              <text class='vItemBrief'>{{item.briefInfo}}</text>
+              <view class='vItemContainer2'>
+                <button class='vItemBtn'>查看回复</button>
+              </view>
+            </view>
+          </navigator>
+        </view>
+    </block>
+  </view>
+  <view class='vContainer-body' wx:for="{{uItemBox}}" wx:key="index">
+    <block class="show">
+      <view class='sItem'>
+          <navigator class='nItem {{unreleasedContent}}'>
+            <view class='sPic'>
+              <image src="{{item.pirURL}}" class="iPic"></image>
+            </view>
+            <view class='vItemContainer'>
+              <text class='vItemName'>{{item.objectName}}</text>
+              <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
+              <text class='vItemBrief'>{{item.briefInfo}}</text>
+            </view>
+          </navigator>
+        </view>
+    </block>
+  </view>
+</view>
