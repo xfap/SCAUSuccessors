@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/browsePage/browsePage",
-    "pages/successorPage/successorPage",
-    "pages/uploadPage/uploadPage",
     "pages/detailedPage/detailedPage",
+    "pages/uploadPage/uploadPage",
     "pages/logs/logs",
     "pages/releasePage/releasePage",
     "pages/reservedPage/reservedPage",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/successorPage/successorPage"
   ],
   "window": {
     "backgroundTextStyle": "light",

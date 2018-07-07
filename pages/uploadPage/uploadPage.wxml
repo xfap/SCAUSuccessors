@@ -8,8 +8,8 @@
 <!--用户信息展示结束-->
 
   <view class='content-two'>
-    <image class='sender-photo' src='shch.png' bindtap='bindChooiceProduct'></image>
-    <view class='photo-tishi' type="text">添加图片</view>
+    <image class='sender-photo' src='{{image}}' bindtap='bindChooiceProduct'></image>
+    <view class='photo-tishi' type="text">{{text}}</view>
   </view>
 <!--添加图片展示结束-->
    <view class='content-three'>
