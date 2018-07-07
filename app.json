@@ -1,17 +1,17 @@
 {
   "pages": [
+      "pages/uploadPage/uploadPage",
+    "pages/detailedPage/detailedPage",
     "pages/browsePage/browsePage",
     "pages/logs/logs",
-    "pages/uploadPage/uploadPage",
     "pages/releasePage/releasePage",
-    "pages/detailedPage/detailedPage",
     "pages/reservedPage/reservedPage",
     "pages/successorPage/successorPage"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#FFFc04",
+    "navigationBarTitleText": "华农继承者",
     "navigationBarTextStyle": "black"
   },
   "tabBar":{

@@ -1,2 +1,27 @@
-<!--pages/detailedPage/detailedPage.wxml-->
-<text>pages/detailedPage/detailedPage.wxml</text>
+<view class="content">
+  <view class='content-one'>
+    <image class='sender-touxiang' src='tx.jpeg'></image>
+    <view class='yonghu-name' type="text">继承者</view>
+  </view>
+  <!--用户信息展示结束-->
+
+  <view class='content-two'>
+    <image class='get-photo' src='tu1.jpg'></image>
+    <image class='get-photo' src='tu2.jpg'></image>
+    <image class='get-photo' src='tu3.jpg'></image>
+    <image class='get-photo' src='tu4.jpg'></image>
+    <image class='get-photo' src='tu5.jpg'></image>
+  </view>
+  <!--继承图片展示结束-->
+  <view class='content-three'>
+    <view class='jianjielan' type="text">相关说明栏</view>
+    <view class='biaoti'>标题：毕业送书</view>
+    <view class="biaotitishi" type='text'></view>
+    <view class='jianjielantishi'>要毕业了，快来拿书。空间好看开机后开机后开机后就会开机后苦寒看见航空件好开机后开机后看就会看见</view>
+  </view>
+  <!--相关说明栏展示结束-->
+  <view class='content-four'>
+    <button class='querenfabu-btn'>我想要</button>
+    <!--我想要按钮展示结束-->
+  </view>
+</view>
