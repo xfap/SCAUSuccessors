@@ -1,27 +1,27 @@
 <!--pages/uploadPage/uploadPage.wxml-->
 <form>
-<view class="content">
-  <view class='content-one'>
-    <image class='sender-touxiang' src='tx.jpeg'></image>
-    <view class='yonghu-name' type="text">继承者</view>
-  </view>
-<!--用户信息展示结束-->
+  <view class="content">
+    <view class='content-one'>
+      <image bindtap="bindViewTap" class='sender-touxiang' src='{{userInfo.avatarUrl}}'  mode="cover"></image>
+      <view class='yonghu-name' type="text">{{userInfo.nickName}}</view>
+    </view>
+    <!--用户信息展示结束-->
 
-  <view class='content-two'>
-    <image class='sender-photo' src='shch.png' bindtap='bindChooiceProduct'></image>
-    <view class='photo-tishi' type="text">添加图片</view>
+    <view class='content-two'>
+      <image class='sender-photo' src='shch.png' bindtap='bindChooiceProduct'></image>
+      <view class='photo-tishi' type="text">添加图片</view>
+    </view>
+    <!--添加图片展示结束-->
+    <view class='content-three'>
+      <view class='jianjielan' type="text">简介栏</view>
+      <view class='biaoti'>标题：</view>
+      <input class="biaotitishi" type='text' placeholder="请尽量简洁明了"></input>
+      <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）"></textarea>
+    </view>
+    <!--简介栏展示结束-->
+    <view class='content-four'>
+      <button class='querenfabu-btn'>确认发布</button>
+      <!--确认发布按钮展示结束-->
+    </view>
   </view>
-<!--添加图片展示结束-->
-   <view class='content-three'>
-    <view class='jianjielan' type="text">简介栏</view>
-  <view class='biaoti'>标题：</view>
-    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了"></input>
-   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）"></textarea>
-  </view>
-<!--简介栏展示结束-->
-     <view class='content-four'>
-    <button class='querenfabu-btn'>确认发布</button>
-<!--确认发布按钮展示结束-->
-  </view>  
-</view>
 </form>
