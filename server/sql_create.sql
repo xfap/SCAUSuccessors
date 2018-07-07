@@ -23,7 +23,6 @@ CREATE TABLE successor(
  CREATE TABLE suc_request(
      suc_id NUMBER(32) PRIMARY KEY,
      user_id VARCHAR2(64) NOT NULL,
-     need_flag NUMBER(1),
      comfirm_give_flag NUMBER(1),
      foreign key (user_id) references successor(user_id) on delete cascade,
      --用户名一般不会被注销，删除，除非管理员操作

@@ -79,7 +79,6 @@ TYPE:login
 				username:"",
 				area_name:"",
 				dorm_name:"",
-				need_flag："", //对应所有者,是否有用户发送需要请求
 				comfirm_give_flag:"" //对应需求者，所有者是否发送空闲时间段
 				
             }
