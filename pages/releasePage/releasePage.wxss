@@ -15,7 +15,9 @@
   /* border: 2px solid purple; */
   width: 95%;
 }
-
+.vTimePicker{
+  margin-bottom: 20rpx;
+}
 .btn{
   flex: 1;
   width: 50%;

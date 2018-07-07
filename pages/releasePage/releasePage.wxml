@@ -5,6 +5,7 @@
     <button class='btn' bindtap='onReleasedClick'>已被预约</button>
     <button class='btn' bindtap='onUneleasedClieck'>未被预约</button>
   </view>
+
   <view class='vContainer-body' wx:for="{{sItemBox}}" wx:key="index">
     <view class='background {{backgroundContent}}'></view>
     <block>
@@ -12,7 +13,7 @@
           <view class='vRibbonContainer'>
                 <image src='./img/orangeRibbon.png' class='ribbonSet {{releasedContent}}'></image>
           </view>
-          <navigator class='nItem {{releasedContent}}'>
+          <view class='nItem {{releasedContent}}'>
             <view class='sPic'>
               <image src="{{item.pirURL}}" class="iPic"></image>
             </view>
@@ -20,11 +21,24 @@
               <text class='vItemName'>{{item.objectName}}</text>
               <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
               <text class='vItemBrief'>{{item.briefInfo}}</text>
+              <view class='vTimePicker'>
+                
+                <picker mode='date' value='{{startDate}}' bindchange='changeStartDate' start="2018-7-7" end="2018-12-31">
+                  <text>开始：</text>
+                  <text>{{item.startDate}}</text>
+                </picker>
+                <picker mode='date' value='{{endDate}}' bindchange='changeEndDate' start="2018-7-7" end="2018-12-31">
+                  <text>结束：</text>
+                  <text>{{item.endDate}}</text>
+                </picker>
+              </view>
             </view>
-          </navigator>
+          </view>
         </view>
     </block>
   </view>
+
+
   <view class='vContainer-body' wx:for="{{uItemBox}}" wx:key="index">
     <block class="show">
       <view class='sItem'>
