@@ -12,10 +12,17 @@ Page({
   },
 
   modify: function() {
-    if (this.data.input_address == '' || this.data.input_room == '') {
+    if (this.data.input_address == '') {
       wx.showModal({
         title: '提示',
-        content: '宿舍区或房号不得为空！'
+        content: '宿舍区不能为空！'
+      })
+      return
+    }
+    if (this.data.input_room == '') {
+      wx.showModal({
+        title: '提示',
+        content: '房号不能为空！'
       })
       return
     }
