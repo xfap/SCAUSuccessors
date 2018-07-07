@@ -78,5 +78,8 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  onItemClick:function(e){
+
   }
 })

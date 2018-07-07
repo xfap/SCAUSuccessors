@@ -5,14 +5,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    object:{
+      owner: "null",
+      uploadTime: "null",
+      objectName: "null",
+      pirUrl: "null",
+      briefInfo: "null"
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    console.log(options);
+    wx.getStorage({
+      key: 'keyaaa',
+      success: function (res) {
+        that.data.object.owner=options.owner;
+        that.data.object.uploadTime=options.uploadTime;
+        that.data.object.objectName=options.objectName;
+        that.data.object.pirUrl=options.pirUrl;
+        that.data.object.briefInfo=options.briefInfo;
+        that.setData({
+          object:that.data.object
+        })
+        // console.log(object)
+        console.log(options.pirUrl)
+      },
+    })
   },
 
   /**
