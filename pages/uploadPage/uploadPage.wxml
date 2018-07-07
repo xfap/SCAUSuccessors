@@ -8,8 +8,7 @@
 <!--用户信息展示结束-->
 
   <view class='content-two'>
-    <image class='sender-photo' src='{{image}}' bindtap='bindChooiceProduct'></image>
-    <view class='photo-tishi' type="text">{{text}}</view>
+    <image class='{{img_class}}' src='{{image}}' mode='aspectFit' bindtap='bindChooiceProduct'></image>
   </view>
 <!--添加图片展示结束-->
    <view class='content-three'>
@@ -20,7 +19,7 @@
   </view>
 <!--简介栏展示结束-->
      <view class='content-four'>
-    <button class='querenfabu-btn'>确认发布</button>
+    <button class='querenfabu-btn' bindtap='publish'>确认发布</button>
 <!--确认发布按钮展示结束-->
   </view>  
 </view>

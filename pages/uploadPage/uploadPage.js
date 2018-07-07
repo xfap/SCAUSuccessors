@@ -7,7 +7,7 @@ Page({
   data: {
     productInfo: {},
     image: 'shch.png',
-    text: '添加图片'
+    img_class: 'sender-photo'
   },
 
   /**
@@ -76,7 +76,7 @@ Page({
         var tempFilePaths = res.tempFilePaths
         that.setData({
           image: tempFilePaths[0],
-          text: '修改图片'
+          img_class: 'has-photo'
         })
         console.log(res)
         /*wx.uploadFile({
@@ -100,10 +100,21 @@ Page({
 
           },
         })*/
-
-
       }
     })
+  },
 
+  publish: function() {
+    wx.showToast({
+      title: '发布成功',
+      icon: 'success',
+      duration: 2000,
+      mask: true
+    })
+    setTimeout(function () {
+      wx.navigateTo({
+        url: '../browsePage/browsePage',
+      })
+    }, 2000)
   }
 })
