@@ -1,0 +1,23 @@
+
+//在app.js文件中设置了全局常量url，获取可用getApp().globalData.url
+  data: {
+    url: getApp().globalData.serverhome //在需要上传的页面js文件中添加这一行，即可使用
+  }
+
+
+wx.request({
+      url: this.data.url,
+      data: {
+        stype: 'address',
+        user_id: '10001',
+        area_name: this.data.address,
+        dorm_name: this.data.room
+      },
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res)
+        // fail
+      }
+    })
