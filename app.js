@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    serverhome: 'http://192.168.253.1:8089/successor/Listener'
   }
 })
