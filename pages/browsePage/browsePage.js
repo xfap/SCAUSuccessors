@@ -86,10 +86,20 @@ Page({
   onSearchClick:function(e){
     var key = this.data.keyword;
     console.log("keyword is :"+key);
-    // var key = keyword;
-    // console.log(key);
-    // console.log(e.currentTarget);
-    // var key = e.currentTarget.data.
+    // wx.request({
+    //   url: getApp().globalData.serverhome,
+    //   data: {
+    //     stype: 'search',
+    //     key: key,
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //   },
+    //   fail: function (res) {
+    //     console.log(res)
+    //     // fail
+    //   }
+    // })
   },
   onKeyWordChanged:function(e){
     console.log(e.detail.value);
