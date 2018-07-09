@@ -1,6 +1,5 @@
 {
   "pages": [
-
     "pages/browsePage/browsePage",
     "pages/detailedPage/detailedPage",
     "pages/uploadPage/uploadPage",
@@ -12,10 +11,10 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FFFc04",
+    "navigationBarBackgroundColor": "#FFFF99",
     "navigationBarTitleText": "华农继承者",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#000",

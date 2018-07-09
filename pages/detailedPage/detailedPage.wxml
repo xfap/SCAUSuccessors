@@ -1,5 +1,4 @@
 <view class="content">
-
  <view class='content-one'>
       <image bindtap="bindViewTap" class='sender-touxiang' src='{{userInfo.avatarUrl}}'  mode="cover"></image>
       <view class='yonghu-name' type="text">{{userInfo.nickName}}</view>
@@ -8,6 +7,7 @@
 
   <view class='content-two'>
     <image class='get-photo' src='tu1.jpg'></image>
+
   </view>
   <!--继承图片展示结束-->
   <view class='content-three'>
