@@ -5,10 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address: '',
-    room: '',
-    input_address: '',
-    input_room: '',
+    input_address: getApp().globalData.area_name,
+    input_room: getApp().globalData.dorm_name,
     url: getApp().globalData.serverhome
   },
 
@@ -27,13 +25,8 @@ Page({
       })
       return
     }
-    this.setData({
-      address: this.data.input_address,
-      room: this.data.input_room
-    })
-    //console.log('address:' + this.data.address)
-    //console.log('room:' + this.data.room)
-    //console.log(getApp().globalData.serverhome)
+    getApp().globalData.area_name = this.data.input_address
+    getApp().globalData.dorm_name = this.data.input_room
     wx.request({
       url: this.data.url,
       data: {

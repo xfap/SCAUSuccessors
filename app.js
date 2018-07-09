@@ -35,6 +35,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    serverhome: 'http://192.168.253.1:8089/successor/Listener'
+    serverhome: 'http://192.168.253.1:8089/successor/Listener',
+    area_name : '',
+    dorm_name : ''
   }
 })
