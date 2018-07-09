@@ -8,14 +8,22 @@ Page({
     address: '',
     room: '',
     input_address: '',
-    input_room: ''
+    input_room: '',
+    url: getApp().globalData.serverhome
   },
 
   modify: function() {
-    if (this.data.input_address == '' || this.data.input_room == '') {
+    if (this.data.input_address == '') {
       wx.showModal({
         title: '提示',
-        content: '宿舍区或房号不得为空！'
+        content: '宿舍区不能为空！'
+      })
+      return
+    }
+    if (this.data.input_room == '') {
+      wx.showModal({
+        title: '提示',
+        content: '房号不能为空！'
       })
       return
     }
@@ -23,25 +31,38 @@ Page({
       address: this.data.input_address,
       room: this.data.input_room
     })
-    console.log('address:' + this.data.address)
-    console.log('room:' + this.data.room)
-    /*wx.request({
-      url: '',
-      area_name: this.data.address,
-      dorm_name: this.data.room
-    })*/
+    //console.log('address:' + this.data.address)
+    //console.log('room:' + this.data.room)
+    //console.log(getApp().globalData.serverhome)
+    wx.request({
+      url: this.data.url,
+      data: {
+        stype: 'address',
+        user_id: '10001',
+        area_name: this.data.address,
+        dorm_name: this.data.room
+      },
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res)
+        // fail
+      }
+    })
+    console.log('testing')
     wx.showToast({
       title: '成功',
-      icon : 'success',
+      icon: 'success',
       duration: 2000,
       mask: true
     })
-    setTimeout(function(){
+    setTimeout(function() {
       wx.navigateBack({
         changed: true
       })
-    },2000)
-    
+    }, 2000)
+
   },
 
   inAddress: function(e) {

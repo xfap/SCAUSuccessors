@@ -1,20 +1,20 @@
-主机名url：127.0.0.1/successor/Listerner
-你们请求wx.request里的 data{
-                type="",
+主机名url：192.168.253.1/successor/Listerner
+你们请求wx.request里的 格式 data{
+                stype="",
                 arg1:"",
                 arg2:""
                 }
-我最终接收的形式是 127.0.0.1/successor/Listerner?type=""&arg1=""&arg2=""&...
+我最终接收的形式是 192.168.253.1/successor/Listerner?stype=""&arg1=""&arg2=""&...
 
 ================================================================
 
 
 ================================browse================================                
 ********************
-TYPE:browse
+STYPE:browse
 其他参数：null
 所以wx.request里的 data：{
-                type："browse",
+                stype："browse",
                 }
 ********************
 返回的数据：
@@ -42,7 +42,7 @@ TYPE:browse_refresh
             suc_class 类别
             
 所以wx.request里的 data：{
-                type："browse",
+                stype："browse",
                 suc_class："book"
                 }       
                 
