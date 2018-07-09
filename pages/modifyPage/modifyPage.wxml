@@ -13,9 +13,9 @@
 <!--添加图片展示结束-->
    <view class='content-three'>
     <view class='jianjielan' type="text">简介栏</view>
-  <view class='biaoti'>标题：{{object.objectName}}</view>
-    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了">{{}}</input>
-   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）">{{object.briefInfo}}</textarea>
+  <view class='biaoti'>标题：</view>
+    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了" value="{{object.objectName}}"></input>
+   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）" value="{{object.briefInfo}}"></textarea>
   </view>
 <!--简介栏展示结束-->
      <view class='content-four'>

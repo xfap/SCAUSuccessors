@@ -9,11 +9,12 @@ Page({
     image: 'shch.png',
     img_class: 'sender-photo',
     object: {
-      owner: "null",
-      uploadTime: "null",
-      objectName: "null",
-      pirUrl: "null",
-      briefInfo: "null"
+      objectName:"",
+      owner: "",
+      uploadTime: "",
+      objectName: "",
+      pirUrl: "",
+      briefInfo: ""
     }
   },
 
