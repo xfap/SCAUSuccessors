@@ -1,15 +1,4 @@
 <view class="content">
-<<<<<<< HEAD
- <view class='content-one'>
-      <image bindtap="bindViewTap" class='sender-touxiang' src='{{userInfo.avatarUrl}}'  mode="cover"></image>
-      <view class='yonghu-name' type="text">{{userInfo.nickName}}</view>
-    </view>
-  <!--用户信息展示结束-->
-
-  <view class='content-two'>
-    <image class='get-photo' src='tu1.jpg'></image>
-
-=======
   <view class='content-one'>
     <image class='sender-touxiang' src='tx.jpeg'></image>
     <view class='yonghu-name' type="text">{{object.owner}}</view>
@@ -22,7 +11,6 @@
     <image class='get-photo' src='tu3.jpg'></image>
     <image class='get-photo' src='tu4.jpg'></image>
     <image class='get-photo' src='tu5.jpg'></image>
->>>>>>> a9864fb718bec980ce068bea2642e73721638b13
   </view>
   <!--继承图片展示结束-->
   <view class='content-three'>

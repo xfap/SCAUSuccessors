@@ -32,11 +32,11 @@ Page({
     })
     console.log('address:' + this.data.address)
     console.log('room:' + this.data.room)
-    /*wx.request({
-      url: '',
+    wx.request({
+      url: '192.168.253.1',
       area_name: this.data.address,
       dorm_name: this.data.room
-    })*/
+    })
     wx.showToast({
       title: '成功',
       icon : 'success',
