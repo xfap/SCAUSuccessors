@@ -1,5 +1,5 @@
 // pages/uploadPage/uploadPage.js
-const app = getApp()
+const app = getApp()  //微信头像
 Page({
 
   /**
@@ -12,15 +12,16 @@ Page({
     productInfo: {},
     image: 'shch.png',
     img_class: 'sender-photo',
-    biaotineiron:'',
-    wupingmiaoshu:''
+    suc_title:'',
+    suc_intro:'',
+    url: getApp().globalData.serverhome 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (app.globalData.userInfo) {
+    if (app.globalData.userInfo) {        //微信头像
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -47,7 +48,7 @@ Page({
       })
     }
   },
-  getUserInfo: function (e) {
+  getUserInfo: function (e) {       //微信头像
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -84,12 +85,12 @@ Page({
   },
 
   biaotiinput: function (e) {
-    this.data.biaotineiron = e.detail.value
-    console.log(this.data.biaotineiron)
+    this.data.suc_title = e.detail.value
+    console.log(this.data.suc_title)
   },
   miaoshuinput: function (e) {
-    this.data.wupingmiaoshu = e.detail.value
-    console.log(this.data.wupingmiaoshu)
+    this.data.suc_intro= e.detail.value
+    console.log(this.data.suc_intro)
   },
 
   /**
@@ -151,21 +152,63 @@ Page({
     })
   },
 
-  publish: function(e) {
-    var biaotineiron = this.data.biaotineiron;
-    console.log(biaotineiron)
-    var wupingmiaoshu = this.data.wupingmiaoshu;
-    console.log(wupingmiaoshu)
-    wx.showToast({
-      title: '发布成功',
-      icon: 'success',
-      duration: 2000,
-      mask: true
-    })
-    setTimeout(function () {
-      wx.navigateTo({
-        url: '../browsePage/browsePage',
-      })
-    }, 2000)
-  }
+publish:function(e){
+   var nowtime = app.getAvailableTime();//未测试的时间传送代码
+  wx.request({
+    url: this.data.url,
+    data: {
+      stype: 'upload',
+      suc_title: this.data.suc_title,
+      suc_intro: this.data.suc_intro,
+      publish_time: nowtime  //未测试的时间传送代码
+    },
+    success: function (res) {
+      console.log(res)
+    },
+    fail: function (res) {
+      console.log(res)
+      // fail
+    }
+  })
+
+   wx.uploadFile({
+    url: this.data.url,      //此处换上你的接口地址
+    filePath: this.data.image,
+          name: 'img',
+          header: {
+            "Content-Type": "multipart/form-data",
+            'accept': 'application/json',
+            // 'Authorization': 'Bearer ..'    //若有token，此处换上你的token，没有的话省略
+          },
+          formData: {
+            suc_id:'111',
+            user_id:'1111'  //其他额外的formdata，可不写
+          },
+          success: function (res) {
+            var data = res.data;
+            console.log('data');
+          },
+          fail: function (res) {
+            console.log('fail');
+
+          },
+        })
+}
+  // publish: function(e) {
+  //   var suc_title = this.data.suc_title;
+  //   console.log(suc_title)
+  //   var suc_intro = this.data.suc_intro;
+  //   console.log(suc_intro)
+  //   wx.showToast({
+  //     title: '发布成功',
+  //     icon: 'success',
+  //     duration: 2000,
+  //     mask: true
+  //   })
+  //   setTimeout(function () {
+  //     wx.navigateTo({
+  //       url: '../browsePage/browsePage',
+  //     })
+  //   }, 2000)
+  // }
 })

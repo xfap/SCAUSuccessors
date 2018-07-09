@@ -1,8 +1,8 @@
 <view class="content">
-  <view class='content-one'>
-    <image class='sender-touxiang' src='tx.jpeg'></image>
-    <view class='yonghu-name' type="text">{{object.owner}}</view>
-  </view>
+    <view class='content-one'>
+      <image class='sender-touxiang' src='{{userInfo.avatarUrl}}'  mode="cover"></image>
+      <view class='yonghu-name' type="text">{{userInfo.nickName}}</view>
+    </view>
   <!--用户信息展示结束-->
 
   <view class='content-two'>
