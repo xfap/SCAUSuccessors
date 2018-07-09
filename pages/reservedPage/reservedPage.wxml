@@ -30,7 +30,7 @@
   <view class='vContainer-body' wx:for="{{uItemBox}}" wx:key="index">
     <block class="show">
       <view class='sItem'>
-          <navigator class='nItem {{unreleasedContent}}'>
+          <view class='nItem {{unreleasedContent}}'>
             <view class='sPic'>
               <image src="{{item.pirURL}}" class="iPic"></image>
             </view>
@@ -39,7 +39,7 @@
               <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
               <text class='vItemBrief'>{{item.briefInfo}}</text>
             </view>
-          </navigator>
+          </view>
         </view>
     </block>
   </view>

@@ -52,6 +52,7 @@ Page({
     ],
     uItemBox: [
       {
+        "id":1,
         "owner": "LiangDaJian",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -59,18 +60,21 @@ Page({
         "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒难看！"
       },
       {
+        "id": 2,
         "owner": "LiangDaJian",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
         "pirURL": "./img/index2.jpg",
         "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒难看的！"
       }, {
+        "id": 3,
         "owner": "LiangDaJian",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
         "pirURL": "./img/index.jpg",
         "briefInfo": "这本书炒鸡难看的！"
       }, {
+        "id": 4,
         "owner": "LiangDaJian",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -167,4 +171,18 @@ Page({
       sItemBox: this.data.sItemBox,
     })
   },
+  onModifyClick:function (e){
+    var Iid = e.currentTarget.dataset.id;
+    var item = this.data.uItemBox[Iid];
+    console.log(item);
+    wx.setStorage({
+      key: 'modify2',
+      data: {
+          objectName:item.objectName,
+          owner:item.owner,
+          pirUrl:item.pirURL,
+          uploadTime:item.uploadTime,
+      },
+    })
+  }
 })
