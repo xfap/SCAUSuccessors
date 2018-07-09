@@ -197,6 +197,7 @@ TYPE:search
 =============================upload======================================     
 TYPE:upload 
 其他参数： 
+            user_id
 			suc_title
             suc_intro
             suc_class
