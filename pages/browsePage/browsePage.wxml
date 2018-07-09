@@ -2,8 +2,8 @@
 <view class="container">
   <view>
     <view class='bTopBar'>
-      <input type='text' placeholder="  输入你感兴趣的物品吧" class='iInput'> </input>
-      <button class='bSearch'>搜一搜</button>
+      <input type='text' placeholder="  输入你感兴趣的物品吧" class='iInput' value="{{keyword}}" bindinput='onKeyWordChanged'> </input>
+      <button class='bSearch' data-keyword="{{keyword}}" bindtap='onSearchClick'>搜一搜</button>
     </view>
   </view>
   <view>
