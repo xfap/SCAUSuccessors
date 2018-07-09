@@ -181,7 +181,7 @@ Page({
           objectName:item.objectName,
           owner:item.owner,
           pirUrl:item.pirURL,
-          uploadTime:item.uploadTime,
+          uploadTime:item.uploadTime
       },
     })
   }
