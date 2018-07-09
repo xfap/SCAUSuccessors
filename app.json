@@ -1,14 +1,9 @@
 {
   "pages": [
-<<<<<<< HEAD
-      "pages/browsePage/browsePage",
-      "pages/uploadPage/uploadPage",
-  "pages/detailedPage/detailedPage",
-=======
+
     "pages/browsePage/browsePage",
     "pages/detailedPage/detailedPage",
     "pages/uploadPage/uploadPage",
->>>>>>> a9864fb718bec980ce068bea2642e73721638b13
     "pages/logs/logs",
     "pages/releasePage/releasePage",
     "pages/reservedPage/reservedPage",
@@ -17,17 +12,10 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-<<<<<<< HEAD
     "navigationBarBackgroundColor": "#FFFc04",
     "navigationBarTitleText": "华农继承者",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh":true
-=======
-    "navigationBarBackgroundColor": "#FFFF99",
-    "navigationBarTitleText": "华农继承者",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
->>>>>>> a9864fb718bec980ce068bea2642e73721638b13
   },
   "tabBar": {
     "color": "#000",

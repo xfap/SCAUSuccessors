@@ -6,15 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
     userInfo: {},
     hasUserInfo:false,
-    canIUse:wx.canIUse('button.open-type.getUserInfo')
-=======
+    canIUse:wx.canIUse('button.open-type.getUserInfo'),
     productInfo: {},
     image: 'shch.png',
     img_class: 'sender-photo'
->>>>>>> a9864fb718bec980ce068bea2642e73721638b13
   },
 bindViewTap:function(){
 wx.navigateTo({
@@ -26,7 +23,6 @@ wx.navigateTo({
   /**
    * 生命周期函数--监听页面加载
    */
-<<<<<<< HEAD
   onLoad: function (options) {
     if (app.globalData.userInfo) {
       this.setData({
@@ -62,17 +58,12 @@ wx.navigateTo({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-=======
-  onLoad: function(options) {
 
->>>>>>> a9864fb718bec980ce068bea2642e73721638b13
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
 
-  },
 
   /**
    * 生命周期函数--监听页面显示

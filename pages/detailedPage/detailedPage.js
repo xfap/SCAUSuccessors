@@ -6,32 +6,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    owner: "null",
+    uploadTime: "null",
+    objectName: "null",
+    pirUrl: "null",
+    briefInfo: "null"
   },
   bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
-
-=======
-    object:{
-      owner: "null",
-      uploadTime: "null",
-      objectName: "null",
-      pirUrl: "null",
-      briefInfo: "null"
-    }
->>>>>>> a9864fb718bec980ce068bea2642e73721638b13
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-<<<<<<< HEAD
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -65,71 +58,30 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
-=======
-    var that = this;
-    console.log(options);
-    wx.getStorage({
-      key: 'keyaaa',
-      success: function (res) {
-        that.data.object.owner=options.owner;
-        that.data.object.uploadTime=options.uploadTime;
-        that.data.object.objectName=options.objectName;
-        that.data.object.pirUrl=options.pirUrl;
-        that.data.object.briefInfo=options.briefInfo;
-        that.setData({
-          object:that.data.object
-        })
-        // console.log(object)
-        console.log(options.pirUrl)
-      },
->>>>>>> a9864fb718bec980ce068bea2642e73721638b13
     })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
   },
+   
+  //   var that = this;
+  //   console.log(options);
+    
+  //   wx.getStorage({
+  //     key: 'keyaaa',
+  //     success: function (res) {
+  //       that.data.object.owner=options.owner;
+  //       that.data.object.uploadTime=options.uploadTime;
+  //       that.data.object.objectName=options.objectName;
+  //       that.data.object.pirUrl=options.pirUrl;
+  //       that.data.object.briefInfo=options.briefInfo;
+  //       that.setData({
+  //         object:that.data.object
+  //       })
+  //       // console.log(object)
+  //       console.log(options.pirUrl)
+  //     },
+  //   })
+  // },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   },
@@ -145,6 +97,7 @@ Page({
           url: 'https://127.0.0.1.com',      //此处换上你的接口地址
           filePath: tempFilePaths[0],
           name: 'img',
+          ok:'tesst',
           header: {
             "Content-Type": "multipart/form-data",
             'accept': 'application/json',
