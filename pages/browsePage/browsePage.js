@@ -8,6 +8,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    keyword:"",
     sItemBox:[
       {
         "owner":"LiangDaJian",
@@ -81,5 +82,20 @@ Page({
   },
   onItemClick:function(e){
 
+  },
+  onSearchClick:function(e){
+    var key = this.data.keyword;
+    console.log("keyword is :"+key);
+    // var key = keyword;
+    // console.log(key);
+    // console.log(e.currentTarget);
+    // var key = e.currentTarget.data.
+  },
+  onKeyWordChanged:function(e){
+    console.log(e.detail.value);
+    var value = e.detail.value;
+    this.setData({
+      keyword:value,
+    })
   }
 })
