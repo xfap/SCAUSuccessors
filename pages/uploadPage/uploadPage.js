@@ -1,22 +1,60 @@
 // pages/uploadPage/uploadPage.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     productInfo: {},
     image: 'shch.png',
-    img_class: 'sender-photo'
+    img_class: 'sender-photo',
+    biaotineiron:'',
+    wupingmiaoshu:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
   },
-
+  getUserInfo: function (e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -43,6 +81,15 @@ Page({
    */
   onUnload: function() {
 
+  },
+
+  biaotiinput: function (e) {
+    this.data.biaotineiron = e.detail.value
+    console.log(this.data.biaotineiron)
+  },
+  miaoshuinput: function (e) {
+    this.data.wupingmiaoshu = e.detail.value
+    console.log(this.data.wupingmiaoshu)
   },
 
   /**
@@ -104,7 +151,11 @@ Page({
     })
   },
 
-  publish: function() {
+  publish: function(e) {
+    var biaotineiron = this.data.biaotineiron;
+    console.log(biaotineiron)
+    var wupingmiaoshu = this.data.wupingmiaoshu;
+    console.log(wupingmiaoshu)
     wx.showToast({
       title: '发布成功',
       icon: 'success',

@@ -1,10 +1,10 @@
 <!--pages/uploadPage/uploadPage.wxml-->
 <form>
-<view class="content">
-  <view class='content-one'>
-    <image class='sender-touxiang' src='tx.jpeg'></image>
-    <view class='yonghu-name' type="text">继承者</view>
-  </view>
+  <view class="content">
+    <view class='content-one'>
+      <image class='sender-touxiang' src='{{userInfo.avatarUrl}}'  mode="cover"></image>
+      <view class='yonghu-name' type="text">{{userInfo.nickName}}</view>
+    </view>
 <!--用户信息展示结束-->
 
   <view class='content-two'>
@@ -14,8 +14,8 @@
    <view class='content-three'>
     <view class='jianjielan' type="text">简介栏</view>
   <view class='biaoti'>标题：</view>
-    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了"></input>
-   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）"></textarea>
+    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了" bindinput='biaotiinput'>{{biaotineiron}}</input>
+   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）" bindinput='miaoshuinput'>{{wupingmiaoshu}}</textarea>
   </view>
 <!--简介栏展示结束-->
      <view class='content-four'>

@@ -57,6 +57,7 @@
 
 .jianjielantishi {
   padding: 30rpx;
+  height: 220rpx;
 }
 
 .querenfabu-btn {
