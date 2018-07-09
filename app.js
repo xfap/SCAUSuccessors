@@ -38,5 +38,23 @@ App({
     serverhome: 'http://192.168.253.1:8089/successor/Listener',
     area_name : '',
     dorm_name : ''
+  },
+  getAvailableTime:function(){
+    // var time = new Date().get;
+    var temp = new Date();
+    var date = temp.toJSON().substring(0, 10);
+    var hour = temp.getHours();
+    var minute = temp.getMinutes();
+    var second = temp.getSeconds();
+    var cha = '-';
+    date+=cha;
+    date+=hour;
+    date+=cha;
+    date+=minute;
+    date+=cha;
+    date+=second;
+    var realDate = date.replace(/-/g,'_');
+    console.log("the return time is :"+realDate);
+    return realDate;
   }
 })

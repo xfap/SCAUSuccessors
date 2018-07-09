@@ -70,7 +70,8 @@ Page({
           })
         }
       })
-    }
+    };
+  app.getAvailableTime();
   },
   getUserInfo: function(e) {
     console.log(e)
