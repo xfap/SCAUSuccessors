@@ -183,6 +183,9 @@ Page({
           pirUrl:item.pirURL,
           uploadTime:item.uploadTime
       },
+    });
+    wx.navigateTo({
+      url: '../modifyPage/modifyPage',
     })
   }
 })
