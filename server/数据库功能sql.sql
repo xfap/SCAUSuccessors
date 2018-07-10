@@ -35,7 +35,44 @@ select * from
         order by to_number(suc_publish_time) desc
     )where rownum<20;--//搜索前20条
 -- ================================browse================================   
-
+-- ================================browse_class================================                
+-- ********************
+-- STYPE:browse_class
+-- 其他参数：
+            -- suc_class:""
+-- 所以wx.request里的 data：{
+                -- stype："browse_class",
+                -- }
+-- ********************
+-- 返回的数据：
+        -- {
+        -- re_type:browse_class
+        -- content:[
+            -- {
+                -- suc_id:"",
+                -- user_id:"",
+                -- suc_title:"",
+                -- suc_intro:"",
+                -- suc_pic_url:"",
+                -- suc_class:"",
+                -- suc_publish_time:""
+            -- },
+            -- {},
+            -- {},
+            -- ...(20个)
+        -- ]
+        -- }
+        select * from
+    (
+        select * from suc_stuff 
+        --搜索出已经被接受请求的物品id，就不返回显示了
+        where suc_id not in
+        (
+            select suc_id from suc_request where confirm_give_flag=1
+        ) and suc_class=''
+        order by to_number(suc_publish_time) desc
+    )where rownum<20;--//搜索前20条
+-- ================================browse_class================================ 
 -- =============================browse_refresh===============================     
 -- TYPE:browse_refresh
 -- 其他参数：
@@ -86,16 +123,9 @@ select r,suc_id,suc_publish_time from
             -- ...(20个)
         -- ]
 			-- }
-    select * from
-    (
-        select * from suc_stuff 
-        --搜索出已经被接受请求的物品id，就不返回显示了
-        where suc_id not in
-        (
-            select suc_id from suc_request where confirm_give_flag=1
-        ) and suc_class=''
-        order by to_number(suc_publish_time) desc
-    )where rownum<20;--//搜索前20条
+    
+    
+    
 -- ============================browse_refresh_class=======================================   
 
 -- =============================first_login======================================

@@ -26,7 +26,10 @@ insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publ
 insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','无印笔盒','','./images/5-201807082025.png','文具','20180708202512');
 insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','三菱笔芯','','./images/6-201807092025.png','文具','20180709202512');
 insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_3','蓝牙鼠标','','./images/7-201807102025.png','数码','20180710202523');
+--new
 
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_4','QQ爱','','./images/7-201807102025.png','玩具','20180714202523');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_4','爱卿','','./images/7-201807102025.png','玩具','20180713112314');
 --------------------------------suc_stuff---------------------------------------------
  -- CREATE TABLE suc_request(
      -- suc_id NUMBER(32) PRIMARY KEY,
