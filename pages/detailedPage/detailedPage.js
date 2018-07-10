@@ -11,10 +11,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     objects:{
-<<<<<<< HEAD
-=======
       owner: "null",
->>>>>>> 99b344d99984467453197acf571dd72a25dbfa4e
       uploadTime: "null",
       objectName: "null",
       pirUrl: "null",
@@ -36,36 +33,7 @@ Page({
     that.setData({
       objects: that.data.objects
     })
-<<<<<<< HEAD
-    
-=======
 
-    //console.log(options);
-    // console.log('rrrr');
-    // wx.getStorage({
-    //   key: 'keyaaa',
-    //   success: function (res) {
-    //     console.log(res);
-    //     that.data.object.owner=res.data.owner;
-    //     that.data.object.uploadTime = res.data.uploadTime;
-    //     that.data.object.objectName = res.data.objectName;
-    //     that.data.object.pirUrl = res.data.pirUrl;
-    //     that.data.object.briefInfo = res.data.briefInfo;
-    //     that.setData({
-    //       object:that.data.object
-    //     })
-    //     // console.log(object)
-    //     //console.log(that.data.object)
-    //   },
-    //   fail: function (res) {
-    //       console.log(res);
-    //    }
-    // })
-
-
-
-
->>>>>>> 99b344d99984467453197acf571dd72a25dbfa4e
     //头像昵称获取
     if (app.globalData.userInfo) {
       this.setData({

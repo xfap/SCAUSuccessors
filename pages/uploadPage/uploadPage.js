@@ -181,11 +181,7 @@ publish:function(e){
             // 'Authorization': 'Bearer ..'    //若有token，此处换上你的token，没有的话省略
           },
           formData: {
-<<<<<<< HEAD
-            stype : 'upload_pic',
-=======
             stype:'upload_pic',
->>>>>>> 99b344d99984467453197acf571dd72a25dbfa4e
             suc_id:'111',
             user_id:'1111'  //其他额外的formdata，可不写
           },
