@@ -22,22 +22,37 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options);
-    wx.getStorage({
-      key: 'keyaaa',
-      success: function (res) {
-        that.data.object.owner=options.owner;
-        that.data.object.uploadTime=options.uploadTime;
-        that.data.object.objectName=options.objectName;
-        that.data.object.pirUrl=options.pirUrl;
-        that.data.object.briefInfo=options.briefInfo;
-        that.setData({
-          object:that.data.object
-        })
-        // console.log(object)
-        console.log(options.pirUrl)
-      },
+
+    that.data.object.owner = options.owner;
+    that.data.object.uploadTime = options.uploadTime;
+    that.data.object.objectName = options.objectName;
+    that.data.object.pirUrl = options.pirUrl;
+    that.data.object.briefInfo = options.briefInfo;
+    that.setData({
+      object: that.data.object
     })
+
+    //console.log(options);
+    // console.log('rrrr');
+    // wx.getStorage({
+    //   key: 'keyaaa',
+    //   success: function (res) {
+    //     console.log(res);
+    //     that.data.object.owner=res.data.owner;
+    //     that.data.object.uploadTime = res.data.uploadTime;
+    //     that.data.object.objectName = res.data.objectName;
+    //     that.data.object.pirUrl = res.data.pirUrl;
+    //     that.data.object.briefInfo = res.data.briefInfo;
+    //     that.setData({
+    //       object:that.data.object
+    //     })
+    //     // console.log(object)
+    //     //console.log(that.data.object)
+    //   },
+    //   fail: function (res) {
+    //       console.log(res);
+    //    }
+    // })
 
 
 

@@ -7,10 +7,6 @@
 
   <view class='content-two'>
     <image class='get-photo' src="{{object.pirUrl}}"></image>
-    <image class='get-photo' src='tu2.jpg'></image>
-    <image class='get-photo' src='tu3.jpg'></image>
-    <image class='get-photo' src='tu4.jpg'></image>
-    <image class='get-photo' src='tu5.jpg'></image>
   </view>
   <!--继承图片展示结束-->
   <view class='content-three'>
@@ -18,7 +14,9 @@
     <view class='biaoti'>{{object.objectName}}</view>
     <view class="biaotitishi" type='text'></view>
     <view class='jianjielantishi'>{{object.briefInfo}}</view>
+    <view class='shijianxianshi' placeholder='时间显示' type='text'>{{object.uploadTime}}</view>  <!--时间提示显示不了-->
   </view>
+
   <!--相关说明栏展示结束-->
   <view class='content-four'>
     <button class='querenfabu-btn'>我想要</button>
