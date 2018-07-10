@@ -6,8 +6,7 @@
  <!--用户信息展示结束-->
 
   <view class='content-two'>
-    <image class='get-photo' src="{{objects.pirUrl}}"></image>
-
+    <image class='get-photo' src="{{objects.pirUrl}}" mode='aspectFit'></image>
   </view>
   <!--继承图片展示结束-->
   <view class='content-three'>
