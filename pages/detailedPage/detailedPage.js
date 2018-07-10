@@ -7,12 +7,11 @@ Page({
    */
   data: {
 // <<<<<<< HEAD
-    objects:{
-      owner: "null",
-// =======
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    objects:{
+      owner: "null",
       uploadTime: "null",
       objectName: "null",
       pirUrl: "null",
@@ -35,6 +34,28 @@ Page({
       objects: that.data.objects
     })
 
+    //console.log(options);
+    // console.log('rrrr');
+    // wx.getStorage({
+    //   key: 'keyaaa',
+    //   success: function (res) {
+    //     console.log(res);
+    //     that.data.object.owner=res.data.owner;
+    //     that.data.object.uploadTime = res.data.uploadTime;
+    //     that.data.object.objectName = res.data.objectName;
+    //     that.data.object.pirUrl = res.data.pirUrl;
+    //     that.data.object.briefInfo = res.data.briefInfo;
+    //     that.setData({
+    //       object:that.data.object
+    //     })
+    //     // console.log(object)
+    //     //console.log(that.data.object)
+    //   },
+    //   fail: function (res) {
+    //       console.log(res);
+    //    }
+    // })
+
 
 
 
@@ -44,6 +65,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+      console.log("userInfo:"+userInfo);
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
