@@ -220,6 +220,9 @@ select r,suc_id,suc_publish_time from
                 -- suc_class:"",		//详情页有放标签则返回，否则不需要返回
                 -- suc_publish_time:""
 			-- }
+        select * from suc_stuff where suc_id=suc_id 
+        union 
+        select * from suc_stuff_history where suc_id=suc_id 
 -- ============================getInfo=======================================   
 
 
@@ -246,6 +249,9 @@ select r,suc_id,suc_publish_time from
             -- {},
             -- ...(n个)//返回包含关键字的继承物品信息
 			-- }
+            
+        select * from suc_stuff
+            where suc_title like %key%;
 -- ============================search=======================================   
 
 -- =============================upload======================================     
