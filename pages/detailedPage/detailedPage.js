@@ -31,7 +31,6 @@ Page({
     that.setData({
       objects: that.data.objects
     })
-
     //头像昵称获取
     if (app.globalData.userInfo) {
       this.setData({
