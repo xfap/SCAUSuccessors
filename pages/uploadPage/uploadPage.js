@@ -181,6 +181,7 @@ publish:function(e){
             // 'Authorization': 'Bearer ..'    //若有token，此处换上你的token，没有的话省略
           },
           formData: {
+            stype:'upload_pic',
             suc_id:'111',
             user_id:'1111'  //其他额外的formdata，可不写
           },
