@@ -25,6 +25,7 @@ height: 150px;
 border-bottom: 5px solid #ededed;
 }
 .get-photo{
+  
 margin-left: 220rpx;
   width: 350rpx;
   height: 350rpx;
