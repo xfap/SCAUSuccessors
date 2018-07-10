@@ -3,18 +3,19 @@
       <image class='sender-touxiang' src='{{userInfo.avatarUrl}}'  mode="cover"></image>
       <view class='yonghu-name' type="text">{{userInfo.nickName}}</view>
     </view>
-  <!--用户信息展示结束-->
+ <!--用户信息展示结束-->
 
   <view class='content-two'>
-    <image class='get-photo' src="{{object.pirUrl}}"></image>
+    <image class='get-photo' src="{{objects.pirUrl}}"></image>
+
   </view>
   <!--继承图片展示结束-->
   <view class='content-three'>
     <view class='jianjielan' type="text">相关说明栏</view>
-    <view class='biaoti'>{{object.objectName}}</view>
+    <view class='biaoti'>{{objects.objectsName}}</view>
     <view class="biaotitishi" type='text'></view>
-    <view class='jianjielantishi'>{{object.briefInfo}}</view>
-    <view class='shijianxianshi' placeholder='时间显示' type='text'>{{object.uploadTime}}</view>  <!--时间提示显示不了-->
+    <view class='jianjielantishi'>{{objects.briefInfo}}</view>
+    <view class='shijianxianshi' placeholder='时间显示' type='text'>{{objects.uploadTime}}</view>  <!--时间提示显示不了-->
   </view>
 
   <!--相关说明栏展示结束-->
