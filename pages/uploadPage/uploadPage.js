@@ -153,6 +153,22 @@ Page({
   },
 
 publish:function(e){
+
+  if (this.data.suc_title == '') {
+    wx.showModal({
+      title: '提示',
+      content: '标题不能为空！'
+    })
+    return
+  }
+  if (this.data.suc_intro == '') {
+    wx.showModal({
+      title: '提示',
+      content: '物品描述不能为空！'
+    })
+    return
+  }
+
    var nowtime = app.getAvailableTime();//未测试的时间传送代码
   wx.request({
     url: this.data.url,
@@ -174,6 +190,9 @@ publish:function(e){
    wx.uploadFile({
     url: this.data.url,      //此处换上你的接口地址
     filePath: this.data.image,
+//图片检验是否为空功能：
+
+//(未实现)
           name: 'img',
           header: {
             "Content-Type": "multipart/form-data",
@@ -191,7 +210,11 @@ publish:function(e){
           },
           fail: function (res) {
             console.log('fail');
-
+            wx.showModal({
+              title: '提示',
+              content: '图片不能为空！'  //没有图片可能还会传递标题和描述，待解决。。。。。。
+            })
+            return
           },
         })
 }
