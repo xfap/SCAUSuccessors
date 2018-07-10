@@ -9,7 +9,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    object:{
+    objects:{
       uploadTime: "null",
       objectName: "null",
       pirUrl: "null",
@@ -23,26 +23,15 @@ Page({
   onLoad: function (options) {
     var that = this;
     console.log(options);
-    wx.getStorage({
-      key: 'keyaaa',
-      success: function (res) {
-        that.data.object.owner=options.owner;
-        that.data.object.uploadTime=options.uploadTime;
-        that.data.object.objectName=options.objectName;
-        that.data.object.pirUrl=options.pirUrl;
-        that.data.object.briefInfo=options.briefInfo;
-        that.setData({
-          object:that.data.object
-        })
-        // console.log(object)
-        console.log(options.pirUrl)
-      },
+    that.data.objects.owner = options.owner;
+    that.data.objects.uploadTime = options.uploadTime;
+    that.data.objects.objectName = options.objectName;
+    that.data.objects.pirUrl = options.pirUrl;
+    that.data.objects.briefInfo = options.briefInfo;
+    that.setData({
+      objects: that.data.objects
     })
-
-
-
-
-
+    
     //头像昵称获取
     if (app.globalData.userInfo) {
       this.setData({
