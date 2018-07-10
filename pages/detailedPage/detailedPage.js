@@ -13,7 +13,7 @@ Page({
       owner: "null",
       uploadTime: "null",
       objectName: "null",
-      pirUrl: "null",
+      pirUrl: "tu5.jpg",
       briefInfo: "null",
     }
   },

@@ -9,6 +9,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     keyword:"",
+    modeId:0,
+    tempItem:null,
     sItemBox:[
       {
         "owner":"LiangDaJian",
@@ -72,6 +74,9 @@ Page({
       })
     };
   app.getAvailableTime();
+  if(this.data.modeId==1){
+    console.log("modeID=1");
+  }
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -85,22 +90,34 @@ Page({
 
   },
   onSearchClick:function(e){
+    var that = this;
     var key = this.data.keyword;
     console.log("keyword is :"+key);
-    // wx.request({
-    //   url: getApp().globalData.serverhome,
-    //   data: {
-    //     stype: 'search',
-    //     key: key,
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //   },
-    //   fail: function (res) {
-    //     console.log(res)
-    //     // fail
-    //   }
-    // })
+    console.log("getApp().globalData.serverhome:" + getApp().globalData.serverhome);
+    wx.request({
+      url: getApp().globalData.serverhome,
+
+      data: {
+        stype: 'search',
+        key: key,
+      },
+      success: function (res) {
+        console.log(res.data.content);
+        that.setData({
+          modeId:1,
+          tempItem:res.data.content
+        })
+        that.onShow();
+        // this.setData({
+        //   modeId:1,
+        // })
+        // this.onLoad();
+      },
+      fail: function (res) {
+        console.log(res)
+        // fail
+      }
+    })
   },
   onKeyWordChanged:function(e){
     console.log(e.detail.value);
@@ -108,5 +125,36 @@ Page({
     this.setData({
       keyword:value,
     })
+    this.onRefreshItem()
+  },
+  onShow:function(){
+    console.log("onShow!");
+    if(this.data.modeId==1) {
+      console.log(this.data.tempItem.length)
+    }
+  },
+  onRefreshItem:function(){
+    console.log("refresh");
+    console.log(this.data.tempItem)
+    // this.onLoad();
+  },
+  adapt:function(){
+    var that = this;
+    var s = that.data.sItemBox;
+    var t = that.data.tempItem;
+    for(var i=0;i<that.data.tempItem.length;i++){
+      s[i].owner=t[i].USER_ID;
+      s[i].uploadTime = t[i].SUC_PUBLISH_TIME;
+      s[i].objectName = t[i].SUC_PIC_URL;
+      s[i].pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.sub;
+
+      // this.setData({
+      //   s[1].owner: "LiangDaJian",
+      //   "uploadTime": "2018/7/6/16:51",
+      //   "objectName": "Book",
+      //   "pirURL": "./img/index.jpg",
+      //   "briefInfo":
+      // })
+    }
   }
 })
