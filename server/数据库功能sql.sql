@@ -269,18 +269,31 @@ select r,suc_id,suc_publish_time from
                 -- suc_id:"",//上传该继承品的id
 				-- upload_flag:"",//是否上传成功
 			-- }
+			
+			上传：insert into suc_stuff(user_id,suc_title,suc_intro,suc_class,publish_time) 
+				values ('user_id','suc_title','suc_intro','suc_class','publish_time');
+				
+			返回：select suc_id_seq.currval from dual
+			flag:代码判断是否抛出异常
 -- ============================upload=======================================   
 -- //文件 即图片的上传是用另一个方法上传的
 -- =============================upload_pic======================================     
 -- TYPE:upload 
 -- 其他参数： 
             -- user_id
+			-- suc_id
 -- *********************************************
 -- 返回的数据：
             -- {
                 -- re_type:upload_pic,
 				-- upload_pic_flag:"",//是否上传成功
 			-- }
+			
+			上传：update suc_stuff
+				  set suc_pic_url = 'pic_url'
+				  where suc_id = 'suc_id'
+				  
+			flag:代码判断是否抛出异常
 -- ============================upload_pic======================================= 
 
 -- =============================delete======================================     
@@ -294,6 +307,8 @@ select r,suc_id,suc_publish_time from
                 -- re_type:delete,
 				-- delete_flag:"",//是否删除成功
 			-- }
+			delete from suc_stuff where suc_id = 'suc_id'
+			flag:代码判断是否抛出异常
 -- ============================delete=======================================   
 
 -- =============================modify======================================     
@@ -312,9 +327,18 @@ select r,suc_id,suc_publish_time from
                 -- re_type:modify,
 				-- modify_flag:"",//是否修改成功
 			-- }
+			update suc_stuff
+			set (suc_title,suc_intro,suc_class,suc_publish_time 
+				= 'suc_title','suc_intro','suc_class','re_publish_time')
+				
+			if(modify_pic_flag == 1){
+				update suc_stuff
+				set suc_pic_url = 'pic_url'
+			}
+			flag:代码判断是否抛出异常
 -- ============================modify=======================================   
 -- //文件 即图片的上传是用另一个方法上传的
--- =============================modify_pic======================================     
+-- =============================modify_pic--舍弃======================================     
 -- TYPE:modify 
 -- 其他参数： 
             -- user_id
@@ -325,7 +349,7 @@ select r,suc_id,suc_publish_time from
                 -- re_type:modify_pic,
 				-- modify_pic_flag:"",//是否修改成功
 			-- }
--- ============================modify_pic=======================================  
+-- ============================modify_pic--舍弃=======================================  
 
 -- =============================need======================================     
 -- TYPE:need 
@@ -339,6 +363,8 @@ select r,suc_id,suc_publish_time from
                 -- re_type:need,
 				-- need_flag:"",//请求是否发送成功
 			-- }
+			insert into suc_request values('suc_id','user_id',0,'need_time')
+			flag:代码判断是否抛出异常
 -- ============================need=======================================   
 
 -- =============================confirmNeed======================================     
@@ -354,6 +380,12 @@ select r,suc_id,suc_publish_time from
                 -- re_type:confirmNeed,
 				-- confirm_flag:"",//是否发送成功
 			-- }
+			update suc_request
+			set confirm_give_flag = 1
+			
+			insert into suc_process(suc_id,owner_spare_time_start,owner_spare_time_end)
+				values('suc_id','owner_spare_time_start','owner_spare_time_end')
+			flag:代码判断是否抛出异常
 -- ============================confirmNeed======================================= 
 
 -- =============================haveGot======================================     
@@ -367,6 +399,8 @@ select r,suc_id,suc_publish_time from
                 -- re_type:haveGot
 				-- haveGot_flag:""//是否发送成功
 			-- }
+			update suc_process set (confirm_recv,complete_time)= (1, 'complete_time') where suc_id = 'suc_id'
+			flag:代码判断是否抛出异常
 -- ============================haveGot=======================================   
 
 -- =============================haveGiven======================================     
@@ -380,6 +414,8 @@ select r,suc_id,suc_publish_time from
                 -- re_type:haveGiven
 				-- haveGiven_flag:""//是否发送成功
 			-- }
+			update suc_process set (confirm_give,complete_time)= (1, 'complete_time') where suc_id = 'suc_id'
+			flag:代码判断是否抛出异常
 -- ============================haveGiven=======================================   
 
 -- =============================address======================================     
@@ -392,6 +428,10 @@ select r,suc_id,suc_publish_time from
 -- 返回的数据：
             -- {
                 -- re_type:haveGiven
-				-- haveGiven_flag:""//是否发送成功
+				-- address_flag:""//是否发送成功
 			-- }
--- ============================haveGiven=======================================  
+			update successor 
+			set (adea_name,dorm_name)=('area_name','dorm_name')
+			where user_id='user_id'
+			flag:代码判断是否抛出异常
+-- ============================address=======================================  
