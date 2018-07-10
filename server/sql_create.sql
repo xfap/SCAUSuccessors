@@ -36,7 +36,7 @@ CREATE TABLE successor(
  CREATE TABLE suc_request(
      suc_id NUMBER(32),
      user_id VARCHAR2(64),
-     comfirm_give_flag NUMBER(1),
+     confirm_give_flag NUMBER(1),
      request_time VARCHAR2(32),
      primary key(suc_id,user_id), --一件物品可能被多个人申请
      foreign key (user_id) references successor(user_id) on delete cascade,
@@ -49,7 +49,7 @@ CREATE TABLE successor(
 --                    ②他请求了，flag=0，则通知他，他的请求还没被响应
 --                    ③他请求了，flag=1,则通知他，他的请求被响应了，并且返回，时间等信息。
  CREATE TABLE suc_process(
-     suc_id NUMBER(32) PRIMARY KEY, --用户只能有一个物品处于这个状态
+     suc_id NUMBER(32) PRIMARY KEY, --物品处于这个状态
      owner_spare_time_start VARCHAR2(32),
      owner_spare_time_end VARCHAR2(32),
      confirm_recv NUMBER(1),
