@@ -39,16 +39,16 @@ STYPE:browse
 
 ================================browse_class================================                
 ********************
-STYPE:browse
+STYPE:browse_class
 其他参数：
             suc_class:""
 所以wx.request里的 data：{
-                stype："browse",
+                stype："browse_class",
                 }
 ********************
 返回的数据：
         {
-        re_type:browse
+        re_type:browse_class
         content:[
             {
                 suc_id:"",
