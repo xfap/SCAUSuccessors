@@ -19,13 +19,13 @@ insert into successor values ('test_usrid_4', 'user4', '启林区','1栋212');
 --处于发布状态的物品 图片url 使用物品id 和 时间 联合命名
 --------------------------------suc_stuff---------------------------------------------
 
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','山灵M0','山灵便携播放器','./images/1-201807051010.png','数码','2018/07/05/10:10');
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','艾巴索DX150','艾巴索播放器','./images/2-201807052025.png','数码','2018/07/05/20:25');
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','四级词汇书','新东方四级单词书','./images/3-201807062025.png','书籍','2018/07/06/20:25');
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','六级词汇书','新东方六级单词书','./images/4-201807072025.png','书籍','2018/07/07/20:25');
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','无印笔盒','','./images/5-201807082025.png','文具','2018/07/08/20:25');
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','三菱笔芯','','./images/6-201807092025.png','文具','2018/07/09/20:25');
-insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_3','蓝牙鼠标','','./images/7-201807102025.png','数码','2018/07/10/20:25');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','山灵M0','山灵便携播放器','./images/1-201807051010.png','数码','20180705101023');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_1','艾巴索DX150','艾巴索播放器','./images/2-201807052025.png','数码','20180705202534');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','四级词汇书','新东方四级单词书','./images/3-201807062025.png','书籍','20180706202512');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','六级词汇书','新东方六级单词书','./images/4-201807072025.png','书籍','20180707202545');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','无印笔盒','','./images/5-201807082025.png','文具','20180708202512');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_2','三菱笔芯','','./images/6-201807092025.png','文具','20180709202512');
+insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time) values ('test_usrid_3','蓝牙鼠标','','./images/7-201807102025.png','数码','20180710202523');
 
 --------------------------------suc_stuff---------------------------------------------
  -- CREATE TABLE suc_request(
@@ -40,22 +40,22 @@ insert into suc_stuff(USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publ
 --处于请求状态的物品
 --------------------------------suc_request---------------------------------------------
 
-insert into suc_request values('1','test_usrid_3',-1,'2018/07/09/20:25');
-insert into suc_request values('2','test_usrid_3',0,'2018/07/10/20:25');
-insert into suc_request values('3','test_usrid_3',1,'2018/07/11/20:25');
-insert into suc_request values('4','test_usrid_4',1,'2018/07/8/20:25');
-insert into suc_request values('5','test_usrid_4',1,'2018/07/9/20:25');
-insert into suc_request values('6','test_usrid_4',1,'2018/07/9/20:25');
+insert into suc_request values('1','test_usrid_3',-1,'20180709202512');
+insert into suc_request values('2','test_usrid_3',0,'20180710202512');
+insert into suc_request values('3','test_usrid_3',1,'20180711202512');
+insert into suc_request values('4','test_usrid_4',1,'20180708202523');
+insert into suc_request values('5','test_usrid_4',1,'20180709202512');
+insert into suc_request values('6','test_usrid_4',1,'20180709202532');
 
 --------------------------------suc_request---------------------------------------------
 
 --处于继承过程的物品
 --------------------------------suc_process---------------------------------------------
 
-insert into suc_process values('3','2018/07/10/18:00','2018/07/10/22:00',0,0,null);
-insert into suc_process values('4','2018/07/10/13:00','2018/07/10/18:00',1,0,'2018/07/09/20:25');
-insert into suc_process values('5','2018/07/10/14:00','2018/07/10/20:00',0,1,'2018/07/11/10:13');
-insert into suc_process values('6','2018/07/10/8:00','2018/07/10/13:00',1,1,'2018/07/12/14:32');
+insert into suc_process values('3','20180710180123','20180710220123',0,0,null);
+insert into suc_process values('4','20180710131123','20180710181123',1,0,'20180709202512');
+insert into suc_process values('5','20180710141123','20180710201123',0,1,'20180711101312');
+insert into suc_process values('6','20180710081123','20180710131123',1,1,'20180712143212');
 
 --------------------------------suc_process---------------------------------------------
 
