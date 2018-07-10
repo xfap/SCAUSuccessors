@@ -1,5 +1,5 @@
 // pages/uploadPage/uploadPage.js
-const app = getApp()  //微信头像
+const app = getApp() //微信头像
 Page({
 
   /**
@@ -12,16 +12,16 @@ Page({
     productInfo: {},
     image: 'shch.png',
     img_class: 'sender-photo',
-    suc_title:'',
-    suc_intro:'',
-    url: getApp().globalData.serverhome 
+    suc_title: '',
+    suc_intro: '',
+    url: getApp().globalData.serverhome
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (app.globalData.userInfo) {        //微信头像
+    if (app.globalData.userInfo) { //微信头像
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -48,7 +48,7 @@ Page({
       })
     }
   },
-  getUserInfo: function (e) {       //微信头像
+  getUserInfo: function(e) { //微信头像
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -84,12 +84,12 @@ Page({
 
   },
 
-  biaotiinput: function (e) {
+  biaotiinput: function(e) {
     this.data.suc_title = e.detail.value
     console.log(this.data.suc_title)
   },
-  miaoshuinput: function (e) {
-    this.data.suc_intro= e.detail.value
+  miaoshuinput: function(e) {
+    this.data.suc_intro = e.detail.value
     console.log(this.data.suc_intro)
   },
 
@@ -127,112 +127,82 @@ Page({
           img_class: 'has-photo'
         })
         console.log(res)
-        /*wx.uploadFile({
-          url: 'https://127.0.0.1.com',      //此处换上你的接口地址
-          filePath: tempFilePaths[0],
-          name: 'img',
-          header: {
-            "Content-Type": "multipart/form-data",
-            'accept': 'application/json',
-            // 'Authorization': 'Bearer ..'    //若有token，此处换上你的token，没有的话省略
-          },
-          formData: {
-            'user': 'test'  //其他额外的formdata，可不写
-          },
-          success: function (res) {
-            var data = res.data;
-            console.log('data');
-          },
-          fail: function (res) {
-            console.log('fail');
-
-          },
-        })*/
       }
     })
   },
 
-publish:function(e){
-
-  if (this.data.suc_title == '') {
-    wx.showModal({
-      title: '提示',
-      content: '标题不能为空！'
-    })
-    return
-  }
-  if (this.data.suc_intro == '') {
-    wx.showModal({
-      title: '提示',
-      content: '物品描述不能为空！'
-    })
-    return
-  }
-
-   var nowtime = app.getAvailableTime();//未测试的时间传送代码
-  wx.request({
-    url: this.data.url,
-    data: {
-      stype: 'upload',
-      suc_title: this.data.suc_title,
-      suc_intro: this.data.suc_intro,
-      publish_time: nowtime  //未测试的时间传送代码
-    },
-    success: function (res) {
-      console.log(res)
-    },
-    fail: function (res) {
-      console.log(res)
-      // fail
+  publish: function(e) {
+    if (this.data.suc_title == '') {
+      wx.showModal({
+        title: '提示',
+        content: '标题不能为空！'
+      })
+      return
     }
-  })
+    if (this.data.image == 'shch.png') {
+      wx.showModal({
+        title: '提示',
+        content: '图片不能为空！'
+      })
+      return
+    }
 
-   wx.uploadFile({
-    url: this.data.url,      //此处换上你的接口地址
-    filePath: this.data.image,
-//图片检验是否为空功能：
+    var nowtime = app.getAvailableTime(); //未测试的时间传送代码
+    wx.request({
+      url: this.data.url,
+      data: {
+        stype: 'upload',
+        suc_title: this.data.suc_title,
+        suc_intro: this.data.suc_intro,
+        publish_time: nowtime //未测试的时间传送代码
+      },
+      success: function(res) {
+        console.log(res)
+      },
+      fail: function(res) {
+        console.log(res)
+      }
+    })
 
-//(未实现)
-          name: 'img',
-          header: {
-            "Content-Type": "multipart/form-data",
-            'accept': 'application/json',
-            // 'Authorization': 'Bearer ..'    //若有token，此处换上你的token，没有的话省略
-          },
-          formData: {
-            stype:'upload_pic',
-            suc_id:'111',
-            user_id:'1111'  //其他额外的formdata，可不写
-          },
-          success: function (res) {
-            var data = res.data;
-            console.log('data');
-          },
-          fail: function (res) {
-            console.log('fail');
-            wx.showModal({
-              title: '提示',
-              content: '图片不能为空！'  //没有图片可能还会传递标题和描述，待解决。。。。。。
-            })
-            return
-          },
+    wx.uploadFile({
+      url: this.data.url,
+      filePath: this.data.image,
+      //图片检验是否为空功能：
+      //(未实现)
+      name: 'img',
+      header: {
+        "Content-Type": "multipart/form-data",
+        'accept': 'application/json',
+        // 'Authorization': 'Bearer ..'    //若有token，此处换上你的token，没有的话省略
+      },
+      formData: {
+        //测试key值需不需要加''
+        stype: 'upload_pic',
+        suc_id: '111',
+        user_id: '1111' //其他额外的formdata，可不写
+      },
+      success: function(res) {
+        console.log(JSON.parse(res.data));
+        wx.showToast({
+          title: '上传成功',
+          icon: 'success',
+          duration: 2000,
+          mask: true
         })
-}
-  // publish: function(e) {
-  //   var suc_title = this.data.suc_title;
-  //   console.log(suc_title)
-  //   var suc_intro = this.data.suc_intro;
-  //   console.log(suc_intro)
-  //   wx.showToast({
-  //     title: '发布成功',
-  //     icon: 'success',
-  //     duration: 2000,
-  //     mask: true
-  //   })
-  //   setTimeout(function () {
-  //     wx.navigateTo({
-  //       url: '../browsePage/browsePage',
-  //     })
-  //   }, 2000)
-  // }
+        setTimeout(function() {
+          wx.switchTab({
+            url: '../browsePage/browsePage',
+          })
+        }, 2000)
+      },
+      fail: function(res) {
+        console.log('fail' + res);
+        wx.showModal({
+          title: '提示',
+          content: '上传图片失败！'
+        })
+        return
+      },
+    })
+  }
 })
