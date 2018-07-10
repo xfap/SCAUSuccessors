@@ -41,10 +41,11 @@ STYPE:browse
 TYPE:browse_refresh
 其他参数：
             suc_class 类别
-            
+            suc_id (当前本地的最后一条物品id，也就是显示在最下面的物品id)
 所以wx.request里的 data：{
                 stype："browse",
-                suc_class："book"
+                suc_class："类别"
+                suc_id:"物品id"
                 }       
                 
 ******************************
@@ -80,12 +81,38 @@ TYPE:login
 				username:"",
 				area_name:"",
 				dorm_name:"",
-				comfirm_give_flag:"" //对应需求者，所有者是否发送空闲时间段
-				
+                // //服务器在用户登录的时候，发送这连个flag
+				// comfirm_give_flag:"" //对应需求者，所有者是否同意给用户这个物品
+				// nedd_flag:""//对应于所有者，向所有者通知，在他离线的这段时间里，是否有人确认需要他的书
+                confirm_info:[
+                        {
+                        suc_id:"",
+                        user_id:"",
+                        username:"",
+                        owner_spare_time_start:"",
+                        owner_spare_time_end:""
+                        },
+                        ...
+                    ]
+                need_info:[
+                            {user_id:"",   //需求者id
+                            username:"",  //需求者的姓名
+                            suc_id:""     //物品id  //详细信息用suc_id STYPE=getInfo 获取
+                            confirm_give_flag："",  //如果这个是1 则 用户已经确认并且填写了 空闲时间，就可以读取下面的时间，
+                            //否则为0，用户已经同意，则把下面时间显示出来
+                            my_spare:{start:"",//我的空闲时间
+                                      end:""},
+                            //还要判断，物品 是否已经完成了 继承
+                            confirm_recv:"" 
+                            confirm_give:""  //这两个任何一个位1 则已经完成继承，都为0 则没有完成
+                            complete_time:"" //完成的时间，如果上面两个有一个为1，这个才是时间，否则为 空
+                            },   
+                            ...
+                          ]     
             }
 ============================login=======================================       
-
-=============================login_need======================================     
+//如果有人确认需要他的书，则本地向服务器请求 数据
+=============================login_need--舍弃======================================     
 TYPE:login_need
 其他参数： 
 			user_id
@@ -94,15 +121,14 @@ TYPE:login_need
             {
                 re_type:login_need
 				need_info:[{user_id:"",   //需求者id
-                            username:"",
-                            suc_id:""},
+                            username:"",  //需求者的姓名
+                            suc_id:""},   //物品id  //详细信息用suc_id STYPE=getInfo 获取
                             ...
                           ]
             }
 ============================login_need======================================= 
-
-
-=============================login_confirm======================================     
+//如果所有者确认了给这个用户书
+=============================login_confirm--舍弃======================================     
 TYPE:login_confirm
 其他参数： 
 			user_id
@@ -113,11 +139,11 @@ TYPE:login_confirm
 				//所有方的选定时间段
 				confirm_info:[
                         {
-                        suc_id:"",
+                        suc_id:"", //详细信息用suc_id STYPE=getInfo 获取
                         user_id:"",
                         username:"",
                         owner_spare_time_start:"",
-                        owner_spare_time_end:""
+                        owner_spare_time_end:"",
                         },
                         ...
                     ]
@@ -214,7 +240,6 @@ TYPE:upload
 =============================upload_pic======================================     
 TYPE:upload 
 其他参数： 
-			suc_id
             user_id
 *********************************************
 返回的数据：
