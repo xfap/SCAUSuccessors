@@ -38,7 +38,7 @@ Page({
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
         "pirURL": "./img/index.jpg",
-        "briefInfo": "这本书炒鸡好看的！",
+        "briefInfo": "这本书炒鸡好看的！啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
         "startDate": "未设定",
         "endDate": "未设定",
       }, {
@@ -90,6 +90,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
   },
 
   /**
@@ -160,7 +161,7 @@ Page({
     //console.log(e.detail.value),
     var Iid = e.currentTarget.dataset.id;
     for(var i = 0;i < this.data.sItemBox.length;i++){
-      if(this.data.sItemBox[i].id=Iid){
+      if(this.data.sItemBox[i].id==Iid){
         console.log("Iid是"+Iid);
         console.log("this.data.sItemBox[i]="+this.data.sItemBox[i]);
         this.data.sItemBox[i].startDate=e.detail.value;
@@ -177,7 +178,7 @@ Page({
   changeEndDate: function (e) {
     var Iid = e.currentTarget.dataset.id;
     for (var i = 0; i < this.data.sItemBox.length; i++) {
-      if (this.data.sItemBox[i].id = Iid) {
+      if (this.data.sItemBox[i].id == Iid) {
         this.data.sItemBox[i].endDate = e.detail.value;
         this.setData({
           sItemBox: this.data.sItemBox,
@@ -223,22 +224,42 @@ Page({
     var Iid = e.currentTarget.dataset.id;
     console.log("Iid :"+Iid);
     // console.log(this.data.sItemBox[0]);
-    var startTime = null;
-    var endTime =null;
+    var startTime;
+    var endTime;
+    var itemId;
     for(var i=0;i<this.data.sItemBox.length;i++){
       if(this.data.sItemBox[i].id==Iid) {
         console.log(this.data.sItemBox[i]);
-        startTime = this.data.sIemBox[i].startDate;
+        startTime = this.data.sItemBox[i].startDate;
         endTime = this.data.sItemBox[i].endDate;
+        itemId = this.data.sItemBox[i].id;
       }
     }
     wx.showModal({
       title: '提示',
-      content: '确认要提交吗，提交之后将不可修改',
+      content: '确认要提交吗',
       success: function(e2) {
         if(e2.confirm){
           console.log("Send start time:"+startTime);
           console.log("Send end time:" + endTime);
+          // wx.request({
+          //   url: getApp().globalData.serverhome,
+          //   data:{
+          //     stype:'confirmNeed',
+          //     SUC_ID:itemId,//不确定要不要转成字符串
+          //     OWNER_SPARE_TIME_START:startTime,
+          //     OWNER_SPARE_TIME_END:endTime,
+          //   },
+          //   success:function(res){
+          //     console.log(res.data);
+          //     wx.showToast({
+          //       title: '成功',
+          //       icon: 'success',
+          //       duration: 2000,
+          //       mask: true
+          //     })
+          //   }
+          // })
         }
       }
     })
