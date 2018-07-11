@@ -83,23 +83,24 @@ select * from
     --suc_id,USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time    
 with order_list as
     (
-        select rownum r,suc_id,USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time
-        from suc_stuff 
-        --搜索出已经被接受请求的物品id，就不返回显示了
-        where suc_id not in
-        (
-            select suc_id from suc_request where confirm_give_flag=1
+        select rownum mr,suc_id,USER_ID,suc_title,suc_intro,suc_pic_url,suc_class,suc_publish_time
+        from(
+            select * from suc_stuff 
+            --搜索出已经被接受请求的物品id，就不返回显示了
+            where suc_id not in
+            (
+                select suc_id from suc_request where confirm_give_flag=1
+            )
+            order by to_number(suc_publish_time) desc
         )
-        order by to_number(suc_publish_time) desc
     ),
     x as 
-    (select rownum rr from
+    (select mr mrr from
         order_list
-        where suc_id='2')
-select r,suc_id,suc_publish_time from
+        where suc_id='8')
+select mr,suc_id,suc_publish_time from
   order_list
-  where r between (select rr from x) and ((select rr from x)+20)
-;
+  where mr between (select mrr from x)+1 and ((select mrr from x)+20)
 -- =============================browse_refresh===============================  
 -- =============================browse_refresh_class======================================     
 -- TYPE:browse_refresh_class 
@@ -172,7 +173,6 @@ select r,suc_id,suc_publish_time from
                     ]
                 need_info:[
                             {user_id:"",   //需求者id
-                            username:"",  //需求者的姓名
                             suc_id:""     //物品id  //详细信息用suc_id STYPE=getInfo 获取
                             confirm_give_flag："",  //如果这个是1 则 用户已经确认并且填写了 空闲时间，就可以读取下面的时间，
                             //否则为0，用户已经同意，则把下面时间显示出来
@@ -189,12 +189,12 @@ select r,suc_id,suc_publish_time from
     select * from successor where user_id=user_id
     confirm_info:
         --找到这个人的请求的信息，如果被所有者确认 1
-        select * from  suc_request natural join suc_process where confirm_give_flag=1;
+        select * from  suc_request natural join suc_process where confirm_give_flag=1 and user_id=user_id;
     need_info：
         --找到这个人的物品所有id，如果有被请求的。
         select * from  
-  suc_request natural join suc_process natural join (select user_id owner,suc_id from suc_stuff)
-  where owner='test_usrid_2';
+  suc_request natural join (select user_id owner,suc_id from suc_stuff) where confirm_give_flag=0
+  and owner='test_usrid_2';
 -- *********************************************
     
 -- ============================login=======================================       
@@ -457,7 +457,7 @@ select r,suc_id,suc_publish_time from
 -- *********************************************
 -- 返回的数据：
             -- {
-                -- re_type:haveGiven
+                -- re_type:address
 				-- address_flag:""//是否发送成功
 			-- }
 			update successor 

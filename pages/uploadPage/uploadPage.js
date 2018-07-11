@@ -132,7 +132,7 @@ Page({
   },
 
   publish: function(e) {
-    console.log(app.getUserID())
+    var that = this
     if (this.data.suc_title == '') {
       wx.showModal({
         title: '提示',
@@ -153,22 +153,28 @@ Page({
       url: this.data.url,
       data: {
         stype: 'upload',
-        user_id: 'openid',
+        user_id: app.getUserID(),
         suc_title: this.data.suc_title,
         suc_intro: this.data.suc_intro,
         publish_time: nowtime //未测试的时间传送代码
       },
       success: function(res) {
         console.log(res)
+        if (res.data.upload_flag) {
+          that.uploadPic(that, res.data.suc_id)
+        }
       },
       fail: function(res) {
         console.log(res)
       }
     })
 
+  },
+
+  uploadPic: function(that, sucID) {
     wx.uploadFile({
-      url: this.data.url,
-      filePath: this.data.image,
+      url: that.data.url,
+      filePath: that.data.image,
       //图片检验是否为空功能：
       //(未实现)
       name: 'img',
@@ -180,8 +186,8 @@ Page({
       formData: {
         //测试key值需不需要加''
         stype: 'upload_pic',
-        suc_id: '111',
-        user_id: '1111' //其他额外的formdata，可不写
+        suc_id: sucID,
+        user_id: app.getUserID() //其他额外的formdata，可不写
       },
       success: function(res) {
         console.log(JSON.parse(res.data));
