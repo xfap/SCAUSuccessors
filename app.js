@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -8,8 +8,20 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      success: function(res) {
+        var code = res.code
+        console.log('code:' + code)
+        var appID = 'wx6da19c06cdf13a16'                //自己的appID
+        var secret = 'dbfd6e796201bdf000e68a56a1224fbe' //在开发平台获取的secret
+        wx.request({
+          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appID + '&secret=' + secret + '&js_code=' + code + '&grant_type=authorization_code',
+          success: function(res) {
+            var openid = res.data.openid
+            console.log('openid:' + openid)
+            getApp().globalData.user_id = openid
+            console.log('!!openid:' + getApp().globalData.user_id)
+          }
+        })
       }
     })
     // 获取用户信息
@@ -37,10 +49,11 @@ App({
     userInfo: null,
     serverhome: 'http://192.168.253.1:8089/successor/Listener',
     serverhome_successor: 'http://192.168.253.1:8089/successor',
-    area_name : '',
-    dorm_name : ''
+    area_name: '',
+    dorm_name: '',
+    user_id: ''
   },
-  getAvailableTime:function(){
+  getAvailableTime: function() {
     // var time = new Date().get;
     var temp = new Date();
     var date = temp.toJSON().substring(0, 10);
@@ -48,14 +61,14 @@ App({
     var minute = temp.getMinutes();
     var second = temp.getSeconds();
     var cha = '-';
-    date+=cha;
-    date+=hour;
-    date+=cha;
-    date+=minute;
-    date+=cha;
-    date+=second;
-    var realDate = date.replace(/-/g,'_');
-    console.log("the return time is :"+realDate);
+    date += cha;
+    date += hour;
+    date += cha;
+    date += minute;
+    date += cha;
+    date += second;
+    var realDate = date.replace(/-/g, '_');
+    console.log("the return time is :" + realDate);
     return realDate;
   }
 })
