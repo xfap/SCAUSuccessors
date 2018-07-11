@@ -23,14 +23,18 @@
               <text class='vItemBrief'>{{item.briefInfo}}</text>
               <view class='vTimePicker'>
                 
-                <picker mode='date' value='{{startDate}}' bindchange='changeStartDate' start="2018-7-7" end="2018-12-31">
+                <picker mode='date' value='{{startDate}}' data-id='{{item.id}}' bindchange='changeStartDate' start="2018-7-7" end="2018-12-31">
                   <text>开始：</text>
                   <text>{{item.startDate}}</text>
                 </picker>
-                <picker mode='date' value='{{endDate}}' bindchange='changeEndDate' start="2018-7-7" end="2018-12-31">
+                <picker mode='date' value='{{endDate}}' data-id='{{item.id}}' bindchange='changeEndDate' start="2018-7-7" end="2018-12-31">
                   <text>结束：</text>
                   <text>{{item.endDate}}</text>
                 </picker>
+                <view class='vItemContainer3'>
+                  <button class='vItemBtn' bindtap='onResetClick' data-id='{{item.id}}'>重置</button>
+                  <button class='vItemBtn' bindtap='onEnterClick' data-id='{{item.id}}'>确定</button>
+                </view>
               </view>
             </view>
           </view>

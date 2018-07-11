@@ -12,11 +12,10 @@ Page({
     getTime:"未设定",
     dateTimeArray:null,
     // nowDate:null,
-    startDate:"未设定",
-    endDate: "未设定",
     sItemBox: [
       {
-        "owner": "LiangDaJian",
+        "id":1,
+        "owner": "user1",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
         "pirURL": "./img/index.jpg",
@@ -25,7 +24,8 @@ Page({
         "endDate": "未设定",
       },
       {
-        "owner": "LiangDaJian",
+        "id":2,
+        "owner": "user2",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
         "pirURL": "./img/index2.jpg",
@@ -33,7 +33,8 @@ Page({
         "startDate": "未设定",
         "endDate": "未设定",
       }, {
-        "owner": "LiangDaJian",
+        "id": 3,
+        "owner": "user3",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
         "pirURL": "./img/index.jpg",
@@ -41,7 +42,8 @@ Page({
         "startDate": "未设定",
         "endDate": "未设定",
       }, {
-        "owner": "LiangDaJian",
+        "id": 4,
+        "owner": "user4",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
         "pirURL": "./img/index.jpg",
@@ -156,20 +158,34 @@ Page({
   },
   changeStartDate:function (e){
     //console.log(e.detail.value),
-    this.data.sItemBox[0].startDate=e.detail.value;
-    this.data.sItemBox[0].endDate = e.detail.value;
-    this.setData({
-      //startDate:e.detail.value
-      sItemBox:this.data.sItemBox,
-    });
-    console.log(this.data.sItemBox[0].startDate);
+    var Iid = e.currentTarget.dataset.id;
+    for(var i = 0;i < this.data.sItemBox.length;i++){
+      if(this.data.sItemBox[i].id=Iid){
+        console.log("Iid是"+Iid);
+        console.log("this.data.sItemBox[i]="+this.data.sItemBox[i]);
+        this.data.sItemBox[i].startDate=e.detail.value;
+        this.data.sItemBox[i].endDate=e.detail.value;
+        this.setData({
+          sItemBox:this.data.sItemBox,
+        })
+        console.log(this.data.sItemBox[i].startDate);
+        break;
+      }
+    }
 
   },
   changeEndDate: function (e) {
-    this.data.sItemBox[0].endDate = e.detail.value;
-    this.setData({
-      sItemBox: this.data.sItemBox,
-    })
+    var Iid = e.currentTarget.dataset.id;
+    for (var i = 0; i < this.data.sItemBox.length; i++) {
+      if (this.data.sItemBox[i].id = Iid) {
+        this.data.sItemBox[i].endDate = e.detail.value;
+        this.setData({
+          sItemBox: this.data.sItemBox,
+        })
+        console.log(this.data.sItemBox[i].endDate);
+        break;
+      }
+    }
   },
   onModifyClick:function (e){
     var Iid = e.currentTarget.dataset.id;
@@ -186,6 +202,45 @@ Page({
     });
     wx.navigateTo({
       url: '../modifyPage/modifyPage',
+    })
+  },
+  onResetClick:function(e){
+    var Iid = e.currentTarget.dataset.id;
+    console.log("Iid="+Iid);
+    var that = this;
+    for(var i=0;i<that.data.sItemBox.length;i++){
+      if(Iid==that.data.sItemBox[i].id){
+        that.data.sItemBox[i].startDate = "未设定";
+        that.data.sItemBox[i].endDate = "未设定";
+        that.setData({
+          sItemBox: that.data.sItemBox,
+        })
+      }
+    }
+    // console.log(item);
+  },
+  onEnterClick:function(e) {
+    var Iid = e.currentTarget.dataset.id;
+    console.log("Iid :"+Iid);
+    // console.log(this.data.sItemBox[0]);
+    var startTime = null;
+    var endTime =null;
+    for(var i=0;i<this.data.sItemBox.length;i++){
+      if(this.data.sItemBox[i].id==Iid) {
+        console.log(this.data.sItemBox[i]);
+        startTime = this.data.sIemBox[i].startDate;
+        endTime = this.data.sItemBox[i].endDate;
+      }
+    }
+    wx.showModal({
+      title: '提示',
+      content: '确认要提交吗，提交之后将不可修改',
+      success: function(e2) {
+        if(e2.confirm){
+          console.log("Send start time:"+startTime);
+          console.log("Send end time:" + endTime);
+        }
+      }
     })
   }
 })

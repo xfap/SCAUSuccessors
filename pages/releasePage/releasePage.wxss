@@ -158,6 +158,13 @@
   /* border: 1px solid red; */
 }
 
+.vItemContainer3{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 25rpx;
+}
+
 .vItemBtn{
   margin-bottom: 15rpx;
   width: 150rpx;
