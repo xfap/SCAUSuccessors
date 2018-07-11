@@ -74,9 +74,23 @@ Page({
       })
     };
   app.getAvailableTime();
-  if(this.data.modeId==1){
-    console.log("modeID=1");
-  }
+  var that = this;
+  wx.request({
+    url: getApp().globalData.serverhome,
+    data: {
+      stype: "browse",
+    },
+    success: function(res) {
+      console.log("onLoad res:" + res);
+      that.setData({
+        tempItem: res.data.content,
+      })
+      console.log(that.data.tempItem);
+      that.adapt();
+    },
+    fail: function(res) {},
+    complete: function(res) {},
+  })
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -96,25 +110,20 @@ Page({
     console.log("getApp().globalData.serverhome:" + getApp().globalData.serverhome);
     wx.request({
       url: getApp().globalData.serverhome,
-
       data: {
         stype: 'search',
         key: key,
       },
       success: function (res) {
         console.log("res:"+res);
+        console.log("resdatacontent:"+res.data.content);;
         that.setData({
-          modeId:1,
           tempItem:res.data.content,
         })
         that.adapt();
-        // this.setData({
-        //   modeId:1,
-        // })
-        // this.onLoad();
       },
       fail: function (res) {
-        console.log(res)
+        console.log("asdfasdfasdf"+res)
         // fail
       }
     })
