@@ -1,0 +1,2 @@
+﻿在app.js文件中加入了获取user_id的函数：getUserID()，可以直接调用获取
+默认user_id为用户昵称

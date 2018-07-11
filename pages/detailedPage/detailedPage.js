@@ -73,7 +73,7 @@ Page({
     wx.request({
       url: getApp().globalData.serverhome,
       stype: 'need',
-      need_time: util.formatTime(new Date()),
+      need_time: app.getAvailableTime(),
       user_id: 'openid',
       suc_id: 'suc_id'
     })
