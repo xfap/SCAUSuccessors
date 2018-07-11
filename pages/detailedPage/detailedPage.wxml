@@ -19,7 +19,7 @@
 
   <!--相关说明栏展示结束-->
   <view class='content-four'>
-    <button class='querenfabu-btn'>我想要</button>
+    <button class='querenfabu-btn' bindtap='wanted'>我想要</button>
     <!--我想要按钮展示结束-->
   </view>
 </view>
