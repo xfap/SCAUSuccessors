@@ -155,13 +155,12 @@ select mr,suc_id,suc_publish_time from
 /* 返回的数据：
             {
                 re_type:login，
-				username:"",
+                user_id:"",
+                username:"",
 				area_name:"",
 				dorm_name:"",
-                // //服务器在用户登录的时候，发送这连个flag
-				// comfirm_give_flag:"" //对应需求者，所有者是否同意给用户这个物品
-				// nedd_flag:""//对应于所有者，向所有者通知，在他离线的这段时间里，是否有人确认需要他的书
-                confirm_info:[
+                confirm_info:[//这个人 要的书 被 人 确认给
+                                //
                         {
                         suc_id:"",
                         user_id:"",
@@ -171,8 +170,9 @@ select mr,suc_id,suc_publish_time from
                         },
                         ...
                     ]
-                need_info:[
+                need_info:[这个人 物品  被人确认要
                             {user_id:"",   //需求者id
+                            owner:"",
                             suc_id:""     //物品id  //详细信息用suc_id STYPE=getInfo 获取
                             confirm_give_flag："",  //如果这个是1 则 用户已经确认并且填写了 空闲时间，就可以读取下面的时间，
                             //否则为0，用户已经同意，则把下面时间显示出来
@@ -400,7 +400,7 @@ select mr,suc_id,suc_publish_time from
 -- =============================confirmNeed======================================     
 -- TYPE:confirmNeed 
 -- 其他参数： 
-			-- user_id//所有者id
+			-- user_id//需要者id
 			-- suc_id//需要继承物品id
 			-- owner_spare_time_start
 			-- owner_spare_time_end
@@ -410,9 +410,8 @@ select mr,suc_id,suc_publish_time from
                 -- re_type:confirmNeed,
 				-- confirm_flag:"",//是否发送成功
 			-- }
-			update suc_request
-			set confirm_give_flag = 1
-			
+			--select confirm_give_flag from suc_request where suc_id=''
+            update suc_request set confirm_give_flag = 1 where suc_id=''
 			insert into suc_process(suc_id,owner_spare_time_start,owner_spare_time_end)
 				values('suc_id','owner_spare_time_start','owner_spare_time_end')
 			flag:代码判断是否抛出异常

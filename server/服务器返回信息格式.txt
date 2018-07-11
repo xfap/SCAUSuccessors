@@ -6,6 +6,36 @@
                 }
 我最终接收的形式是 192.168.253.1/successor/Listerner?stype=""&arg1=""&arg2=""&...
 
+
+总共的对服务器的请求操作：
+	public static final String HTTP_PARAMETER_TYPE_ADDRESS="address";
+	public static final String HTTP_PARAMETER_TYPE_browse="browse";
+	public static final String HTTP_PARAMETER_TYPE_browse_class="browse_class";
+	public static final String HTTP_PARAMETER_TYPE_browse_refresh="browse_refresh";
+	public static final String HTTP_PARAMETER_TYPE_first_login="first_login";
+	public static final String HTTP_PARAMETER_TYPE_login="login";
+	public static final String HTTP_PARAMETER_TYPE_login_confirm="login_confirm";
+	public static final String HTTP_PARAMETER_TYPE_getInfo="getInfo";
+	public static final String HTTP_PARAMETER_TYPE_browse_refresh_class="browse_refresh_class";
+	public static final String HTTP_PARAMETER_TYPE_search="search";
+	public static final String HTTP_PARAMETER_TYPE_upload="upload";
+	public static final String HTTP_PARAMETER_TYPE_delete="delete";
+	public static final String HTTP_PARAMETER_TYPE_modify="modify";
+	public static final String HTTP_PARAMETER_TYPE_need="need";
+	public static final String HTTP_PARAMETER_TYPE_confirmNeed="confirmNeed";
+	public static final String HTTP_PARAMETER_TYPE_haveGot="haveGot";
+	public static final String HTTP_PARAMETER_TYPE_haveGiven="haveGiven";
+	public static final String HTTP_PARAMETER_TYPE_upload_pic="upload_pic";
+	public static final String HTTP_PARAMETER_TYPE_modify_pic="modify_pic";
+    //询问我的 物品  被我 确认给的
+    public static final String HTTP_PARAMETER_TYPE_ask_confirm="ask_confirm";询问服务器是否 被所有者确认的
+    public static final String HTTP_PARAMETER_TYPE_ask_not_confirm="ask_not_confirm";还没有被确认的
+    public static final String HTTP_PARAMETER_TYPE_ask_appoint="ask_appoint";没有被预约的
+    public static final String HTTP_PARAMETER_TYPE_ask_not_appoint ="ask_not_appoint";被预约的
+
+
+
+
 ================================================================
                                4位年 2位月份 2位日 2位时 2位分 2位秒
 你们上传的时间的格式要写成，2018_07_05_09_17_55
@@ -131,6 +161,7 @@ TYPE:login
 返回的数据：
             {
                 re_type:login，
+                login_ok:true,
 				username:"",
 				area_name:"",
 				dorm_name:"",
@@ -215,8 +246,8 @@ TYPE:getInfo
 返回的数据：
             {
                 re_type:getInfo,
+                user_id:"",
                 suc_id:"",
-                username:"",
                 suc_title:"",
                 suc_intro:"",
                 suc_pic_url:"",
@@ -263,20 +294,21 @@ TYPE:upload
 返回的数据：
             {
                 re_type:upload,
-                suc_id:"",//上传该继承品的id
+                pic_name:"",//该继承品的图片名称，用于传输图片
 				upload_flag:"",//是否上传成功
 			}
 ============================upload=======================================   
 //文件 即图片的上传是用另一个方法上传的
 =============================upload_pic======================================     
-TYPE:upload 
+TYPE:upload_pic 
 其他参数： 
-            user_id
+            pic_name   //来自于上个方法的返回，该继承品的图片名称，用于传输图片
 *********************************************
 返回的数据：
             {
                 re_type:upload_pic,
 				upload_pic_flag:"",//是否上传成功
+                pic_url:""
 			}
 ============================upload_pic======================================= 
 
@@ -312,7 +344,7 @@ TYPE:modify
 ============================modify=======================================   
 //文件 即图片的上传是用另一个方法上传的
 =============================modify_pic======================================     
-TYPE:modify 
+TYPE:modify_pic 
 其他参数： 
             user_id
             scu_id
@@ -320,7 +352,7 @@ TYPE:modify
 返回的数据：
             {
                 re_type:modify_pic,
-				modify_pic_flag:"",//是否修改成功
+				modify_pic:"",//是否修改成功
 			}
 ============================modify_pic=======================================  
 
