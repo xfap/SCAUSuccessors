@@ -105,9 +105,9 @@ Page({
         console.log(res.data.content);
         that.setData({
           modeId:1,
-          tempItem:res.data.content
+          tempItem:res.data.content,
         })
-        that.onShow();
+        that.adapt();
         // this.setData({
         //   modeId:1,
         // })
@@ -130,7 +130,8 @@ Page({
   onShow:function(){
     console.log("onShow!");
     if(this.data.modeId==1) {
-      console.log(this.data.tempItem.length)
+      console.log(this.data.tempItem.length);
+
     }
   },
   onRefreshItem:function(){
@@ -142,19 +143,17 @@ Page({
     var that = this;
     var s = that.data.sItemBox;
     var t = that.data.tempItem;
-    for(var i=0;i<that.data.tempItem.length;i++){
+    var i=0;
+    for(;i<that.data.tempItem.length;i++){
       s[i].owner=t[i].USER_ID;
       s[i].uploadTime = t[i].SUC_PUBLISH_TIME;
-      s[i].objectName = t[i].SUC_PIC_URL;
-      s[i].pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.sub;
-
-      // this.setData({
-      //   s[1].owner: "LiangDaJian",
-      //   "uploadTime": "2018/7/6/16:51",
-      //   "objectName": "Book",
-      //   "pirURL": "./img/index.jpg",
-      //   "briefInfo":
-      // })
+      s[i].objectName = t[i].SUC_TITLE;
+      s[i].pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
+      s[i].briefInfo = t[i].SUC_INTRO;
+      that.setData({
+        sItemBox:that.data.sItemBox,
+      })
     }
+    that.onShow();
   }
 })
