@@ -102,7 +102,7 @@ Page({
         key: key,
       },
       success: function (res) {
-        console.log(res.data.content);
+        console.log("res:"+res);
         that.setData({
           modeId:1,
           tempItem:res.data.content,
@@ -143,17 +143,22 @@ Page({
     var that = this;
     var s = that.data.sItemBox;
     var t = that.data.tempItem;
-    var i=0;
-    for(;i<that.data.tempItem.length;i++){
-      s[i].owner=t[i].USER_ID;
-      s[i].uploadTime = t[i].SUC_PUBLISH_TIME;
-      s[i].objectName = t[i].SUC_TITLE;
-      s[i].pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
-      s[i].briefInfo = t[i].SUC_INTRO;
-      that.setData({
-        sItemBox:that.data.sItemBox,
-      })
+    var r = [];
+    for( let i = 0; i < that.data.tempItem.length ; i++ )
+    {
+      var t2 = new Object();
+        t2.owner = t[i].USERNAME;
+        t2.uploadTime = t[i].SUC_PUBLISH_TIME;
+        t2.objectName = t[i].SUC_TITLE;
+        t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
+        if (t[i].SUC_INTRO==null) t2.briefInfo = "这个人很懒，什么也没有写..............";
+        else t2.briefInfo = t[i].SUC_INTRO;
+        if (t2.briefInfo.length < 14) t2.briefInfo+=".....................................";
+        r.push(t2);
     }
+    that.setData({
+      sItemBox: r,
+    })
     that.onShow();
   }
 })
