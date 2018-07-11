@@ -7,21 +7,10 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
+    var that = this
     wx.login({
       success: function(res) {
-        var code = res.code
-        console.log('code:' + code)
-        var appID = 'wx6da19c06cdf13a16'                //自己的appID
-        var secret = 'dbfd6e796201bdf000e68a56a1224fbe' //在开发平台获取的secret
-        wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appID + '&secret=' + secret + '&js_code=' + code + '&grant_type=authorization_code',
-          success: function(res) {
-            var openid = res.data.openid
-            console.log('openid:' + openid)
-            getApp().globalData.user_id = openid
-            console.log('!!openid:' + getApp().globalData.user_id)
-          }
-        })
+        //console.log(that.getUserID())
       }
     })
     // 获取用户信息
@@ -33,7 +22,8 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
+              this.setUserID(res.userInfo.nickName)
+              console.log(this.getUserID())
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -44,6 +34,7 @@ App({
         }
       }
     })
+    console.log(this.globalData.userInfo)
   },
   globalData: {
     userInfo: null,
@@ -51,7 +42,7 @@ App({
     serverhome_successor: 'http://192.168.253.1:8089/successor',
     area_name: '',
     dorm_name: '',
-    user_id: ''
+    user_id : ''
   },
   getAvailableTime: function() {
     // var time = new Date().get;
@@ -70,5 +61,13 @@ App({
     var realDate = date.replace(/-/g, '_');
     console.log("the return time is :" + realDate);
     return realDate;
+  },
+
+  getUserID:function(){
+    return this.globalData.user_id
+  },
+
+  setUserID:function(name){
+    this.globalData.user_id = name
   }
 })

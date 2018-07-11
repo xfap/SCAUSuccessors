@@ -132,6 +132,7 @@ Page({
   },
 
   publish: function(e) {
+    console.log(app.getUserID())
     if (this.data.suc_title == '') {
       wx.showModal({
         title: '提示',
@@ -152,6 +153,7 @@ Page({
       url: this.data.url,
       data: {
         stype: 'upload',
+        user_id: 'openid',
         suc_title: this.data.suc_title,
         suc_intro: this.data.suc_intro,
         publish_time: nowtime //未测试的时间传送代码
