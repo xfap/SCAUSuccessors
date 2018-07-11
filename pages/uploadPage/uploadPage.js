@@ -153,15 +153,18 @@ Page({
       url: this.data.url,
       data: {
         stype: 'upload',
-        user_id: app.getUserID(),
+        //user_id: app.getUserID(),
+        user_id: 'test_usrid_1',
         suc_title: this.data.suc_title,
         suc_intro: this.data.suc_intro,
-        publish_time: nowtime //未测试的时间传送代码
+        suc_publish_time: nowtime //未测试的时间传送代码
       },
       success: function(res) {
         console.log(res)
+        console.log('flag：' + res.data.upload_flag)
         if (res.data.upload_flag) {
-          that.uploadPic(that, res.data.suc_id)
+          console.log('comein')
+          that.uploadPic(that, res.data.suc_id, res.data.pic_name)
         }
       },
       fail: function(res) {
@@ -171,7 +174,7 @@ Page({
 
   },
 
-  uploadPic: function(that, sucID) {
+  uploadPic: function(that, sucID, img_name) {
     wx.uploadFile({
       url: that.data.url,
       filePath: that.data.image,
@@ -187,7 +190,8 @@ Page({
         //测试key值需不需要加''
         stype: 'upload_pic',
         suc_id: sucID,
-        user_id: app.getUserID() //其他额外的formdata，可不写
+        //user_id: app.getUserID(), //其他额外的formdata，可不写
+        pic_name: img_name
       },
       success: function(res) {
         console.log(JSON.parse(res.data));
