@@ -116,40 +116,6 @@ insert into suc_request values('11','test_usrid_6',1,'20180709202512');
 insert into suc_request values('12','test_usrid_6',1,'20180709202545');
 insert into suc_request values('13','test_usrid_6',1,'20180709202512');
 insert into suc_request values('14','test_usrid_6',1,'20180711150723');
-
-insert into suc_request values('15','test_usrid_7',1,'20180709202512');
-insert into suc_request values('16','test_usrid_7',1,'20180709202545');
-insert into suc_request values('17','test_usrid_7',1,'20180709202512');
-insert into suc_request values('18','test_usrid_7',1,'20180711150723');
-
-insert into suc_request values('19','test_usrid_8',1,'20180709202512');
-insert into suc_request values('20','test_usrid_8',1,'20180709202545');
-insert into suc_request values('21','test_usrid_8',1,'20180709202512');
-insert into suc_request values('22','test_usrid_8',1,'20180711150723');
-
-insert into suc_request values('23','test_usrid_9',1,'20180709202512');
-insert into suc_request values('24','test_usrid_9',1,'20180709202545');
-insert into suc_request values('25','test_usrid_9',1,'20180709202512');
-insert into suc_request values('26','test_usrid_9',1,'20180711150723');
-
-insert into suc_request values('27','test_usrid_10',1,'20180709202512');
-insert into suc_request values('28','test_usrid_10',1,'20180709202545');
-insert into suc_request values('29','test_usrid_10',1,'20180709202512');
-insert into suc_request values('30','test_usrid_10',1,'20180711150723');
-
-insert into suc_request values('31','test_usrid_11',1,'20180709202512');
-insert into suc_request values('32','test_usrid_11',1,'20180709202545');
-insert into suc_request values('33','test_usrid_11',1,'20180709202512');
-insert into suc_request values('34','test_usrid_11',1,'20180711150723');
-
-insert into suc_request values('35','test_usrid_12',1,'20180709202512');
-insert into suc_request values('36','test_usrid_12',1,'20180709202545');
-insert into suc_request values('37','test_usrid_12',1,'20180709202512');
-insert into suc_request values('38','test_usrid_12',1,'20180711150723');
-
-insert into suc_request values('39','test_usrid_13',1,'20180709202512');
-insert into suc_request values('40','test_usrid_13',1,'20180709202545');
-insert into suc_request values('41','test_usrid_13',1,'20180709202512');
 insert into suc_request values('42','test_usrid_13',1,'20180711150723');
 --------------------------------suc_request---------------------------------------------
 

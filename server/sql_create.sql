@@ -60,8 +60,8 @@ CREATE TABLE successor(
 
 --设置自增长的触发器suc_id
 create sequence suc_id_seq increment by 1 start with 1;
-create or replace 
-    trigger trg_suc_stuff before insert on suc_stuff for each row 
-    begin 
-    select suc_id_seq.nextval into :new.suc_id from dual; 
-    end;
+-- create or replace 
+    -- trigger trg_suc_stuff before insert on suc_stuff for each row 
+    -- begin 
+    -- select suc_id_seq.nextval into :new.suc_id from dual; 
+    -- end;
