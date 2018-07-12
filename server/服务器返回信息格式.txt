@@ -27,11 +27,13 @@
 	public static final String HTTP_PARAMETER_TYPE_haveGiven="haveGiven";
 	public static final String HTTP_PARAMETER_TYPE_upload_pic="upload_pic";
 	public static final String HTTP_PARAMETER_TYPE_modify_pic="modify_pic";
-    //询问我的 物品  被我 确认给的
-    public static final String HTTP_PARAMETER_TYPE_ask_confirm="ask_confirm";询问服务器是否 被所有者确认的
-    public static final String HTTP_PARAMETER_TYPE_ask_not_confirm="ask_not_confirm";还没有被确认的
-    public static final String HTTP_PARAMETER_TYPE_ask_appoint="ask_appoint";没有被预约的
-    public static final String HTTP_PARAMETER_TYPE_ask_not_appoint ="ask_not_appoint";被预约的
+    
+    //add
+  	public static final String HTTP_PARAMETER_TYPE_my_request_confirmed = "my_request_confirmed";
+	public static final String HTTP_PARAMETER_TYPE_my_request_not_confirmed = "my_request_not_confirmed";
+	public static final String HTTP_PARAMETER_TYPE_my_suc_appointed = "my_suc_appointed";
+	public static final String HTTP_PARAMETER_TYPE_my_suc_not_appointed = "my_suc_not_appointed";
+	public static final String HTTP_PARAMETER_TYPE_my_suc_successing="my_suc_successing";
 
 
 
@@ -112,7 +114,7 @@ TYPE:browse_refresh
 返回的数据：
         {
         re_type:browse_refresh，
-        content:和上面一样，20条
+        content:和上面一样格式，20条
         }
 =============================browse_refresh===============================  
 =============================browse_refresh_class======================================     
@@ -373,7 +375,7 @@ TYPE:need
 =============================confirmNeed======================================     
 TYPE:confirmNeed 
 其他参数： 
-			user_id//所有者id
+			user_id//需要者id
 			suc_id//需要继承物品id
 			owner_spare_time_start
 			owner_spare_time_end
