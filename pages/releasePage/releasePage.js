@@ -5,19 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isAlready:true,
-    releasedContent:"hide",
-    unreleasedContent:"hide",
-    backgroundContent:"show",
-    getTime:"未设定",
-    dateTimeArray:null,
-    tempItem:null,
-    t1:null,
-    t2:null,
+    isAlready: true,
+    releasedContent: "hide",
+    unreleasedContent: "hide",
+    backgroundContent: "show",
+    getTime: "未设定",
+    dateTimeArray: null,
+    tempItem: null,
+    t1: null,
+    t2: null,
     // nowDate:null,
     sItemBox: [
       {
-        "objectId":1,
+        "objectId": 1,
         "owner": "user1",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -25,9 +25,11 @@ Page({
         "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒好看的！",
         "startDate": "未设定",
         "endDate": "未设定",
+        "word1":"重置",
+        "word2":"确定",
       },
       {
-        "objectId":2,
+        "objectId": 2,
         "owner": "user2",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -35,6 +37,8 @@ Page({
         "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒好看的！",
         "startDate": "未设定",
         "endDate": "未设定",
+        "word1": "重置",
+        "word2": "确定",
       }, {
         "objectId": 3,
         "owner": "user3",
@@ -44,6 +48,8 @@ Page({
         "briefInfo": "这本书炒鸡好看的！啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
         "startDate": "未设定",
         "endDate": "未设定",
+        "word1": "重置",
+        "word2": "确定",
       }, {
         "objectId": 4,
         "owner": "user4",
@@ -53,11 +59,13 @@ Page({
         "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡好看的！",
         "startDate": "未设定",
         "endDate": "未设定",
+        "word1": "重置",
+        "word2": "确定",
       },
     ],
     uItemBox: [
       {
-        "id":1,
+        "id": 1,
         "owner": "LiangDaJian",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -92,24 +100,29 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  requestItem: function () {
     var that = this;
     wx.request({
       url: getApp().globalData.serverhome,
-      data:{
-        stype:"ask_appoint",
-        user_id:"test_usrid_2",
+      data: {
+        stype: "ask_appoint",
+        user_id: "test_usrid_2",
       },
-      success:function(res){
+      success: function (res) {
         console.log("getData onLoad:" + res.data.content);
         that.setData({
-          tempItem:res.data.content,
+          tempItem: res.data.content,
         });
         that.adapt();
       }
     })
   },
-  adapt:function(e){
+
+  onLoad: function (options) {
+    var that = this;
+    that.requestItem();
+  },
+  adapt: function (e) {
     var that = this;
     var s = that.data.sItemBox;
     var t = that.data.tempItem;
@@ -123,6 +136,11 @@ Page({
       t2.startDate = "未设定";
       t2.endDate = "未设定";
       t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
+      t2.flag = 0;
+      if (t2.falg == 0) {
+        t2.word1 = "重置";
+        t2.word2 = "确定";
+      }
       if (t[i].SUC_INTRO == null) t2.briefInfo = "这个人很懒，什么也没有写..............";
       else t2.briefInfo = t[i].SUC_INTRO;
       if (t2.briefInfo.length < 14) t2.briefInfo += ".....................................";
@@ -131,84 +149,86 @@ Page({
     that.setData({
       sItemBox: r,
     })
-    // that.onShow();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    console.log("release onShow!!!!");
+    // that.requestItem();
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
 
-  onReleasedClick:function () {
+  onReleasedClick: function () {
     this.setData({
       releasedContent: "show",
       unreleasedContent: "hide",
-      backgroundContent:"hide",
+      backgroundContent: "hide",
     })
   },
 
-  onUneleasedClieck:function () {
+  onUneleasedClieck: function () {
     this.setData({
       releasedContent: "hide",
       unreleasedContent: "show",
-      backgroundContent:"hide"
+      backgroundContent: "hide"
     })
   },
-  changeStartDate:function (e){
+  changeStartDate: function (e) {
     //console.log(e.detail.value),
     var Iid = e.currentTarget.dataset.id;
-    for(var i = 0;i < this.data.sItemBox.length;i++){
-      if (this.data.sItemBox[i].objectId==Iid){
-        console.log("changeStartDate:Iid是"+Iid);
-        console.log("this.data.sItemBox[i]="+this.data.sItemBox[i]);
-        this.data.sItemBox[i].startDate=e.detail.value;
-        this.data.sItemBox[i].endDate=e.detail.value;
+    for (var i = 0; i < this.data.sItemBox.length; i++) {
+      if (this.data.sItemBox[i].objectId == Iid) {
+        console.log("changeStartDate:Iid是" + Iid);
+        console.log("this.data.sItemBox[i]=" + this.data.sItemBox[i]);
+        this.data.sItemBox[i].startDate = e.detail.value;
+        this.data.sItemBox[i].endDate = e.detail.value;
         this.setData({
-          sItemBox:this.data.sItemBox,
+          sItemBox: this.data.sItemBox,
         })
         console.log(this.data.sItemBox[i].startDate);
         break;
@@ -230,29 +250,29 @@ Page({
       }
     }
   },
-  onModifyClick:function (e){
+  onModifyClick: function (e) {
     var Iid = e.currentTarget.dataset.id;
     var item = this.data.uItemBox[Iid];
     console.log(item);
     wx.setStorage({
       key: 'modify2',
       data: {
-          objectName:item.objectName,
-          owner:item.owner,
-          pirUrl:item.pirURL,
-          uploadTime:item.uploadTime
+        objectName: item.objectName,
+        owner: item.owner,
+        pirUrl: item.pirURL,
+        uploadTime: item.uploadTime
       },
     });
     wx.navigateTo({
       url: '../modifyPage/modifyPage',
     })
   },
-  onResetClick:function(e){
+  onResetClick: function (e) {
     var Iid = e.currentTarget.dataset.id;
-    console.log("Iid="+Iid);
+    console.log("Iid=" + Iid);
     var that = this;
-    for(var i=0;i<that.data.sItemBox.length;i++){
-      if (Iid == that.data.sItemBox[i].objectId){
+    for (var i = 0; i < that.data.sItemBox.length; i++) {
+      if (Iid == that.data.sItemBox[i].objectId) {
         that.data.sItemBox[i].startDate = "未设定";
         that.data.sItemBox[i].endDate = "未设定";
         that.setData({
@@ -262,17 +282,17 @@ Page({
     }
     // console.log(item);
   },
-  onEnterClick:function(e) {
+  onEnterClick: function (e) {
     var Iid = e.currentTarget.dataset.id;
     console.log(e.currentTarget.dataset);
-    console.log("onEnterClick Iid :"+Iid);
+    console.log("onEnterClick Iid :" + Iid);
     // console.log(this.data.sItemBox[0]);
     var startTime;
     var endTime;
     var itemId;
     var owner;
-    for(var i=0;i<this.data.sItemBox.length;i++){
-      if (this.data.sItemBox[i].objectId==Iid) {
+    for (var i = 0; i < this.data.sItemBox.length; i++) {
+      if (this.data.sItemBox[i].objectId == Iid) {
         console.log(this.data.sItemBox[i]);
         startTime = this.data.sItemBox[i].startDate;
         endTime = this.data.sItemBox[i].endDate;
@@ -283,26 +303,26 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确认要提交吗',
-      success: function(e2) {
-        if(e2.confirm){
-          console.log("Send start time:"+startTime);
+      success: function (e2) {
+        if (e2.confirm) {
+          console.log("Send start time:" + startTime);
           console.log("Send end time:" + endTime);
-          startTime+="-00-00";
-          endTime+="-23-59";
-          startTime = startTime.replace(/-/g,'_');
-          endTime = endTime.replace(/-/g,'_');
-          console.log("startTime:"+startTime);
-          console.log("endTime:"+endTime);
+          startTime += "-00-00";
+          endTime += "-23-59";
+          startTime = startTime.replace(/-/g, '_');
+          endTime = endTime.replace(/-/g, '_');
+          console.log("startTime:" + startTime);
+          console.log("endTime:" + endTime);
           wx.request({
             url: getApp().globalData.serverhome,
-            data:{
-              stype:'confirmNeed',
-              user_id:owner,
-              SUC_ID:itemId,//不确定要不要转成字符串
-              OWNER_SPARE_TIME_START:startTime,
-              OWNER_SPARE_TIME_END:endTime,
+            data: {
+              stype: 'confirmNeed',
+              user_id: owner,
+              suc_id: itemId,//不确定要不要转成字符串
+              owner_spare_time_start: startTime,
+              owner_spare_time_end: endTime,
             },
-            success:function(res){
+            success: function (res) {
               console.log(res.data);
               wx.showToast({
                 title: '成功',
@@ -310,18 +330,21 @@ Page({
                 duration: 2000,
                 mask: true
               })
+              var that = this;
+              that.requestItem();
+              that.onLoad();
             }
           })
         }
       }
     })
   },
-  setFormatTime:function(time1,time2){
-    time1+="-00-00";
-    time2+="-00-00";
-    t1=time1;
-    t2=time2;
-    console.log("t1:"+t1);
-    console.log("t2:"+t2);
+  setFormatTime: function (time1, time2) {
+    time1 += "-00-00";
+    time2 += "-00-00";
+    t1 = time1;
+    t2 = time2;
+    console.log("t1:" + t1);
+    console.log("t2:" + t2);
   }
 })
