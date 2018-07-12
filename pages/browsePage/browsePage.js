@@ -156,7 +156,8 @@ Page({
     for( let i = 0; i < that.data.tempItem.length ; i++ )
     {
       var t2 = new Object();
-        t2.owner = t[i].USERNAME;
+        t2.objectId = t[i].SUC_ID;
+        t2.owner = t[i].USER_ID;
         t2.uploadTime = t[i].SUC_PUBLISH_TIME;
         t2.objectName = t[i].SUC_TITLE;
         t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
