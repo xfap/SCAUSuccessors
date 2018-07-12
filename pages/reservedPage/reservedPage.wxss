@@ -163,3 +163,11 @@
   color: white;
   background-color: #CC9933;
 }
+
+.vItemTime{
+  margin:40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

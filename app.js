@@ -53,7 +53,7 @@ App({
         })
         console.log(getApp().getUserID())
       }
-    }, 20000)
+    }, 60000)
   },
   globalData: {
     userInfo: null,

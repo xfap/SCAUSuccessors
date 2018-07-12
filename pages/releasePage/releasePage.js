@@ -25,8 +25,8 @@ Page({
         "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒好看的！",
         "startDate": "未设定",
         "endDate": "未设定",
-        "word1":"重置",
-        "word2":"确定",
+        "word1": "重置",
+        "word2": "确定",
       },
       {
         "objectId": 2,
@@ -109,14 +109,28 @@ Page({
         user_id: "test_usrid_2",
       },
       success: function (res) {
-        console.log("getData onLoad:" + res.data.content);
+        console.log("getData my_suc_appointed:" + res.data.content);
         console.log("getFlag:" + res.data.content[0].CONFIRM_GIVE_FLAG);
         that.setData({
           tempItem: res.data.content,
         });
         that.adapt();
       }
-    })
+    }),
+      wx.request({
+      url: getApp().globalData.serverhome,
+        data: ({
+          stype: "my_suc_not_appointed",
+          user_id: "test_usrid_3",
+        }),
+        success:function(res){
+          console.log("getData my_suc_not_appointed:" + res.data.content);
+          that.setData({
+            tempItem2: res.data.content,
+          });
+          that.adapt2();
+        }
+      })
   },
 
   onLoad: function (options) {
@@ -138,12 +152,12 @@ Page({
       t2.endDate = "未设定";
       t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
       t2.flag = t[i].CONFIRM_GIVE_FLAG;
-      console.log("t2.flag"+t2.flag);
+      console.log("t2.flag" + t2.flag);
       if (t2.flag == 0) {
         t2.word1 = "重置";
         t2.word2 = "确定";
       }
-      else if(t2.flag == 1){
+      else if (t2.flag == 1) {
         t2.word1 = "已预约";
         // t2.word2 = "已预约";
         t2.startDate = t[i].OWNER_SPARE_TIME_START;
@@ -156,6 +170,27 @@ Page({
     }
     that.setData({
       sItemBox: r,
+    })
+  },
+  adapt2:function(e){
+    var that = this;
+    var s = that.data.uItemBox;
+    var t = that.data.tempItem2;
+    var r = [];
+    for (let i = 0; i < that.data.tempItem2.length; i++) {
+      var t2 = new Object();
+      t2.objectId = t[i].SUC_ID;
+      t2.owner = t[i].USER_ID;
+      t2.uploadTime = t[i].SUC_PUBLISH_TIME;
+      t2.objectName = t[i].SUC_TITLE;
+      t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
+      if (t[i].SUC_INTRO == null) t2.briefInfo = "这个人很懒，什么也没有写..............";
+      else t2.briefInfo = t[i].SUC_INTRO;
+      if (t2.briefInfo.length < 14) t2.briefInfo += ".....................................";
+      r.push(t2);
+    }
+    that.setData({
+      uItemBox: r,
     })
   },
 
@@ -260,8 +295,13 @@ Page({
   },
   onModifyClick: function (e) {
     var Iid = e.currentTarget.dataset.id;
-    var item = this.data.uItemBox[Iid];
-    console.log(item);
+    var item;
+    for(var i = 0;i<this.data.uItemBox.length;i++){
+      if(Iid == this.data.uItemBox[i].objectId)
+        item = this.data.uItemBox[i];
+    }
+    console.log("Iid in onModifyClick:"+Iid);
+    console.log("item in onModifyClick"+item);
     wx.setStorage({
       key: 'modify2',
       data: {
@@ -269,7 +309,7 @@ Page({
         owner: item.owner,
         pirUrl: item.pirURL,
         uploadTime: item.uploadTime,
-        briefInfo:item.briefInfo
+        briefInfo: item.briefInfo
       },
     });
     wx.navigateTo({

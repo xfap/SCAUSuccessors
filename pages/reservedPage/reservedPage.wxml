@@ -19,8 +19,9 @@
               <text class='vItemName'>{{item.objectName}}</text>
               <text class='vItemTimeAndOwner'>{{item.uploadTime}},{{item.owner}}</text>
               <text class='vItemBrief'>{{item.briefInfo}}</text>
-              <view class='vItemContainer2'>
-                <button class='vItemBtn'>查看回复</button>
+              <view class='vItemTime'>
+                <text>开始：{{item.startDate}}</text>
+                <text>结束：{{item.endDate}}</text>
               </view>
             </view>
           </navigator>
