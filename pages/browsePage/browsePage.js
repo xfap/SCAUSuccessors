@@ -156,6 +156,7 @@ Page({
     for( let i = 0; i < that.data.tempItem.length ; i++ )
     {
       var t2 = new Object();
+        t2.objectId = t[i].SUC_ID;
         t2.owner = t[i].USERNAME;
         t2.uploadTime = t[i].SUC_PUBLISH_TIME;
         t2.objectName = t[i].SUC_TITLE;

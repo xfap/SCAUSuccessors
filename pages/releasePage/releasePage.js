@@ -11,6 +11,9 @@ Page({
     backgroundContent:"show",
     getTime:"未设定",
     dateTimeArray:null,
+    tempItem:null,
+    t1:null,
+    t2:null,
     // nowDate:null,
     sItemBox: [
       {
@@ -90,7 +93,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    wx.request({
+      url: getApp().globalData.serverhome,
+      data:{
+        stype:"ask_appoint",
+        user_id:"test_usrid_2",
+      },
+      success:function(res){
+        console.log("getData onLoad:" + res.data.content);
+        that.setData({
+          tempItem:res.data.content,
+        });
+        that.adapt();
+      }
+    })
+  },
+  adapt:function(e){
+    var that = this;
+    var s = that.data.sItemBox;
+    var t = that.data.tempItem;
+    var r = [];
+    for (let i = 0; i < that.data.tempItem.length; i++) {
+      var t2 = new Object();
+      t2.owner = t[i].USERNAME;
+      t2.uploadTime = t[i].SUC_PUBLISH_TIME;
+      t2.objectName = t[i].SUC_TITLE;
+      t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
+      if (t[i].SUC_INTRO == null) t2.briefInfo = "这个人很懒，什么也没有写..............";
+      else t2.briefInfo = t[i].SUC_INTRO;
+      if (t2.briefInfo.length < 14) t2.briefInfo += ".....................................";
+      r.push(t2);
+    }
+    that.setData({
+      sItemBox: r,
+    })
+    // that.onShow();
   },
 
   /**
@@ -242,26 +280,40 @@ Page({
         if(e2.confirm){
           console.log("Send start time:"+startTime);
           console.log("Send end time:" + endTime);
-          // wx.request({
-          //   url: getApp().globalData.serverhome,
-          //   data:{
-          //     stype:'confirmNeed',
-          //     SUC_ID:itemId,//不确定要不要转成字符串
-          //     OWNER_SPARE_TIME_START:startTime,
-          //     OWNER_SPARE_TIME_END:endTime,
-          //   },
-          //   success:function(res){
-          //     console.log(res.data);
-          //     wx.showToast({
-          //       title: '成功',
-          //       icon: 'success',
-          //       duration: 2000,
-          //       mask: true
-          //     })
-          //   }
-          // })
+          startTime+="-00-00";
+          endTime+="-00-00";
+          startTime.replace(/-/g,"_");
+          endTime.replace(/-/g,"_");
+          console.log("startTime:"+startTime);
+          console.log("endTime:"+endTime);
+          wx.request({
+            url: getApp().globalData.serverhome,
+            data:{
+              stype:'confirmNeed',
+              SUC_ID:itemId,//不确定要不要转成字符串
+              OWNER_SPARE_TIME_START:t1,
+              OWNER_SPARE_TIME_END:t2,
+            },
+            success:function(res){
+              console.log(res.data);
+              wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 2000,
+                mask: true
+              })
+            }
+          })
         }
       }
     })
+  },
+  setFormatTime:function(time1,time2){
+    time1+="-00-00";
+    time2+="-00-00";
+    t1=time1;
+    t2=time2;
+    console.log("t1:"+t1);
+    console.log("t2:"+t2);
   }
 })

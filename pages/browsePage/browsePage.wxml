@@ -14,7 +14,7 @@
           <view class='vRibbonContainer'>
                 <image src='./img/orangeRibbon.png' class='ribbonSet'></image>
           </view>
-          <navigator class='nItem' url='../detailedPage/detailedPage?&objectName={{item.objectName}}&pirUrl={{item.pirURL}}&uploadTime={{item.uploadTime}}&owner={{item.owner}}&briefInfo={{item.briefInfo}}' >
+          <navigator class='nItem' url='../detailedPage/detailedPage?&objectName={{item.objectName}}&pirUrl={{item.pirURL}}&uploadTime={{item.uploadTime}}&owner={{item.owner}}&briefInfo={{item.briefInfo}}&objectId={{item.objectId}}' >
             <view class='sPic'>
               <image src="{{item.pirURL}}" class="iPic"></image>
             </view>
