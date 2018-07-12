@@ -31,7 +31,7 @@ Page({
       url: this.data.url,
       data: {
         stype: 'address',
-        user_id: getApp().globalData.serverhome,
+        user_id: getApp().getUserID(),
         area_name: this.data.address,
         dorm_name: this.data.room
       },

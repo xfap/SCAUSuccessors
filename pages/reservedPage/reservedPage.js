@@ -81,7 +81,7 @@ Page({
       url: getApp().globalData.serverhome,
       data: {
         stype: "my_request_confirmed",
-        user_id: "test_usrid_4",
+        user_id: getApp().getUserID(),
       },
       success: function (res) {
         console.log("getData onLoad:" + res.data.content);
@@ -96,7 +96,7 @@ Page({
       url: getApp().globalData.serverhome,
       data: {
         stype: "my_request_not_confirmed",
-        user_id: "test_usrid_3",
+        user_id: getApp().getUserID(),
       },
       success: function (res) {
         console.log("getDtat my_request_not_confirmed:" + res.data.content);

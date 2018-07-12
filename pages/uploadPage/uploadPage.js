@@ -153,8 +153,7 @@ Page({
       url: this.data.url,
       data: {
         stype: 'upload',
-        //user_id: app.getUserID(),
-        user_id: 'your_dady',
+        user_id: app.getUserID(),
         suc_title: this.data.suc_title,
         suc_intro: this.data.suc_intro,
         suc_publish_time: nowtime //未测试的时间传送代码
@@ -175,6 +174,7 @@ Page({
   },
 
   uploadPic: function(that, sucID, img_name) {
+    var that = this
     wx.uploadFile({
       url: that.data.url,
       filePath: that.data.image,
@@ -200,6 +200,12 @@ Page({
           icon: 'success',
           duration: 2000,
           mask: true
+        })
+        that.setData({
+          image: 'shch.png',
+          img_class: 'sender-photo',
+          suc_title: '',
+          suc_intro: '',
         })
         setTimeout(function() {
           wx.switchTab({

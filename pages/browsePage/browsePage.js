@@ -17,8 +17,7 @@ Page({
     selected3: "btClass",
     selected4: "btClass",
     selected5: "btClass",
-    sItemBox: [
-      {
+    sItemBox: [{
         "owner": "LiangDaJian",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -47,12 +46,12 @@ Page({
     ]
   },
   //事件处理函数
-  bindViewTap: function () {
+  bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function() {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -86,7 +85,7 @@ Page({
       data: {
         stype: "browse",
       },
-      success: function (res) {
+      success: function(res) {
         console.log("onLoad res:" + res);
         that.setData({
           tempItem: res.data.content,
@@ -94,11 +93,11 @@ Page({
         console.log(that.data.tempItem);
         that.adapt();
       },
-      fail: function (res) { },
-      complete: function (res) { },
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -106,10 +105,10 @@ Page({
       hasUserInfo: true
     })
   },
-  onItemClick: function (e) {
+  onItemClick: function(e) {
 
   },
-  onSearchClick: function (e) {
+  onSearchClick: function(e) {
     var that = this;
     var key = this.data.keyword;
     console.log("keyword is :" + key);
@@ -120,7 +119,7 @@ Page({
         stype: 'search',
         key: key,
       },
-      success: function (res) {
+      success: function(res) {
         console.log("res:" + res);
         console.log("resdatacontent:" + res.data.content);;
         that.setData({
@@ -128,13 +127,13 @@ Page({
         })
         that.adapt();
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("asdfasdfasdf" + res)
         // fail
       }
     })
   },
-  onKeyWordChanged: function (e) {
+  onKeyWordChanged: function(e) {
     console.log(e.detail.value);
     var value = e.detail.value;
     this.setData({
@@ -142,19 +141,19 @@ Page({
     })
     this.onRefreshItem()
   },
-  onShow: function () {
+  onShow: function() {
     console.log("onShow!");
     if (this.data.modeId == 1) {
       console.log(this.data.tempItem.length);
 
     }
   },
-  onRefreshItem: function () {
+  onRefreshItem: function() {
     console.log("refresh");
     console.log(this.data.tempItem)
     // this.onLoad();
   },
-  adapt: function () {
+  adapt: function() {
     var that = this;
     var s = that.data.sItemBox;
     var t = that.data.tempItem;
@@ -176,7 +175,7 @@ Page({
     })
     that.onShow();
   },
-  changeClass: function (e) {
+  changeClass: function(e) {
     // objectClass = "all";
     var that = this;
     console.log("objectClass = " + e.currentTarget.dataset.classs);
@@ -190,7 +189,7 @@ Page({
         stype: "browse_class",
         suc_class: that.data.objectClass,
       },
-      success: function (res) {
+      success: function(res) {
         console.log("onBrowse_class:" + res);
         that.setData({
           tempItem: res.data.content,
@@ -200,7 +199,7 @@ Page({
       }
     })
   },
-  changeSelectedTag: function (e) {
+  changeSelectedTag: function(e) {
     if (this.data.objectClass == "") {
       this.setData({
         selected1: "selected",
@@ -209,8 +208,7 @@ Page({
         selected4: "btClass",
         selected5: "btClass",
       })
-    }
-    else if (this.data.objectClass == "数码") {
+    } else if (this.data.objectClass == "数码") {
       this.setData({
         selected1: "btClass",
         selected2: "selected",
@@ -218,8 +216,7 @@ Page({
         selected4: "btClass",
         selected5: "btClass",
       })
-    }
-    else if (this.data.objectClass == "书籍") {
+    } else if (this.data.objectClass == "书籍") {
       this.setData({
         selected1: "btClass",
         selected2: "btClass",
@@ -227,8 +224,7 @@ Page({
         selected4: "btClass",
         selected5: "btClass",
       })
-    }
-    else if (this.data.objectClass == "文具") {
+    } else if (this.data.objectClass == "文具") {
       this.setData({
         selected1: "btClass",
         selected2: "btClass",
@@ -236,8 +232,7 @@ Page({
         selected4: "selected",
         selected5: "btClass",
       })
-    }
-    else if (this.data.objectClass == "生活用品") {
+    } else if (this.data.objectClass == "生活用品") {
       this.setData({
         selected1: "btClass",
         selected2: "btClass",
@@ -246,5 +241,26 @@ Page({
         selected5: "selected",
       })
     }
-  }
+  },
+
+  onPullDownRefresh: function() {
+    var that = this
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    wx.showNavigationBarLoading();
+    wx.request({
+      url: getApp().globalData.serverhome,
+      data: {
+        stype: 'browse'
+      },
+      success: function(res) {
+        that.setData({
+          tempItem: res.data.content,
+        })
+        console.log('下拉刷新：' + that.data.tempItem);
+        that.adapt();
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+      }
+    })
+  },
 })

@@ -197,7 +197,7 @@ Page({
         //测试key值需不需要加''
         stype: 'upload_pic',
         suc_id: '111',
-        user_id: '1111' //其他额外的formdata，可不写
+        user_id: getApp().getUserID(),
       },
       success: function (res) {
         console.log(JSON.parse(res.data));

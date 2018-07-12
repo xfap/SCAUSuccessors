@@ -107,7 +107,7 @@ Page({
       url: getApp().globalData.serverhome,
       data: {
         stype: "my_suc_appointed",
-        user_id: "test_usrid_2",
+        user_id: getApp().getUserID(),
       },
       success: function (res) {
         console.log("getData my_suc_appointed:" + res.data.content);
@@ -122,7 +122,7 @@ Page({
       url: getApp().globalData.serverhome,
         data: ({
           stype: "my_suc_not_appointed",
-          user_id: "test_usrid_3",
+          user_id: getApp().getUserID(),
         }),
         success:function(res){
           console.log("getData my_suc_not_appointed:" + res.data.content);
