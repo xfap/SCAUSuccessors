@@ -72,10 +72,18 @@ Page({
   wanted: function() {
     wx.request({
       url: getApp().globalData.serverhome,
-      stype: 'need',
-      need_time: app.getAvailableTime(),
-      user_id: 'openid',
-      suc_id: 'suc_id'
+      data: {
+        stype: 'need',
+        need_time: app.getAvailableTime(),
+        user_id: getApp().globalData.serverhome,
+        suc_id: 'suc_id'
+      },
+      success: function(res) {
+        wx.showToast({
+          title: '发送成功',
+          icon: 'success'
+        })
+      }
     })
   },
   /**

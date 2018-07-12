@@ -31,31 +31,30 @@ Page({
       url: this.data.url,
       data: {
         stype: 'address',
-        user_id: '10001',
+        user_id: getApp().globalData.serverhome,
         area_name: this.data.address,
         dorm_name: this.data.room
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 2000,
+          mask: true
+        })
+        setTimeout(function() {
+          wx.navigateBack({
+            changed: true
+          })
+        }, 2000)
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(res)
         // fail
       }
     })
     console.log('testing')
-    wx.showToast({
-      title: '成功',
-      icon: 'success',
-      duration: 2000,
-      mask: true
-    })
-    setTimeout(function() {
-      wx.navigateBack({
-        changed: true
-      })
-    }, 2000)
-
   },
 
   inAddress: function(e) {

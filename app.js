@@ -23,7 +23,7 @@ App({
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               this.setUserID(res.userInfo.nickName)
-              console.log(this.getUserID())
+              //console.log(this.getUserID())
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -36,12 +36,24 @@ App({
     })
     console.log(this.globalData.userInfo)
     setInterval(function() {
-      wx.request({
-        url: getApp().globalData.serverhome,
-        stype: 'login',
-        user_id: getApp().getUserID()
-      })
-    }, 2000)
+      if (getApp().getUserID()) {
+        wx.request({
+          url: getApp().globalData.serverhome,
+          data: {
+            stype: 'login',
+            user_id: getApp().getUserID()
+          },
+          success: function(res) {
+            console.log('success：' + res)
+            console.log(res.data)
+          },
+          fail: function(res) {
+            console.log('fail：' + res)
+          }
+        })
+        console.log(getApp().getUserID())
+      }
+    }, 20000)
   },
   globalData: {
     userInfo: null,
@@ -49,7 +61,7 @@ App({
     serverhome_successor: 'http://192.168.253.1:8089/successor',
     area_name: '',
     dorm_name: '',
-    user_id: ''
+    user_id: null
   },
   getAvailableTime: function() {
     // var time = new Date().get;
