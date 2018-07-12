@@ -14,6 +14,7 @@ Page({
     img_class: 'sender-photo',
     suc_title: '',
     suc_intro: '',
+    suc_class: '',
     url: getApp().globalData.serverhome
   },
 
@@ -86,13 +87,13 @@ Page({
 
   biaotiinput: function(e) {
     this.data.suc_title = e.detail.value
-    console.log(this.data.suc_title)
   },
   miaoshuinput: function(e) {
     this.data.suc_intro = e.detail.value
-    console.log(this.data.suc_intro)
   },
-
+  classifyinput: function(e) {
+    this.data.suc_class = e.detail.value
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -156,6 +157,7 @@ Page({
         user_id: app.getUserID(),
         suc_title: this.data.suc_title,
         suc_intro: this.data.suc_intro,
+        suc_class: this.data.suc_class,
         suc_publish_time: nowtime //未测试的时间传送代码
       },
       success: function(res) {
@@ -206,7 +208,9 @@ Page({
           img_class: 'sender-photo',
           suc_title: '',
           suc_intro: '',
+          suc_class: ''
         })
+        getApp().globalData.is_published = true
         setTimeout(function() {
           wx.switchTab({
             url: '../browsePage/browsePage',

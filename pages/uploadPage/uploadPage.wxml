@@ -2,25 +2,31 @@
 <form>
   <view class="content">
     <view class='content-one'>
-      <image class='sender-touxiang' src='{{userInfo.avatarUrl}}'  mode="cover"></image>
+      <image class='sender-touxiang' src='{{userInfo.avatarUrl}}' mode="cover"></image>
       <view class='yonghu-name' type="text">{{userInfo.nickName}}</view>
     </view>
-<!--用户信息展示结束-->
+    <!--用户信息展示结束-->
 
-  <view class='content-two'>
-    <image class='{{img_class}}' src='{{image}}' mode='aspectFit' bindtap='bindChooiceProduct'></image>
+    <view class='content-two'>
+      <image class='{{img_class}}' src='{{image}}' mode='aspectFit' bindtap='bindChooiceProduct'></image>
+    </view>
+    <!--添加图片展示结束-->
+    <view class='content-three'>
+      <view class='jianjielan' type="text">简介栏</view>
+      <view>
+        <view class='biaoti'>标题：</view>
+        <input class="biaotitishi" type='text' placeholder="请输入继承品名称" bindinput='biaotiinput'>{{suc_title}}</input>
+      </view>
+      <view>
+        <view class='classify'>类别：</view>
+        <input class="classify-tip" type='text' placeholder="请输入继承品类别" bindinput='classifyinput'>{{suc_class}}</input>
+      </view>
+      <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）" bindinput='miaoshuinput'>{{suc_intro}}</textarea>
+    </view>
+    <!--简介栏展示结束-->
+    <view class='content-four'>
+      <button class='querenfabu-btn' bindtap='publish'>确认发布</button>
+      <!--确认发布按钮展示结束-->
+    </view>
   </view>
-<!--添加图片展示结束-->
-   <view class='content-three'>
-    <view class='jianjielan' type="text">简介栏</view>
-  <view class='biaoti'>标题：</view>
-    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了" bindinput='biaotiinput'>{{suc_title}}</input>
-   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）" bindinput='miaoshuinput'>{{suc_intro}}</textarea>
-  </view>
-<!--简介栏展示结束-->
-     <view class='content-four'>
-    <button class='querenfabu-btn' bindtap='publish'>确认发布</button>
-<!--确认发布按钮展示结束-->
-  </view>  
-</view>
 </form>

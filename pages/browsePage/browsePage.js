@@ -142,10 +142,28 @@ Page({
     this.onRefreshItem()
   },
   onShow: function() {
-    console.log("onShow!");
     if (this.data.modeId == 1) {
-      console.log(this.data.tempItem.length);
-
+      //console.log(this.data.tempItem.length);
+    }
+    if (getApp().globalData.is_published) {
+      getApp().globalData.is_published = false
+      wx.showNavigationBarLoading() //在标题栏中显示加载
+      var that = this
+      wx.request({
+        url: getApp().globalData.serverhome,
+        data: {
+          stype: 'browse'
+        },
+        success: function(res) {
+          that.setData({
+            tempItem: res.data.content,
+          })
+          //console.log('自动刷新：' + that.data.tempItem);
+          that.adapt();
+          wx.hideNavigationBarLoading() //完成停止加载
+          wx.stopPullDownRefresh() //停止下拉刷新
+        }
+      })
     }
   },
   onRefreshItem: function() {
@@ -246,7 +264,6 @@ Page({
   onPullDownRefresh: function() {
     var that = this
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    wx.showNavigationBarLoading();
     wx.request({
       url: getApp().globalData.serverhome,
       data: {
@@ -256,7 +273,6 @@ Page({
         that.setData({
           tempItem: res.data.content,
         })
-        console.log('下拉刷新：' + that.data.tempItem);
         that.adapt();
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新

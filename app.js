@@ -61,7 +61,8 @@ App({
     serverhome_successor: 'http://192.168.253.1:8089/successor',
     area_name: '',
     dorm_name: '',
-    user_id: null
+    user_id: null,
+    is_published : false
   },
   getAvailableTime: function() {
     // var time = new Date().get;

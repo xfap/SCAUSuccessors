@@ -75,6 +75,17 @@
   float: left;
 }
 
+.classify{
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+  float: left;
+}
+
 .biaotitishi {
   margin-left: 120rpx;
+}
+
+.classify-tip{
+  margin-left: 120rpx;
+  margin-top: 10rpx;
 }
