@@ -384,7 +384,7 @@ Page({
               })
               var that = this;
               that.requestItem();
-              that.onLoad();
+              
             }
           })
         }
