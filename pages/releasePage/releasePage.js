@@ -105,11 +105,12 @@ Page({
     wx.request({
       url: getApp().globalData.serverhome,
       data: {
-        stype: "ask_appoint",
+        stype: "my_suc_appointed",
         user_id: "test_usrid_2",
       },
       success: function (res) {
         console.log("getData onLoad:" + res.data.content);
+        console.log("getFlag:" + res.data.content[0].CONFIRM_GIVE_FLAG);
         that.setData({
           tempItem: res.data.content,
         });
@@ -136,10 +137,17 @@ Page({
       t2.startDate = "未设定";
       t2.endDate = "未设定";
       t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
-      t2.flag = 0;
-      if (t2.falg == 0) {
+      t2.flag = t[i].CONFIRM_GIVE_FLAG;
+      console.log("t2.flag"+t2.flag);
+      if (t2.flag == 0) {
         t2.word1 = "重置";
         t2.word2 = "确定";
+      }
+      else if(t2.flag == 1){
+        t2.word1 = "已预约";
+        // t2.word2 = "已预约";
+        t2.startDate = t[i].OWNER_SPARE_TIME_START;
+        t2.endDate = t[i].OWNER_SPARE_TIME_END;
       }
       if (t[i].SUC_INTRO == null) t2.briefInfo = "这个人很懒，什么也没有写..............";
       else t2.briefInfo = t[i].SUC_INTRO;
@@ -260,7 +268,8 @@ Page({
         objectName: item.objectName,
         owner: item.owner,
         pirUrl: item.pirURL,
-        uploadTime: item.uploadTime
+        uploadTime: item.uploadTime,
+        briefInfo:item.briefInfo,
       },
     });
     wx.navigateTo({
