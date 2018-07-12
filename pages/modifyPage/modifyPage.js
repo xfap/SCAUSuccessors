@@ -9,7 +9,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     productInfo: {},
-    image: 'shch.png',
+    image: '',
     img_class: 'sender-photo',
     suc_title: '',
     suc_intro: '',
@@ -45,7 +45,26 @@ Page({
           })
         }
       })
-    }
+    };
+    var that = this;
+    wx.getStorage({
+      key: 'modify2',
+      success: function (res) {
+        console.log(res.data)
+        console.log(res.data.pirUrl)
+        console.log(res.data.objectName)
+        console.log(res.data.briefInfo)
+        // objectName
+        // owner
+        that.setData({ 
+          image:res.data.pirUrl,
+          suc_title: res.data.objectName,
+          suc_intro: res.data.briefInfo
+          })
+
+        // uploadTime
+      }
+    })
   },
   getUserInfo: function (e) { //微信头像
     console.log(e)

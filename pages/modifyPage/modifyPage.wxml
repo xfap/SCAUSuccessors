@@ -13,12 +13,12 @@
    <view class='content-three'>
     <view class='jianjielan' type="text">简介栏</view>
   <view class='biaoti'>标题：</view>
-    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了" bindinput='biaotiinput'>{{suc_title}}</input>
-   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）" bindinput='miaoshuinput'>{{suc_intro}}</textarea>
+    <input class="biaotitishi" type='text'  placeholder="请尽量简洁明了" bindinput='biaotiinput' value='{{suc_title}}'></input>
+   <textarea class='jianjielantishi' placeholder="在这里描述一下你的宝贝吧，如长相，历史，故事，继承原因等（500字以内）" bindinput='miaoshuinput' value="{{suc_intro}}"></textarea>
   </view>
 <!--简介栏展示结束-->
      <view class='content-four'>
-    <button class='querenfabu-btn' bindtap='publish'>确认发布</button>
+    <button class='querenfabu-btn' bindtap='publish'>确认修改</button>
 <!--确认发布按钮展示结束-->
   </view>  
 </view>
