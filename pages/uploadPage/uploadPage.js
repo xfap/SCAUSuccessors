@@ -154,7 +154,7 @@ Page({
       data: {
         stype: 'upload',
         //user_id: app.getUserID(),
-        user_id: 'test_usrid_1',
+        user_id: 'your_dady',
         suc_title: this.data.suc_title,
         suc_intro: this.data.suc_intro,
         suc_publish_time: nowtime //未测试的时间传送代码
