@@ -12,6 +12,11 @@ Page({
     modeId: 0,
     tempItem: null,
     objectClass: "",
+    selected1: "selected",
+    selected2: "btClass",
+    selected3: "btClass",
+    selected4: "btClass",
+    selected5: "btClass",
     sItemBox: [
       {
         "owner": "LiangDaJian",
@@ -174,17 +179,18 @@ Page({
   changeClass: function (e) {
     // objectClass = "all";
     var that = this;
-    console.log("objectClass = "+e.currentTarget.dataset.classs);
+    console.log("objectClass = " + e.currentTarget.dataset.classs);
     that.setData({
       objectClass: e.currentTarget.dataset.classs
     });
+    this.changeSelectedTag();
     wx.request({
       url: getApp().globalData.serverhome,
-      data:{
-        stype:"browse_class",
-        suc_class:that.data.objectClass,
+      data: {
+        stype: "browse_class",
+        suc_class: that.data.objectClass,
       },
-      success:function(res){
+      success: function (res) {
         console.log("onBrowse_class:" + res);
         that.setData({
           tempItem: res.data.content,
@@ -193,5 +199,52 @@ Page({
         that.adapt();
       }
     })
+  },
+  changeSelectedTag: function (e) {
+    if (this.data.objectClass == "") {
+      this.setData({
+        selected1: "selected",
+        selected2: "btClass",
+        selected3: "btClass",
+        selected4: "btClass",
+        selected5: "btClass",
+      })
+    }
+    else if (this.data.objectClass == "数码") {
+      this.setData({
+        selected1: "btClass",
+        selected2: "selected",
+        selected3: "btClass",
+        selected4: "btClass",
+        selected5: "btClass",
+      })
+    }
+    else if (this.data.objectClass == "书籍") {
+      this.setData({
+        selected1: "btClass",
+        selected2: "btClass",
+        selected3: "selected",
+        selected4: "btClass",
+        selected5: "btClass",
+      })
+    }
+    else if (this.data.objectClass == "文具") {
+      this.setData({
+        selected1: "btClass",
+        selected2: "btClass",
+        selected3: "btClass",
+        selected4: "selected",
+        selected5: "btClass",
+      })
+    }
+    else if (this.data.objectClass == "生活用品") {
+      this.setData({
+        selected1: "btClass",
+        selected2: "btClass",
+        selected3: "btClass",
+        selected4: "btClass",
+        selected5: "selected",
+      })
+    }
   }
 })

@@ -6,11 +6,11 @@
       <button class='bSearch' data-keyword="{{keyword}}" bindtap='onSearchClick'>搜一搜</button>
     </view>
     <view class='bTopBar2'>
-      <button bindtap='changeClass' data-classs="">所有</button>
-      <button bindtap='changeClass' data-classs="数码">数码</button>
-      <button bindtap='changeClass' data-classs="书籍">书籍</button>
-      <button bindtap='changeClass' data-classs="文具">文具</button>
-      <button bindtap='changeClass' data-classs="生活用品">生活用品</button>
+      <button bindtap='changeClass' data-classs="" class='{{selected1}}'>所有</button>
+      <button bindtap='changeClass' data-classs="数码" class='{{selected2}}'>数码</button>
+      <button bindtap='changeClass' data-classs="书籍" class='{{selected3}}'>书籍</button>
+      <button bindtap='changeClass' data-classs="文具" class='{{selected4}}'>文具</button>
+      <button bindtap='changeClass' data-classs="生活用品" class='{{selected5}}'>生活用品</button>
     </view>
   </view>
   <view>

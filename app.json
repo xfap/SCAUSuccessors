@@ -19,7 +19,7 @@
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#FFff99",
+    "selectedColor": "#FFCC99",
     "list": [
       {
         "pagePath": "pages/browsePage/browsePage",

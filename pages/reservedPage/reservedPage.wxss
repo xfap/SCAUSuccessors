@@ -171,3 +171,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.vis{
+  visibility: visible;
+}
+
+.invis{
+  visibility: hidden;
+}

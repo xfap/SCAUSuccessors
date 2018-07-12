@@ -33,7 +33,7 @@
                 </picker>
                 <view class='vItemContainer3'>
                   <button class='vItemBtn' bindtap='onResetClick' data-id='{{item.objectId}}'>{{item.word1}}</button>
-                  <button class='vItemBtn' bindtap='onEnterClick' data-id='{{item.objectId}}'>{{item.word2}}</button>
+                  <button class='vItemBtn {{item.isVisible}}' bindtap='onEnterClick' data-id='{{item.objectId}}'>{{item.word2}}</button>
                 </view>
               </view>
             </view>

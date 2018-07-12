@@ -10,6 +10,7 @@ Page({
     unreleasedContent: "hide",
     backgroundContent: "show",
     getTime: "未设定",
+    isVisible:"vis",
     dateTimeArray: null,
     tempItem: null,
     t1: null,
@@ -156,9 +157,11 @@ Page({
       if (t2.flag == 0) {
         t2.word1 = "重置";
         t2.word2 = "确定";
+        t2.isvisible="vis";
       }
       else if (t2.flag == 1) {
         t2.word1 = "已预约";
+        t2.isvisible="invis";
         // t2.word2 = "已预约";
         t2.startDate = t[i].OWNER_SPARE_TIME_START;
         t2.endDate = t[i].OWNER_SPARE_TIME_END;
