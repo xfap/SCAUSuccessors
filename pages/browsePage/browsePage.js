@@ -8,16 +8,17 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    keyword:"",
-    modeId:0,
-    tempItem:null,
-    sItemBox:[
+    keyword: "",
+    modeId: 0,
+    tempItem: null,
+    objectClass: "",
+    sItemBox: [
       {
-        "owner":"LiangDaJian",
-        "uploadTime":"2018/7/6/16:51",
-        "objectName":"Book",
-        "pirURL":"./img/index.jpg",
-        "briefInfo":"这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒好看的！"
+        "owner": "LiangDaJian",
+        "uploadTime": "2018/7/6/16:51",
+        "objectName": "Book",
+        "pirURL": "./img/index.jpg",
+        "briefInfo": "这本书炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒鸡炒好看的！"
       },
       {
         "owner": "LiangDaJian",
@@ -41,7 +42,7 @@ Page({
     ]
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -52,7 +53,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -73,26 +74,26 @@ Page({
         }
       })
     };
-  app.getAvailableTime();
-  var that = this;
-  wx.request({
-    url: getApp().globalData.serverhome,
-    data: {
-      stype: "browse",
-    },
-    success: function(res) {
-      console.log("onLoad res:" + res);
-      that.setData({
-        tempItem: res.data.content,
-      })
-      console.log(that.data.tempItem);
-      that.adapt();
-    },
-    fail: function(res) {},
-    complete: function(res) {},
-  })
+    app.getAvailableTime();
+    var that = this;
+    wx.request({
+      url: getApp().globalData.serverhome,
+      data: {
+        stype: "browse",
+      },
+      success: function (res) {
+        console.log("onLoad res:" + res);
+        that.setData({
+          tempItem: res.data.content,
+        })
+        console.log(that.data.tempItem);
+        that.adapt();
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -100,13 +101,13 @@ Page({
       hasUserInfo: true
     })
   },
-  onItemClick:function(e){
+  onItemClick: function (e) {
 
   },
-  onSearchClick:function(e){
+  onSearchClick: function (e) {
     var that = this;
     var key = this.data.keyword;
-    console.log("keyword is :"+key);
+    console.log("keyword is :" + key);
     console.log("getApp().globalData.serverhome:" + getApp().globalData.serverhome);
     wx.request({
       url: getApp().globalData.serverhome,
@@ -115,60 +116,82 @@ Page({
         key: key,
       },
       success: function (res) {
-        console.log("res:"+res);
-        console.log("resdatacontent:"+res.data.content);;
+        console.log("res:" + res);
+        console.log("resdatacontent:" + res.data.content);;
         that.setData({
-          tempItem:res.data.content,
+          tempItem: res.data.content,
         })
         that.adapt();
       },
       fail: function (res) {
-        console.log("asdfasdfasdf"+res)
+        console.log("asdfasdfasdf" + res)
         // fail
       }
     })
   },
-  onKeyWordChanged:function(e){
+  onKeyWordChanged: function (e) {
     console.log(e.detail.value);
     var value = e.detail.value;
     this.setData({
-      keyword:value,
+      keyword: value,
     })
     this.onRefreshItem()
   },
-  onShow:function(){
+  onShow: function () {
     console.log("onShow!");
-    if(this.data.modeId==1) {
+    if (this.data.modeId == 1) {
       console.log(this.data.tempItem.length);
 
     }
   },
-  onRefreshItem:function(){
+  onRefreshItem: function () {
     console.log("refresh");
     console.log(this.data.tempItem)
     // this.onLoad();
   },
-  adapt:function(){
+  adapt: function () {
     var that = this;
     var s = that.data.sItemBox;
     var t = that.data.tempItem;
     var r = [];
-    for( let i = 0; i < that.data.tempItem.length ; i++ )
-    {
+    for (let i = 0; i < that.data.tempItem.length; i++) {
       var t2 = new Object();
-        t2.objectId = t[i].SUC_ID;
-        t2.owner = t[i].USER_ID;
-        t2.uploadTime = t[i].SUC_PUBLISH_TIME;
-        t2.objectName = t[i].SUC_TITLE;
-        t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
-        if (t[i].SUC_INTRO==null) t2.briefInfo = "这个人很懒，什么也没有写..............";
-        else t2.briefInfo = t[i].SUC_INTRO;
-        if (t2.briefInfo.length < 14) t2.briefInfo+=".....................................";
-        r.push(t2);
+      t2.objectId = t[i].SUC_ID;
+      t2.owner = t[i].USER_ID;
+      t2.uploadTime = t[i].SUC_PUBLISH_TIME;
+      t2.objectName = t[i].SUC_TITLE;
+      t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
+      if (t[i].SUC_INTRO == null) t2.briefInfo = "这个人很懒，什么也没有写..............";
+      else t2.briefInfo = t[i].SUC_INTRO;
+      if (t2.briefInfo.length < 14) t2.briefInfo += ".....................................";
+      r.push(t2);
     }
     that.setData({
       sItemBox: r,
     })
     that.onShow();
+  },
+  changeClass: function (e) {
+    // objectClass = "all";
+    var that = this;
+    console.log("objectClass = "+e.currentTarget.dataset.classs);
+    that.setData({
+      objectClass: e.currentTarget.dataset.classs
+    });
+    wx.request({
+      url: getApp().globalData.serverhome,
+      data:{
+        stype:"browse_class",
+        suc_class:that.data.objectClass,
+      },
+      success:function(res){
+        console.log("onBrowse_class:" + res);
+        that.setData({
+          tempItem: res.data.content,
+        })
+        console.log(that.data.tempItem);
+        that.adapt();
+      }
+    })
   }
 })
