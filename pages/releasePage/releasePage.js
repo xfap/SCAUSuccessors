@@ -17,7 +17,7 @@ Page({
     // nowDate:null,
     sItemBox: [
       {
-        "id":1,
+        "objectId":1,
         "owner": "user1",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -27,7 +27,7 @@ Page({
         "endDate": "未设定",
       },
       {
-        "id":2,
+        "objectId":2,
         "owner": "user2",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -36,7 +36,7 @@ Page({
         "startDate": "未设定",
         "endDate": "未设定",
       }, {
-        "id": 3,
+        "objectId": 3,
         "owner": "user3",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -45,7 +45,7 @@ Page({
         "startDate": "未设定",
         "endDate": "未设定",
       }, {
-        "id": 4,
+        "objectId": 4,
         "owner": "user4",
         "uploadTime": "2018/7/6/16:51",
         "objectName": "Book",
@@ -116,9 +116,12 @@ Page({
     var r = [];
     for (let i = 0; i < that.data.tempItem.length; i++) {
       var t2 = new Object();
-      t2.owner = t[i].USERNAME;
+      t2.objectId = t[i].SUC_ID;
+      t2.owner = t[i].USER_ID;
       t2.uploadTime = t[i].SUC_PUBLISH_TIME;
       t2.objectName = t[i].SUC_TITLE;
+      t2.startDate = "未设定";
+      t2.endDate = "未设定";
       t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
       if (t[i].SUC_INTRO == null) t2.briefInfo = "这个人很懒，什么也没有写..............";
       else t2.briefInfo = t[i].SUC_INTRO;
@@ -199,8 +202,8 @@ Page({
     //console.log(e.detail.value),
     var Iid = e.currentTarget.dataset.id;
     for(var i = 0;i < this.data.sItemBox.length;i++){
-      if(this.data.sItemBox[i].id==Iid){
-        console.log("Iid是"+Iid);
+      if (this.data.sItemBox[i].objectId==Iid){
+        console.log("changeStartDate:Iid是"+Iid);
         console.log("this.data.sItemBox[i]="+this.data.sItemBox[i]);
         this.data.sItemBox[i].startDate=e.detail.value;
         this.data.sItemBox[i].endDate=e.detail.value;
@@ -216,7 +219,8 @@ Page({
   changeEndDate: function (e) {
     var Iid = e.currentTarget.dataset.id;
     for (var i = 0; i < this.data.sItemBox.length; i++) {
-      if (this.data.sItemBox[i].id == Iid) {
+      if (this.data.sItemBox[i].objectId == Iid) {
+        console.log("changeEndDate:Iid是" + Iid);
         this.data.sItemBox[i].endDate = e.detail.value;
         this.setData({
           sItemBox: this.data.sItemBox,
@@ -248,7 +252,7 @@ Page({
     console.log("Iid="+Iid);
     var that = this;
     for(var i=0;i<that.data.sItemBox.length;i++){
-      if(Iid==that.data.sItemBox[i].id){
+      if (Iid == that.data.sItemBox[i].objectId){
         that.data.sItemBox[i].startDate = "未设定";
         that.data.sItemBox[i].endDate = "未设定";
         that.setData({
@@ -260,17 +264,20 @@ Page({
   },
   onEnterClick:function(e) {
     var Iid = e.currentTarget.dataset.id;
-    console.log("Iid :"+Iid);
+    console.log(e.currentTarget.dataset);
+    console.log("onEnterClick Iid :"+Iid);
     // console.log(this.data.sItemBox[0]);
     var startTime;
     var endTime;
     var itemId;
+    var owner;
     for(var i=0;i<this.data.sItemBox.length;i++){
-      if(this.data.sItemBox[i].id==Iid) {
+      if (this.data.sItemBox[i].objectId==Iid) {
         console.log(this.data.sItemBox[i]);
         startTime = this.data.sItemBox[i].startDate;
         endTime = this.data.sItemBox[i].endDate;
-        itemId = this.data.sItemBox[i].id;
+        itemId = this.data.sItemBox[i].objectId;
+        owner = this.data.sItemBox[i].owner;
       }
     }
     wx.showModal({
@@ -281,18 +288,19 @@ Page({
           console.log("Send start time:"+startTime);
           console.log("Send end time:" + endTime);
           startTime+="-00-00";
-          endTime+="-00-00";
-          startTime.replace(/-/g,"_");
-          endTime.replace(/-/g,"_");
+          endTime+="-23-59";
+          startTime = startTime.replace(/-/g,'_');
+          endTime = endTime.replace(/-/g,'_');
           console.log("startTime:"+startTime);
           console.log("endTime:"+endTime);
           wx.request({
             url: getApp().globalData.serverhome,
             data:{
               stype:'confirmNeed',
+              user_id:owner,
               SUC_ID:itemId,//不确定要不要转成字符串
-              OWNER_SPARE_TIME_START:t1,
-              OWNER_SPARE_TIME_END:t2,
+              OWNER_SPARE_TIME_START:startTime,
+              OWNER_SPARE_TIME_END:endTime,
             },
             success:function(res){
               console.log(res.data);
