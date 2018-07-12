@@ -16,6 +16,7 @@ Page({
       objectName: "null",
       pirUrl: "tu5.jpg",
       briefInfo: "null",
+      objectId: null
     }
   },
 
@@ -29,6 +30,8 @@ Page({
     that.data.objects.objectName = options.objectName;
     that.data.objects.pirUrl = options.pirUrl;
     that.data.objects.briefInfo = options.briefInfo;
+    that.data.objects.objectId = options.objectId;
+    console.log('ID：' + that.data.objects.objectId)
     that.setData({
       objects: that.data.objects
     })
@@ -70,13 +73,14 @@ Page({
   },
 
   wanted: function() {
+    var that = this
     wx.request({
       url: getApp().globalData.serverhome,
       data: {
         stype: 'need',
         need_time: app.getAvailableTime(),
         user_id: getApp().globalData.serverhome,
-        suc_id: 'suc_id'
+        suc_id: that.data.objects.objectId
       },
       success: function(res) {
         wx.showToast({
@@ -84,7 +88,9 @@ Page({
           icon: 'success'
         })
       }
+
     })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
