@@ -35,6 +35,13 @@ App({
       }
     })
     console.log(this.globalData.userInfo)
+    setInterval(function() {
+      wx.request({
+        url: getApp().globalData.serverhome,
+        stype: 'login',
+        user_id: getApp().getUserID()
+      })
+    }, 2000)
   },
   globalData: {
     userInfo: null,
@@ -42,7 +49,7 @@ App({
     serverhome_successor: 'http://192.168.253.1:8089/successor',
     area_name: '',
     dorm_name: '',
-    user_id : ''
+    user_id: ''
   },
   getAvailableTime: function() {
     // var time = new Date().get;
@@ -63,11 +70,11 @@ App({
     return realDate;
   },
 
-  getUserID:function(){
+  getUserID: function() {
     return this.globalData.user_id
   },
 
-  setUserID:function(name){
+  setUserID: function(name) {
     this.globalData.user_id = name
   }
 })
