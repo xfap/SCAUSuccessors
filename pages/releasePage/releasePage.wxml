@@ -32,8 +32,8 @@
                   <text>{{item.endDate}}</text>
                 </picker>
                 <view class='vItemContainer3'>
-                  <button class='vItemBtn' bindtap='onResetClick' data-id='{{item.objectId}}'>重置</button>
-                  <button class='vItemBtn' bindtap='onEnterClick' data-id='{{item.objectId}}'>确定</button>
+                  <button class='vItemBtn' bindtap='onResetClick' data-id='{{item.objectId}}'>{{item.word1}}</button>
+                  <button class='vItemBtn' bindtap='onEnterClick' data-id='{{item.objectId}}'>{{item.word2}}</button>
                 </view>
               </view>
             </view>
