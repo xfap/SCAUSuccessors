@@ -269,7 +269,7 @@ Page({
         owner: item.owner,
         pirUrl: item.pirURL,
         uploadTime: item.uploadTime,
-        briefInfo:item.briefInfo,
+        briefInfo:item.briefInfo
       },
     });
     wx.navigateTo({
