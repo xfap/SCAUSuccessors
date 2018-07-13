@@ -111,7 +111,7 @@ Page({
       },
       success: function (res) {
         console.log("getData my_suc_appointed:" + res.data.content);
-        console.log("getFlag:" + res.data.content[0].CONFIRM_GIVE_FLAG);
+        // console.log("getFlag:" + res.data.content[0].CONFIRM_GIVE_FLAG);
         that.setData({
           tempItem: res.data.content,
         });
