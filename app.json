@@ -21,14 +21,20 @@
     "selectedColor": "#FFCC99",
     "list": [
       {
+        "iconPath": "images/object.png",
+        "selectedIconPath": "images/objectActive.png",
         "pagePath": "pages/browsePage/browsePage",
         "text": "继承品"
       },
       {
+        "iconPath": "images/release.png",
+        "selectedIconPath": "images/releaseActive.png",
         "pagePath": "pages/uploadPage/uploadPage",
         "text": "发布继承品"
       },
       {
+        "iconPath": "images/geren.png",
+        "selectedIconPath": "images/gerenActive.png",
         "pagePath": "pages/successorPage/successorPage",
         "text": "继承者"
       }

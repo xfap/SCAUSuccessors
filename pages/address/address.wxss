@@ -1,6 +1,6 @@
 /* pages/address/address.wxss */
 .list{
-  background: lightcyan;
+  background: #FFFFCC;
   margin-top: 15rpx;
   border-top: 1px solid #eee
 }
@@ -9,7 +9,7 @@
   padding: 10rpx 20rpx;
   font-size: 30rpx;
   color: #333;
-  border: 1px solid #f3f3f3;
+  border: 1px solid white;
   position: relative
 }
 

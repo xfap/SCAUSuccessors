@@ -1,7 +1,7 @@
 /* pages/successorPage/successorPage.wxss */
 
 .user-head {
-  background-color: lightcyan;
+  background-color: #ffecb3;
   height: 400rpx;
   width: 100%;
   position: relative;
@@ -43,16 +43,21 @@
 }
 
 .list {
-  background: lightcyan;
+  /* background: #FFFF99; */
   margin-top: 50rpx;
+}
+
+.list .item:nth-child(2){
+  /* background: #ffecb3; */
 }
 
 .list .item {
   padding: 20px 15px;
-  font-size: 14px;
-  color: #333;
+  color: #FF9966;
   position: relative;
-  border-bottom: 1px solid #f3f3f3;
+  border-bottom: 1px solid #FF9966;
+  font-size: 1em;
+  background-color: #FFFFCC;
 }
 
 .list .item::last-child {
@@ -60,8 +65,8 @@
 }
 
 .list .item image {
-  width: 16px;
-  height: 16px;
+  width: 60px;
+  height: 60px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
@@ -70,5 +75,7 @@
 .list .item .jump {
   position: absolute;
   right: 20px;
-  color: #999;
+  color: #FF9966;
+  bottom: 37px;
 }
+
