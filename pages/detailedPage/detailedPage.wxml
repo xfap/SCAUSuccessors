@@ -9,6 +9,7 @@
     <image class='get-photo' src="{{objects.pirUrl}}" mode='aspectFit'></image>
   </view>
   <!--继承图片展示结束-->
+  <scroll-view scroll-y style='height:400rpx'>
   <view class='content-three'>
     <view class='jianjielan' type="text">相关说明栏</view>
     <view class='biaoti'>{{objects.objectName}}</view>
@@ -16,7 +17,7 @@
     <view class='jianjielantishi'>{{objects.briefInfo}}</view>
     <view class='shijianxianshi' placeholder='时间显示' type='text'>{{objects.uploadTime}}</view>  <!--时间提示显示不了-->
   </view>
-
+</scroll-view>
   <!--相关说明栏展示结束-->
   <view class='content-four'>
     <button class='querenfabu-btn' bindtap='wanted'>我想要</button>
