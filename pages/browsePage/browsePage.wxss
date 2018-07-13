@@ -78,7 +78,6 @@
    border-top-left-radius: 100rpx; 
   border-bottom-right-radius: 100rpx;
   border-bottom-left-radius: 100rpx;
-  border-top-right-radius: 100rpx;
   box-shadow:inset -2px -6px 5px #CC9933;
 }
 
