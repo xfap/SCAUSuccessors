@@ -59,8 +59,8 @@
   margin: 20rpx;
   margin-bottom: 0;
   background-color: #FFFFCC;
-  border-top-left-radius: 30rpx;
-  border-bottom-right-radius: 30rpx;
+  border-top-left-radius: 100rpx;
+  border-bottom-right-radius: 100rpx;
   box-shadow:inset -4px -4px 5px #CC9933;
 }
 .nItem:first{

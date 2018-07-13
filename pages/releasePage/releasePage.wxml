@@ -56,7 +56,7 @@
               <text class='vItemBrief'>{{item.briefInfo}}</text>
               <view class='vItemContainer2'>
                 <button class='vItemBtn' data-id='{{item.objectId}}' bindtap='onModifyClick'>修改</button>
-                <button class='vItemBtn'>删除</button>
+                <button class='vItemBtn' data-id='{{item.objectId}}' bindtap='onDeleteClick'>删除</button>
               </view>
             </view>
           </view>

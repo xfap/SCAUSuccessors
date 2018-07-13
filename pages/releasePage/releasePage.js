@@ -398,5 +398,37 @@ Page({
     t2 = time2;
     console.log("t1:" + t1);
     console.log("t2:" + t2);
+  },
+  onDeleteClick:function(e){
+    var Iid = e.currentTarget.dataset.id;
+    var item;
+    var itemId;
+    var owner;
+    for (var i = 0; i < this.data.uItemBox.length; i++) {
+      if (Iid == this.data.uItemBox[i].objectId)
+        item = this.data.uItemBox[i];
+        itemId = this.data.uItemBox[i].objectId;
+        owner = this.data.uItemBox[i].owner;
+
+    }
+    console.log("Iid in onDeleteClick:" + Iid);
+    console.log("item in onDeleteClick" + item);
+    wx.request({
+      url: getApp().globalData.serverhome,
+      data:{
+        suc_id: itemId,
+        user_id:owner,
+      },
+      success:function(e){
+        wx.showToast({
+          title: '删除成功',
+          icon: 'success',
+          duration: 2000,
+          mask: true
+        })
+        var that = this;
+        that.requestItem();
+      }
+    })
   }
 })
