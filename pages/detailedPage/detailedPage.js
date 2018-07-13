@@ -79,7 +79,7 @@ Page({
       data: {
         stype: 'need',
         need_time: app.getAvailableTime(),
-        user_id: getApp().globalData.getUserID(),
+        user_id: getApp().getUserID(),
         suc_id: that.data.objects.objectId
       },
       success: function(res) {
