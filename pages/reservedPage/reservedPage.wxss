@@ -179,3 +179,11 @@
 .invis{
   visibility: hidden;
 }
+
+.vItemBtn{
+  margin-top: 30rpx;
+  margin-bottom: 15rpx;
+  width: 150rpx;
+  color: white;
+  background-color: #CC9933;
+}

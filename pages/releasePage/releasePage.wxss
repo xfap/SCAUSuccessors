@@ -171,3 +171,11 @@
   color: white;
   background-color: #CC9933;
 }
+
+.vis{
+  visibility: visible;
+}
+
+.invis{
+  visibility: hidden;
+}

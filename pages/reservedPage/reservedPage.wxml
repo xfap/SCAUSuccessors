@@ -22,6 +22,8 @@
               <view class='vItemTime'>
                 <text>开始：{{item.startDate}}</text>
                 <text>结束：{{item.endDate}}</text>
+                <text>地址：{{item.address}}</text>
+                <button class="vItemBtn" >已领取</button>
               </view>
             </view>
           </navigator>

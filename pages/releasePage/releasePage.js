@@ -153,15 +153,16 @@ Page({
       t2.endDate = "未设定";
       t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
       t2.flag = t[i].CONFIRM_GIVE_FLAG;
+      console.log("t[i].CONFIRM_GIVE_FLAG::::" + t[i].CONFIRM_GIVE_FLAG);
       console.log("t2.flag" + t2.flag);
       if (t2.flag == 0) {
         t2.word1 = "重置";
         t2.word2 = "确定";
-        t2.isvisible="vis";
+        t2.isVisible="vis";
       }
       else if (t2.flag == 1) {
-        t2.word1 = "已预约";
-        t2.isvisible="invis";
+        t2.word1 = "被领取";
+        t2.isVisible="invis";
         // t2.word2 = "已预约";
         t2.startDate = t[i].OWNER_SPARE_TIME_START;
         t2.endDate = t[i].OWNER_SPARE_TIME_END;

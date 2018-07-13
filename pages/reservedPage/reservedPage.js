@@ -84,7 +84,8 @@ Page({
         user_id: getApp().getUserID(),
       },
       success: function (res) {
-        console.log("getData onLoad:" + res.data.content);
+        console.log("getData onLoad:" + res.data.content[0].AREA_NAME);
+        console.log("getData onLoad:" + res.data.content[0].DORM_NAME);
         console.log("getFlag:" + res.data.content[0].CONFIRM_GIVE_FLAG);
         that.setData({
           tempItem: res.data.content,
@@ -131,6 +132,7 @@ Page({
       t2.objectName = t[i].SUC_TITLE;
       t2.pirURL = getApp().globalData.serverhome_successor + t[i].SUC_PIC_URL.substring(1);
       t2.flag = t[i].CONFIRM_GIVE_FLAG;
+      t2.address = t[i].AREA_NAME + t[i].DORM_NAME;
       console.log("t2.flag" + t2.flag);
       t2.startDate = t[i].OWNER_SPARE_TIME_START;
       t2.endDate = t[i].OWNER_SPARE_TIME_END;
