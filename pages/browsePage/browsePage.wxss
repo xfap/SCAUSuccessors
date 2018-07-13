@@ -28,6 +28,11 @@
   height: 100rpx;
   /* border: 1px red solid; */
   width: 100%;
+  position: fixed;
+  top: 30rpx;
+  left:30rpx;
+  z-index: 100;
+  /* background-color: #FFCC99; */
 }
 
 .bTopBar2{
@@ -37,7 +42,8 @@
   align-items: center;
   height: 100rpx;
   width: 100%;
-  margin-top: 20rpx;
+  margin-top: 120rpx;
+  background-color: #FFCC99;
 }
 
 .iInput{
@@ -69,9 +75,10 @@
   /* border: 1px solid green; */
   margin: 30rpx;
   background-color: #FFFFCC;
-  border-top-left-radius: 100rpx;
+   border-top-left-radius: 100rpx; 
   border-bottom-right-radius: 100rpx;
   border-bottom-left-radius: 100rpx;
+  border-top-right-radius: 100rpx;
   box-shadow:inset -2px -6px 5px #CC9933;
 }
 
