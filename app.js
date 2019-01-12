@@ -69,11 +69,15 @@ App({
     var temp = new Date();
     var date = temp.toJSON().substring(0, 10);
     var hour = temp.getHours();
+    if(hour<10) hour="0"+hour;
     var minute = temp.getMinutes();
+    if (minute < 10) minute = "0" + minute;
     var second = temp.getSeconds();
+    if (second < 10) second = "0" + second;
     var cha = '-';
     date += cha;
     date += hour;
+    
     date += cha;
     date += minute;
     date += cha;

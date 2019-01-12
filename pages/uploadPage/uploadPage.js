@@ -197,18 +197,18 @@ Page({
       },
       success: function(res) {
         console.log(JSON.parse(res.data));
-        wx.showToast({
-          title: '上传成功',
-          icon: 'success',
-          duration: 2000,
-          mask: true
-        })
         that.setData({
           image: 'shch.png',
           img_class: 'sender-photo',
           suc_title: '',
           suc_intro: '',
           suc_class: ''
+        })
+        wx.showToast({
+          title: '上传成功',
+          icon: 'success',
+          duration: 2000,
+          mask: true
         })
         getApp().globalData.is_published = true
         setTimeout(function() {
